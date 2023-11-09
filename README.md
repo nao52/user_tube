@@ -80,3 +80,6 @@ YouTubeが好きな人たちユーザー登録を行い、登録チャンネル�
 
 ## 画面遷移図
 https://www.figma.com/file/zRqwhkaC1tWjNZuiPPdbpY/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=6%3A159&mode=design&t=LeT9OZ7d3GAXszDL-1
+
+## ER図
+https://drive.google.com/file/d/1nEqGadZR9m1mr-ABoXcWnzZEjIk359Va/view?usp=sharing
