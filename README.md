@@ -82,4 +82,4 @@ YouTubeが好きな人たちユーザー登録を行い、登録チャンネル�
 https://www.figma.com/file/zRqwhkaC1tWjNZuiPPdbpY/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=6%3A159&mode=design&t=LeT9OZ7d3GAXszDL-1
 
 ## ER図
-https://gyazo.com/b9365b905a4ccd807684e2328ff19fcf
+https://gyazo.com/b594e9df14d503b1c17c2819c4da0837
