@@ -50,6 +50,7 @@ gem "sassc-rails"
 
 gem "bootstrap-sass"
 gem "rails-i18n", "~> 7.0.0"
+gem "draper"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
