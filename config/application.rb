@@ -14,7 +14,7 @@ module UserTube
     config.generators do |g|
       g.skip_routes true
       g.helper false
-      g.test_framework :rspec
+      g.test_framework nil
     end
   end
 end
