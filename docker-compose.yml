@@ -1,0 +1,38 @@
+services:
+  db:
+    image: mysql:latest
+    platform: linux/amd64
+    environment:
+      TZ: Asia/Tokyo
+      
+      # 作成するデータベースの「ユーザー名」と「パスワード」を設定する
+      MYSQL_DATABASE: root
+      MYSQL_ROOT_PASSWORD: password
+        
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/user_tube
+      - bundle_data:/usr/local/bundle:cached
+      - node_modules:/user_tube/node_modules
+    environment:
+      TZ: Asia/Tokyo
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+volumes:
+  mysql_data:
+  bundle_data:
+  node_modules:
+  
+# ボリュームのマウントとは？
+# アプリケーションのデータ管理や永続化、コンテナ間のデータ共有などで使用する
+# 特に、データベース、設定ファイル、ログファイル、アプリケーションコードなどを永続化するために頻繁に利用される。
