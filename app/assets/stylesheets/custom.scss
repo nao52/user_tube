@@ -1,7 +1,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+header {
+  a {
+    font-size: 20px;
+    color: #000;
+  }
+  .navbar-brand {
+    font-size: 20px;
+  }
+}
+
 .main {
   margin: 50px 0;
- font-size: 22px;
+  font-size: 22px;
 }
