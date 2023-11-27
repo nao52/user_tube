@@ -1,7 +1,56 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+header {
+  a {
+    font-size: 20px;
+    color: #000;
+  }
+  .navbar-brand {
+    font-size: 20px;
+  }
+}
+
+.sidebar {
+  a {
+    font-size: 20px;
+    color: #000;
+  }
+}
+
 .main {
   margin: 50px 0;
- font-size: 22px;
+  font-size: 22px;
+}
+
+footer {
+  margin-top: 20px;
+  p {
+    font-size: 20px;
+  }
+  a {
+    font-size: 16px;
+    color: #000;
+  }
+  .col-md-3 {
+    height: 261px;
+    padding-top: 5px;
+  }
+  .footer-item {
+    display:flex;
+    flex-flow: column;
+    justify-content:space-between;
+    p {
+      font-size: 16px;
+    }
+    .footer-title {
+      font-size: 26px;
+    }
+  }
+  .copyright {
+    margin-top: auto;
+    p {
+      font-size: 14px;
+    }
+  }
 }
