@@ -2,6 +2,8 @@ ja:
   users:
     new:
       title: "ユーザー登録"
+    create:
+      success: "ユーザー登録を行いました"
     confirm:
       title: "ユーザー登録(確認画面)"
     signup_confirm:

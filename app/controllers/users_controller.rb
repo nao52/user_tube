@@ -7,8 +7,8 @@ class UsersController < ApplicationController
   def create
     return redirect_to signup_url, user_params: user_params if params[:commit] == '入力画面に戻る'
 
-    @user = User.new(user_params)
-    raise
+    User.create!(user_params)
+    redirect_to root_url, success: t('.success')
   end
 
   def confirm
