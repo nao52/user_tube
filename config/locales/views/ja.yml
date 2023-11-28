@@ -1,1 +1,8 @@
 ja:
+  enums:
+    user:
+      gender:
+        not_known: 回答なし
+        male: 男性
+        female: 女性
+        not_applicabel: その他
