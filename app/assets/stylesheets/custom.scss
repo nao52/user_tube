@@ -1,6 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.mt-30 {
+  margin-top: 30px;
+}
+
 header {
   a {
     font-size: 20px;
@@ -53,4 +57,10 @@ footer {
       font-size: 14px;
     }
   }
+}
+
+/* JavaScript */
+
+.dropdown-menu.active {
+  display: block;
 }
