@@ -25,13 +25,13 @@
       </div>
 
       <div class="form-group">
-        <%= f.hidden_field :age %>
+        <%= f.hidden_field :age, id: "user_age_hidden" %>
         <%= f.label :age, class: "form-label" %>
         <%= f.select :age, (14..100).to_a, { include_blank: "選択しない" }, { disabled: true, class: "form-control" } %>
       </div>
 
       <div class="form-group">
-        <%= f.hidden_field :gender %>
+        <%= f.hidden_field :gender, id: "user_gender_hidden" %>
         <%= f.label :gender, class: "form-label" %>
         <%= f.select :gender, options_for_select(User.genders_i18n.invert, selected: @user.gender), {}, { disabled: true, class: "form-control" } %>
       </div>
