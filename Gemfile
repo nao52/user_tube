@@ -51,6 +51,8 @@ gem "sassc-rails"
 gem "bootstrap-sass"
 gem "rails-i18n", "~> 7.0.0"
 gem "draper"
+gem "sorcery"
+gem 'enum_help'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -75,6 +77,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "webdrivers"
   gem "rspec-rails"
   gem "factory_bot_rails"
 end
