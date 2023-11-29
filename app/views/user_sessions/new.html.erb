@@ -1,0 +1,32 @@
+<% content_for(:title, t(".title")) %>
+<h1 class="text-center"><%= t(".title") %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with url: login_path do |f| %>
+      <div class="form-group mt-30">
+        <%= f.label :email, "メールアドレス", class: "form-label" %>
+        <%= f.text_field :email, class: "form-control", placeholder: "メールアドレスを入力してください" %>
+      </div>
+
+      <div class="form-group mt-30">
+        <%= f.label :password, "パスワード", class: "form-label" %>
+        <%= link_to("(パスワードをお忘れの方はこちら)", '#') %>
+        <%= f.text_field :password, class: "form-control", placeholder: "パスワードを入力してください" %>
+      </div>
+
+      <div class="text-center mt-30">
+        <%= f.label :remember_me, class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>
+          <span>ログイン状態を保持する</span>
+        <% end %>
+      </div>
+
+      <%= f.submit "ログイン", class: "btn btn-primary btn-block mt-30" %>
+
+      <h4 class="text-center mt-30">
+        <%= link_to("ユーザー登録がお済みでない方はこちら", signup_path) %>
+      </h4>
+    <% end %>
+  </div>
+</div>
