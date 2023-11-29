@@ -1,16 +1,19 @@
 ja:
   users:
     new:
-      title: "ユーザー登録"
+      title: ユーザー登録
     create:
-      success: "ユーザー登録を行いました"
+      success: ユーザー登録を行いました
     confirm:
-      title: "ユーザー登録(確認画面)"
+      title: ユーザー登録(確認画面)
     signup_confirm:
-      danger: "ユーザー登録に失敗しました"
+      danger: ユーザー登録に失敗しました
   user_sessions:
     new:
-      title: "ログイン"
+      title: ログイン
+    create:
+      success: ログインしました
+      danger: メールアドレスまたはパスワードが異なります
   enums:
     user:
       gender:

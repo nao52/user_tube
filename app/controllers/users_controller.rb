@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login
+  
   def new
     params[:user] ||= flash[:user_params]
     @user = params[:user] ? User.new(user_params) : User.new
@@ -7,7 +9,8 @@ class UsersController < ApplicationController
   def create
     return redirect_to signup_url, user_params: user_params if params[:commit] == '入力画面に戻る'
 
-    User.create!(user_params)
+    @user = User.create!(user_params)
+    auto_login(@user)
     redirect_to root_url, success: t('.success')
   end
 
