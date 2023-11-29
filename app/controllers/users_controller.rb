@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :require_login
-  
+  before_action :require_not_login
+
   def new
     params[:user] ||= flash[:user_params]
     @user = params[:user] ? User.new(user_params) : User.new
