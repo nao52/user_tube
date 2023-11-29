@@ -24,6 +24,9 @@ RSpec.describe "Users", type: :system do
           expect(find('#user_gender_hidden', visible: false).value).to eq 'male'
           click_button '登録する'
           expect(page).to have_content 'ユーザー登録を行いました'
+          expect(page).to_not have_selector 'a', text: 'ユーザー登録'
+          expect(page).to_not have_selector 'a', text: 'ログイン'
+          expect(page).to have_selector 'a', text: 'ナゲット'
           expect(current_path).to eq root_path
         end
       end

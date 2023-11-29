@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "UserSessions", type: :system do
-  let(:user) { create(:user) }
+  let(:user) { create(:user, password: 'password') }
 
   describe 'ログイン前' do
     context 'フォームの入力値が正常' do
@@ -25,6 +25,17 @@ RSpec.describe "UserSessions", type: :system do
         click_button 'ログイン'
         expect(page).to have_content 'メールアドレスまたはパスワードが異なります'
         expect(current_path).to eq login_path
+      end
+    end
+  end
+
+  describe 'ログイン後' do
+    context 'ログアウトボタンをクリック' do
+      it 'ログアウト処理が成功する' do
+        login_as(user)
+        click_link user.name
+        click_link 'ログアウト'
+        expect(page).to have_content 'ログアウトしました'
       end
     end
   end

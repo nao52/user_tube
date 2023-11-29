@@ -16,6 +16,7 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
-    raise
+    logout
+    redirect_to root_path, success: t('.success'), status: :see_other
   end
 end
