@@ -8,7 +8,7 @@ ja:
       success: ユーザー登録を行いました
     confirm:
       title: ユーザー登録(確認画面)
-    signup_confirm:
+    signup_check:
       danger: ユーザー登録に失敗しました
   user_sessions:
     new:
