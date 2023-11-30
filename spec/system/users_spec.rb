@@ -72,5 +72,24 @@ RSpec.describe "Users", type: :system do
         end
       end
     end
+
+    describe 'ユーザー一覧' do
+      before do
+        50.times do
+          create(:user)
+        end
+      end
+
+      context 'ユーザー一覧ページを表示' do
+        it '登録済みのユーザーが表示される' do
+          visit root_path
+          click_on 'ユーザー一覧'
+          User.all.each do |user|
+            expect(page).to have_content user.name
+          end
+          expect(page).to have_title page_title('ユーザー一覧'), exact: true
+        end
+      end
+    end
   end
 end
