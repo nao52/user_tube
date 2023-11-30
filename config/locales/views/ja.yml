@@ -1,5 +1,7 @@
 ja:
   users:
+    index:
+      title: ユーザー一覧
     new:
       title: ユーザー登録
     create:

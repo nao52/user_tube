@@ -59,6 +59,26 @@ footer {
   }
 }
 
+/* ユーザー一覧 */
+.user-card {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.user-name {
+  font-size: 18px;
+}
+
+.profile {
+  margin-top: 10px;
+}
+
+.favorite-channel {
+  ol {
+    padding-left: 20px;
+  }
+}
+
 /* JavaScript */
 
 .dropdown-menu.active {
