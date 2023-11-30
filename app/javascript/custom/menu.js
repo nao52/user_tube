@@ -1,5 +1,8 @@
 document.addEventListener("turbo:load", function() {
   let account_name = document.querySelector("#account-name");
+  if (account_name === null) {
+    return
+  }
   account_name.addEventListener("click", function(event) {
     event.preventDefault();
     let menu = document.querySelector("#dropdown-menu");
