@@ -11,7 +11,7 @@
 
       <div class="form-group mt-30">
         <%= f.label :password, "パスワード", class: "form-label" %>
-        <%= link_to("(パスワードをお忘れの方はこちら)", '#') %>
+        <%= link_to "(パスワードをお忘れの方はこちら)", new_password_reset_path %>
         <%= f.password_field :password, class: "form-control", placeholder: "パスワードを入力してください" %>
       </div>
 
