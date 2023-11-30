@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
+  let(:user) { create(:user, password: 'password') }
+  
   describe 'ログイン前' do
     describe 'ユーザー新規登録' do
       context 'フォームの入力値が正常' do
@@ -75,6 +77,32 @@ RSpec.describe "Users", type: :system do
 
     describe 'ユーザー一覧' do
       before do
+        50.times do
+          create(:user)
+        end
+      end
+
+      context 'ユーザー一覧ページを表示' do
+        it '登録済みのユーザーが表示される' do
+          visit root_path
+          click_on 'ユーザー一覧'
+          expect(page).to have_selector 'ul.pagination'
+          User.all.page(1).each do |user|
+            expect(page).to have_content user.name
+          end
+          click_link "次", match: :first
+          User.all.page(2).each do |user|
+            expect(page).to have_content user.name
+          end
+        end
+      end
+    end
+  end
+
+  describe 'ログイン後' do
+    describe 'ユーザー一覧' do
+      before do
+        login_as(user)
         50.times do
           create(:user)
         end

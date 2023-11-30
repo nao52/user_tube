@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login
-  before_action :require_not_login
+  before_action :require_not_login, only: %i[new create confirm signup_check]
 
   def index
     @users = User.all.page(params[:page])
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
   end
 
-  def signup_confirm
+  def signup_check
     @user = User.new(user_params)
     if @user.valid?
       redirect_to(confirm_users_url, user_params:)
