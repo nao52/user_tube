@@ -3,6 +3,8 @@
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
+    <span class="text-center"><%= paginate @users, theme: 'bootstrap-5' %></span>
     <%= render @users %>
+    <span class="text-center"><%= paginate @users, theme: 'bootstrap-5' %></span>
   </div>
 </div>

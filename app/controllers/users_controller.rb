@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :require_not_login
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page])
   end
 
   def new
