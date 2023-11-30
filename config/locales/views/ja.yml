@@ -16,6 +16,11 @@ ja:
       danger: メールアドレスまたはパスワードが異なります
     destroy:
       success: ログアウトしました
+  password_resets:
+    new:
+      title: パスワードの再設定(メール送信)
+    edit:
+      title: パスワードの再設定
   enums:
     user:
       gender:

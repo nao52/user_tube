@@ -1,0 +1,14 @@
+<% content_for(:title, t(".title")) %>
+<h1 class="text-center"><%= t(".title") %></h1>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= form_with url: password_resets_path do |f| %>
+      <div class="form-group mt-30">
+        <%= f.label :email, "メールアドレス", class: "form-label" %>
+        <%= f.email_field :email, placeholder: "登録済みのメールアドレスを入力", class: 'form-control' %>
+      </div>
+      <%= f.submit "メールを送信する", class: "btn btn-primary btn-block mt-30" %>
+    <% end %>
+  </div>
+</div>
