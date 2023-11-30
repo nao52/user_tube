@@ -50,7 +50,7 @@ RSpec.describe "StaticPages", type: :system do
           expect(page).to have_link 'wantedly', href: '#'
           click_link user.name
           expect(page).to have_link 'マイページ', href: '#'
-          expect(page).to have_link 'ユーザーの編集', href: '#'
+          expect(page).to have_link 'ユーザーの編集', href: edit_user_path(user)
           expect(page).to have_link 'ログアウト', href: logout_path
         end
       end
