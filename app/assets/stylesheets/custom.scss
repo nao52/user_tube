@@ -59,6 +59,17 @@ footer {
   }
 }
 
+/* ページネーション */
+.pagination>li>a {          
+  border: none;
+  color: #696969;
+  font-size: 16px;
+}
+
+.pagination>.active>a {     
+  background: #93c9ff;
+}
+
 /* ユーザー一覧 */
 .user-card {
   padding: 10px;

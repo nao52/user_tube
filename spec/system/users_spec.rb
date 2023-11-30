@@ -84,10 +84,14 @@ RSpec.describe "Users", type: :system do
         it '登録済みのユーザーが表示される' do
           visit root_path
           click_on 'ユーザー一覧'
-          User.all.each do |user|
+          expect(page).to have_selector 'ul.pagination'
+          User.all.page(1).each do |user|
             expect(page).to have_content user.name
           end
-          expect(page).to have_title page_title('ユーザー一覧'), exact: true
+          click_link "次", match: :first
+          User.all.page(2).each do |user|
+            expect(page).to have_content user.name
+          end
         end
       end
     end
