@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: true
   validates :age, allow_nil: true, numericality: { only_integer: true, in: 13..100 }
   validates :gender, presence: true
+  validates :reset_password_token, uniqueness: true, allow_nil: true
 
   # 性別 { 回答なし: 0, 男性: 1, 女性: 2, その他: 9 }
   enum gender: { not_known: 0, male: 1, female: 2, not_applicabel: 9 }
