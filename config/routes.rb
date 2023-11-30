@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  
   root "static_pages#top"
   get  "/signup", to: "users#new"
   post "/singup/confirm", to: "users#signup_confirm"
@@ -11,4 +13,5 @@ Rails.application.routes.draw do
       get :confirm
     end
   end
+  resources :password_resets, only: %i[new create edit update]
 end

@@ -52,7 +52,8 @@ gem "bootstrap-sass"
 gem "rails-i18n", "~> 7.0.0"
 gem "draper"
 gem "sorcery"
-gem 'enum_help'
+gem "enum_help"
+gem "config"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -71,6 +72,7 @@ group :development do
 
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
+  gem "letter_opener_web", "~> 2.0"
 end
 
 group :test do
