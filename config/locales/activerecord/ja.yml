@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      content: コンテンツ
     attributes:
       user:
         name: ユーザー名
@@ -12,3 +13,7 @@ ja:
         gender: 性別
         profile: プロフィール
         avatar: プロフィール画像
+      content:
+        video_url: 動画URL
+        rating: 評価
+        feedback: 感想
