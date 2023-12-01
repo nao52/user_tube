@@ -24,7 +24,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    raise
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      redirect_to users_url, success: t('.success')
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def confirm
@@ -47,6 +53,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :age, :gender)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :age, :gender, :avatar, :avatar_cache)
   end
 end

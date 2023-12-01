@@ -1,5 +1,6 @@
 <div class="user-card">
-  <div class="user-name"><%= user.name %></div>
+  <%= image_tag(user.avatar_url, class: "img-circle", size: '50x50') %>
+  <span class="user-name"><%= user.name %></span>
   <div class="profile">
       <p>ユーザーのプロフィール文章がここに入ります。これはサンプルの文章です。</p>
   </div>

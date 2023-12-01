@@ -145,6 +145,19 @@ RSpec.describe "Users", type: :system do
           expect(page).to have_select('性別', selected: user.gender_i18n)
         end
       end
+
+      context 'ユーザー名を編集' do
+        it 'ログイン中のユーザー名が変更される' do
+          new_name = "#{user.name}(更新)"
+          click_link user.name
+          click_link 'ユーザーの編集'
+          fill_in 'ユーザー名', with: new_name
+          click_button '登録する'
+          expect(page).to have_content 'ユーザー情報を編集しました'
+          expect(current_path).to eq users_path
+          expect(page).to have_link new_name, href: '#'
+        end
+      end
     end
 
   end

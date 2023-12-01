@@ -25,6 +25,13 @@
         <%= f.select :gender, options_for_select(User.genders_i18n.invert, selected: @user.gender), {}, { class: "form-control" } %>
       </div>
 
+      <div class="form-group">
+        <%= f.label :avatar %>
+        <div class="avatar"><%= image_tag(@user.avatar_url, class: "img-circle", size: '100x100') if @user.avatar? %></div>
+        <%= f.file_field :avatar, accept: 'image/*' %>
+        <%= f.hidden_field :avatar_cache %>
+      </div>
+
       <%= f.submit "登録する", class: "btn btn-primary btn-block" %>
     <% end %>
   </div>
