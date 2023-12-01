@@ -83,6 +83,13 @@ RSpec.describe User, type: :model do
       expect(user_without_gender).to be_invalid
       expect(user_without_gender.errors.full_messages).to include "性別を入力してください"
     end
+
+    it "profileが400文字よりも多い場合にvalidationが機能してinvalidになるか" do
+      too_long_profile = "a" * 401
+      user_with_long_profile = build(:user, profile: too_long_profile)
+      expect(user_with_long_profile).to be_invalid
+      expect(user_with_long_profile.errors.full_messages).to include "プロフィールは400文字以内で入力してください"
+    end
   end
 
   describe "モデルに登録されているメソッドのチェック" do

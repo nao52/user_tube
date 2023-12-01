@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
+  mount_uploader :avatar, AvatarUploader
 
   before_save :downcase_email
 
@@ -11,6 +12,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: true
   validates :age, allow_nil: true, numericality: { only_integer: true, in: 13..100 }
   validates :gender, presence: true
+  validates :profile, length: { maximum: 400 }
   validates :reset_password_token, uniqueness: true, allow_nil: true
   validates :remember_me_token, uniqueness: true, allow_nil: true
 

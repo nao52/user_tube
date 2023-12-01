@@ -6,6 +6,10 @@ ja:
       title: ユーザー登録
     create:
       success: ユーザー登録を行いました
+    edit:
+      title: ユーザー編集
+    update:
+      success: ユーザー情報を編集しました
     confirm:
       title: ユーザー登録(確認画面)
     signup_check:

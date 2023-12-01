@@ -57,6 +57,7 @@ gem "config"
 gem "faker"
 gem "kaminari"
 gem "bootstrap5-kaminari-views"
+gem "carrierwave", "~> 3.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -89,4 +90,5 @@ end
 
 group :production do
   gem "pg"
+  gem "fog-aws"
 end

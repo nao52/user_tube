@@ -4,6 +4,17 @@ RSpec.describe "Users", type: :system do
   let(:user) { create(:user, password: 'password') }
   
   describe 'ログイン前' do
+    describe 'アクセス権限の確認' do
+      context 'ユーザー編集ページにアクセスする' do
+        it 'アクセスに失敗する' do
+          visit edit_user_path(user)
+          expect(page).to have_content 'ログインしてください'
+          expect(page).to have_title page_title('ログイン'), exact: true
+          expect(current_path).to eq login_path
+        end
+      end
+    end
+
     describe 'ユーザー新規登録' do
       context 'フォームの入力値が正常' do
         it 'ユーザーの新規作成が成功する' do
@@ -16,8 +27,6 @@ RSpec.describe "Users", type: :system do
           select '20', from: '年齢'
           select '男性', from: '性別'
           click_button '登録する'
-          expect(page).to have_title page_title('ユーザー登録(確認画面)'), exact: true
-          expect(current_path).to eq confirm_users_path
           expect(page).to have_field 'ユーザー名', with: 'ナゲット'
           expect(page).to have_field 'メールアドレス', with: 'email@example.com'
           expect(page).to have_field 'パスワード', with: 'password'
@@ -100,9 +109,10 @@ RSpec.describe "Users", type: :system do
   end
 
   describe 'ログイン後' do
+    before { login_as(user) }
+
     describe 'ユーザー一覧' do
       before do
-        login_as(user)
         50.times do
           create(:user)
         end
@@ -123,5 +133,32 @@ RSpec.describe "Users", type: :system do
         end
       end
     end
+
+    describe 'ユーザー編集' do
+      context 'ユーザー編集画面を表示' do
+        it 'ユーザー情報があらかじめフォームに入力されている' do
+          click_link user.name
+          click_link 'ユーザーの編集'
+          expect(page).to have_field 'ユーザー名', with: user.name
+          expect(page).to have_field 'メールアドレス', with: user.email
+          expect(page).to have_select('年齢', selected: user.age.to_s)
+          expect(page).to have_select('性別', selected: user.gender_i18n)
+        end
+      end
+
+      context 'ユーザー名を編集' do
+        it 'ログイン中のユーザー名が変更される' do
+          new_name = "#{user.name}(更新)"
+          click_link user.name
+          click_link 'ユーザーの編集'
+          fill_in 'ユーザー名', with: new_name
+          click_button '登録する'
+          expect(page).to have_content 'ユーザー情報を編集しました'
+          expect(current_path).to eq users_path
+          expect(page).to have_link new_name, href: '#'
+        end
+      end
+    end
+
   end
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login
+  skip_before_action :require_login, only: %i[index new create confirm signup_check]
   before_action :require_not_login, only: %i[new create confirm signup_check]
 
   def index
@@ -17,6 +17,20 @@ class UsersController < ApplicationController
     @user = User.create!(user_params)
     auto_login(@user)
     redirect_to root_url, success: t('.success')
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      redirect_to users_url, success: t('.success')
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def confirm
@@ -39,6 +53,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :age, :gender)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :age, :gender, :avatar, :avatar_cache)
   end
 end
