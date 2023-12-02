@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: %i[index new create confirm signup_check]
+  before_action :require_login, only: %i[edit update]
   before_action :require_not_login, only: %i[new create confirm signup_check]
+  before_action :set_user, only: %i[show update contents]
 
   def index
     @users = User.all.page(params[:page])
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def new
@@ -50,9 +55,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def contents
+    @user = User.find(params[:id])
+    @contents = @user.contents
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :age, :gender, :avatar, :avatar_cache)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end

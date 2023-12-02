@@ -8,9 +8,12 @@ Rails.application.routes.draw do
   post "/login", to: "user_sessions#create"
   delete "/logout", to: "user_sessions#destroy"
 
-  resources :users, only: %i[index create edit update] do
+  resources :users, only: %i[index show create edit update] do
     collection do
       get :confirm
+    end
+    member do
+      get :contents
     end
   end
   resources :password_resets, only: %i[new create edit update]
