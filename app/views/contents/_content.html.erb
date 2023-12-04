@@ -1,0 +1,11 @@
+<div class="row user-content">
+  <div class="col-md-5 text-center">
+    <iframe width="336" height="189" src=<%= content.decorate.youtube_url(content.video_url) %> title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <div class="col-md-7">
+    <p>動画タイトル:節約のメリット10選</p>
+    <p>チャンネル名：倹者の流儀</p>
+    <p>評価：<%= content.decorate.rating(content.rating) %></p>
+    <p>感想：<%= content.feedback %></p>
+  </div>
+</div>

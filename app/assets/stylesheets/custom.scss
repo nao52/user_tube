@@ -82,6 +82,7 @@ footer {
 
 .user-name {
   font-size: 18px;
+  color: #000;
 }
 
 .profile {
@@ -91,6 +92,22 @@ footer {
 .favorite-channel {
   ol {
     padding-left: 20px;
+  }
+}
+
+/* コンテンツ */
+.user-content {
+  margin: 20px;
+  border-bottom: 0.5px solid;
+}
+
+/* ユーザー詳細 */
+.user-profile {
+  border: 1px solid;
+  padding: 20px;
+  .user-status {
+    padding-left: 50px;
+    height: 250px;
   }
 }
 
