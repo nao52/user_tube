@@ -160,5 +160,25 @@ RSpec.describe "Users", type: :system do
       end
     end
 
+    describe 'ユーザー詳細' do
+      context 'ユーザーの投稿一覧を表示' do
+        before do
+          5.times do
+            create(:content, user: user)
+          end
+        end
+
+        it 'ユーザーの投稿一覧が表示される' do
+          click_link user.name
+          click_link 'マイページ'
+          click_link '投稿'
+          user.contents.each do |content|
+            expect(page).to have_content "評価：#{"☆" * content.rating}"
+            expect(page).to have_content "感想：#{content.feedback}"
+          end
+          expect(page).to have_title page_title("#{user.name}のコンテンツ"), exact: true
+        end
+      end
+    end
   end
 end

@@ -20,8 +20,8 @@ User.create(
   )  
 end
 
-# 各ユーザーのコンテンツを3個ずつ作成
-User.all.each do |user|
+# 最初のユーザー5人のコンテンツを3個ずつ作成
+User.order(:created_at).take(5).each do |user|
   video_url = ["7ddyXO8knCA?si=fJoYsHnfaF-1pbv6", "9n7dz846LME?si=X6im9lycm0NI5V4S", "Mv6cNVbYuE8?si=fggXKAiAGNKVTB-5"]
   3.times do |n|
     user.contents.create(
