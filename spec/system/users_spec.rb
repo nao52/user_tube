@@ -179,6 +179,44 @@ RSpec.describe "Users", type: :system do
           expect(page).to have_title page_title("#{user.name}のコンテンツ"), exact: true
         end
       end
+
+      context 'ユーザーのフォロー一覧を表示' do
+        before do
+          40.times do
+            new_user = create(:user)
+            user.follow(new_user)
+          end
+        end
+
+        it 'フォローしているユーザー一覧が表示される' do
+          click_link user.name
+          click_link 'マイページ'
+          click_link 'フォロー'
+          user.following.page(1).each do |user|
+            expect(page).to have_content user.name
+          end
+          expect(page).to have_title page_title("#{user.name}のフォロー"), exact: true
+        end
+      end
+
+      context 'ユーザーのフォロワー一覧を表示' do
+        before do
+          40.times do
+            new_user = create(:user)
+            new_user.follow(user)
+          end
+        end
+
+        it 'フォローしているユーザー一覧が表示される' do
+          click_link user.name
+          click_link 'マイページ'
+          click_link 'フォロワー'
+          user.followers.page(1).each do |user|
+            expect(page).to have_content user.name
+          end
+          expect(page).to have_title page_title("#{user.name}のフォロワー"), exact: true
+        end
+      end
     end
   end
 end
