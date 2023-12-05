@@ -26,6 +26,18 @@ class User < ApplicationRecord
   # 性別 { 回答なし: 0, 男性: 1, 女性: 2, その他: 9 }
   enum gender: { not_known: 0, male: 1, female: 2, not_applicabel: 9 }
 
+  def follow(other_user)
+    following << other_user unless self == other_user
+  end
+
+  def unfollow(other_user)
+    following.delete(other_user)
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
+  end
+
   private
 
   def downcase_email
