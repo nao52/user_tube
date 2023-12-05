@@ -1,0 +1,12 @@
+<% content_for(:title, "#{@user.name}のフォロー") %>
+
+<div class="row">
+  <%= render 'user_profile' %>
+  <div class="col-md-10 col-md-offset-1 mt-30">
+    <%= render 'user_link' %>
+
+    <span class="text-center"><%= paginate @followings, theme: 'bootstrap-5' %></span>
+    <%= render partial: 'user', collection: @followings %>
+    <span class="text-center"><%= paginate @followings, theme: 'bootstrap-5' %></span>
+  </div>
+</div>

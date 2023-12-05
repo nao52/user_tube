@@ -1,0 +1,7 @@
+<% if logged_in? %>
+  <% if current_user.following?(user) %>
+    <%= link_to 'フォロー解除', '#', class: "btn btn-default" %>
+  <% else %>
+    <%= link_to 'フォロー', '#', class: "btn btn-primary" %>
+  <% end %>
+<% end %>

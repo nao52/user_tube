@@ -1,0 +1,12 @@
+<% content_for(:title, "#{@user.name}のフォロワー") %>
+
+<div class="row">
+  <%= render 'user_profile' %>
+  <div class="col-md-10 col-md-offset-1 mt-30">
+    <%= render 'user_link' %>
+
+    <span class="text-center"><%= paginate @followers, theme: 'bootstrap-5' %></span>
+    <%= render partial: 'user', collection: @followers %>
+    <span class="text-center"><%= paginate @followers, theme: 'bootstrap-5' %></span>
+  </div>
+</div>

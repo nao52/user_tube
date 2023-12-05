@@ -3,13 +3,7 @@
 <div class="row">
   <%= render 'user_profile' %>
   <div class="col-md-10 col-md-offset-1 mt-30">
-    <ul class="nav nav-tabs nav-justified">
-      <li role="presentation"><%= link_to "登録チャンネル", user_path(@user) %></a></li>
-      <li role="presentation"><a href="#">高評価した動画</a></li>
-      <li role="presentation" class="active"><%= link_to "投稿", contents_user_path(@user) %></li>
-      <li role="presentation"><a href="#">フォロー</a></li>
-      <li role="presentation"><a href="#">フォロワー</a></li>
-    </ul>
+    <%= render 'user_link' %>
 
     <%= render @contents %>
   </div>

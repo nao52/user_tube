@@ -63,6 +63,17 @@ footer {
   margin: 10px 0;
 }
 
+.user-info {
+  display: inline-block;
+  width: 80%;
+}
+
+.follow-btn {
+  display: inline-block;
+  width: 18%;
+  text-align: right;
+}
+
 /* ページネーション */
 .pagination>li>a {          
   border: none;
