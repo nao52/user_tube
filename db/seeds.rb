@@ -1,5 +1,5 @@
 # 初期ユーザー
-User.create(
+FIRST_USER = User.create(
   name: "ナゲット",
   email: "nage@test.com",
   password: "nagenage",
@@ -31,3 +31,9 @@ User.order(:created_at).take(5).each do |user|
     )
   end
 end
+
+# 初期ユーザーがすべてのユーザーをフォロー
+User.all.each { |user| FIRST_USER.follow(user) }
+
+# すべてのユーザーが初期ユーザーをフォロー
+User.all.each { |user| user.follow(FIRST_USER) }

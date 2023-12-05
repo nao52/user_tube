@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_login, only: %i[edit update]
   before_action :require_not_login, only: %i[new create confirm signup_check]
-  before_action :set_user, only: %i[show update contents]
+  before_action :set_user, only: %i[show update contents following follower]
 
   def index
     @users = User.all.page(params[:page])
@@ -29,8 +29,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-
     if @user.update(user_params)
       redirect_to users_url, success: t('.success')
     else
@@ -56,8 +54,15 @@ class UsersController < ApplicationController
   end
 
   def contents
-    @user = User.find(params[:id])
     @contents = @user.contents
+  end
+
+  def following
+    @followings = @user.following.page(params[:page])
+  end
+
+  def follower
+    @followers = @user.followers.page(params[:page])
   end
 
   private

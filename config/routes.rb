@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       get :confirm
     end
     member do
-      get :contents
+      get :contents, :following, :follower
     end
   end
   resources :password_resets, only: %i[new create edit update]
