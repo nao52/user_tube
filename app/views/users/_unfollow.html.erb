@@ -1,2 +1,2 @@
 <% user ||= @followed_user %>
-<%= link_to "フォロー解除", relationship_path(user), data: { turbo_method: :delete }, class: "btn btn-default btn-block" %>
+<%= link_to "フォロー解除", relationship_path(user), data: { turbo_method: :delete }, id: "unfollow-btn-#{user.id}", class: "btn btn-default btn-block" %>
