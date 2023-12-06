@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @channels = @user.channels.page(params[:page])
   end
 
   def new

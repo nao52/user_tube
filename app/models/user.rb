@@ -40,6 +40,13 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def add_subscriptions(subscription_channels)
+    channels.delete_all if channels.present?
+    subscription_channels.each do |channel|
+      channels << channel unless channels.include?(channel)
+    end
+  end
+
   private
 
   def downcase_email
