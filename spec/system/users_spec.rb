@@ -218,5 +218,54 @@ RSpec.describe "Users", type: :system do
         end
       end
     end
+
+    describe 'ユーザーのフォロー機能' do
+      let!(:first_user) { create(:user) }
+      let!(:second_user) { create(:user) }
+
+      context '他ユーザーをフォローする' do
+        it 'ログインユーザーのフォロー一覧に対象のユーザーが追加される' do
+          visit following_user_path(user)
+          expect(page).to_not have_content first_user.name
+          expect(page).to_not have_content second_user.name
+          click_link 'ユーザー一覧'
+          expect(user.following?(first_user)).to be_falsey
+          find("#follow-btn-#{first_user.id}").click
+          visit current_path
+          expect(user.following?(first_user)).to be_truthy
+          find("#follow-btn-#{second_user.id}").click
+          visit current_path
+          expect(user.following.count).to eq 2
+          visit following_user_path(user)
+          expect(page).to have_content first_user.name
+          expect(page).to have_content second_user.name
+        end
+      end
+
+      context '他ユーザーをフォロー解除する' do
+        before do
+          user.follow(first_user)
+          user.follow(second_user)
+        end
+
+        it 'ログインユーザーのフォロー一覧から対象のユーザーが削除される' do
+          visit following_user_path(user)
+          expect(page).to have_content first_user.name
+          expect(page).to have_content second_user.name
+          click_link 'ユーザー一覧'
+          expect(user.following?(first_user)).to be_truthy
+          find("#unfollow-btn-#{first_user.id}").click
+          visit current_path
+          expect(user.following?(first_user)).to be_falsey
+          expect(user.following?(second_user)).to be_truthy
+          find("#unfollow-btn-#{second_user.id}").click
+          visit current_path
+          expect(user.following?(second_user)).to be_falsey
+          visit following_user_path(user)
+          expect(page).to_not have_content first_user.name
+          expect(page).to_not have_content second_user.name
+        end
+      end
+    end
   end
 end

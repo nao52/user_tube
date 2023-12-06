@@ -9,12 +9,11 @@ Rails.application.routes.draw do
   delete "/logout", to: "user_sessions#destroy"
 
   resources :users, only: %i[index show create edit update] do
-    collection do
-      get :confirm
-    end
+    get :confirm, on: :collection
     member do
       get :contents, :following, :follower
     end
   end
   resources :password_resets, only: %i[new create edit update]
+  resources :relationships, only: %i[create destroy]
 end

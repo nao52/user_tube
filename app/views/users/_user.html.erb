@@ -6,7 +6,7 @@
     <% end %>
   </div>
   <div class="follow-btn">
-    <%= render 'follow_btn', user: user %>
+    <%= render 'follow_btn', user: user if logged_in? && current_user != user %>
   </div>
   <div class="profile">
     <p>ユーザーのプロフィール文章がここに入ります。これはサンプルの文章です。</p>
@@ -20,3 +20,5 @@
     </ol>
   </div>
 </div>
+
+<hr>
