@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       content: コンテンツ
+      channel: チャンネル
     attributes:
       user:
         name: ユーザー名
