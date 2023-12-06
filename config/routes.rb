@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   post "/login", to: "user_sessions#create"
   delete "/logout", to: "user_sessions#destroy"
 
+  get 'auth/:provider/callback', to: 'google_login_api#callback'
+  get 'auth/failure', to: redirect('/')
+
   resources :users, only: %i[index show create edit update] do
     get :confirm, on: :collection
     member do

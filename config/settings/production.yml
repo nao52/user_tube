@@ -1,2 +1,4 @@
 host: <%= ENV['HOST'] %>
 storage: :fog
+google_client_id: <%= ENV['GOOGLE_CLIENT_ID'] %>
+google_client_secret: <%= ENV['GOOGLE_CLIENT_SECRET'] %>
