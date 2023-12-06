@@ -49,6 +49,13 @@ class User < ApplicationRecord
     end
   end
 
+  def add_popular_videos(popular_videos)
+    videos.delete_all if videos.present?
+    popular_videos.each do |video|
+      videos << video unless videos.include?(video)
+    end
+  end
+
   private
 
   def downcase_email
