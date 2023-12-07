@@ -8,6 +8,6 @@ class GoogleLoginApiController < ApplicationController
     current_user.update_subscriptions(subscription_channels)
     pupular_videos = Video.popular_videos(access_token)
     current_user.update_popular_videos(pupular_videos)
-    redirect_back_or_to user_url(current_user), success: '登録チャンネル/高評価動画を同期しました'
+    redirect_to channels_user_url(current_user), success: '登録チャンネル/高評価動画を同期しました'
   end
 end
