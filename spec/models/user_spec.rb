@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
       expect(user.errors).to be_empty
     end
 
-    it "名前がない場合にバリデーションが機能してinvalidになるか" do
+    it "nameがない場合にバリデーションが機能してinvalidになるか" do
       user_without_name = build(:user, name: "")
       expect(user_without_name).to be_invalid
       expect(user_without_name.errors.full_messages).to include "ユーザー名を入力してください"
@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
       expect(user_with_long_name.errors.full_messages).to include "ユーザー名は50文字以内で入力してください"
     end
 
-    it "メールアドレスがない場合にバリデーションが機能してinvalidになるか" do
+    it "emailがない場合にバリデーションが機能してinvalidになるか" do
       user_without_email = build(:user, email: "")
       expect(user_without_email).to be_invalid
       expect(user_without_email.errors.full_messages).to include "メールアドレスを入力してください"

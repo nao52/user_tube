@@ -1,0 +1,14 @@
+<div class="col-md-6 channel-item">
+  <%= link_to '#' do %>
+    <%= image_tag channel.thumbnail_url, class: "img-circle", size: '50x50' if channel.thumbnail_url %>
+    <span class="channel-name"><%= channel.name %></span>
+  <% end %>
+  <div class="mt-30">
+    <p>ジャンル</p>
+    <p>恋愛/漫画</p>
+    <p>チャンネル登録者数</p>
+    <p><%= "#{number_with_delimiter(channel.subscriber_count, delimiter: ',')}人" %></p>
+    <p>登録しているユーザー数</p>
+    <p><%= "#{number_with_delimiter(channel.subscribers.count, delimiter: ',')}人" %></p>
+  </div>
+</div>

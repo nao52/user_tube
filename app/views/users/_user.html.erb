@@ -1,12 +1,12 @@
 <div class="user-card">
   <div class="user-info">
-    <%= link_to '#' do %>
+    <%= link_to channels_user_path(user) do %>
       <%= image_tag(user.avatar_url, class: "img-circle", size: '50x50') %>
       <span class="user-name"><%= user.name %></span>
     <% end %>
   </div>
   <div class="follow-btn">
-    <%= render 'follow_btn', user: user if logged_in? && current_user != user %>
+    <%= render 'follow_btn', user: user unless current_user?(user) %>
   </div>
   <div class="profile">
     <p>ユーザーのプロフィール文章がここに入ります。これはサンプルの文章です。</p>

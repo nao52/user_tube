@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :subscription_channels, dependent: :destroy
+  has_many :channels, through: :subscription_channels, source: :channel
+  has_many :popular_videos, dependent: :destroy
+  has_many :videos, through: :popular_videos, source: :video
 
   validates :password, presence: true, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -36,6 +40,28 @@ class User < ApplicationRecord
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def update_subscriptions(subscription_channels)
+    channels.delete_all if channels.present?
+    subscription_channels.each do |channel|
+      add_subscription(channel)
+    end
+  end
+
+  def add_subscription(channel)
+    channels << channel unless channels.include?(channel)
+  end
+
+  def update_popular_videos(popular_videos)
+    videos.delete_all if videos.present?
+    popular_videos.each do |video|
+      add_popular_videos(video)
+    end
+  end
+
+  def add_popular_videos(video)
+    videos << video unless videos.include?(video)
   end
 
   private

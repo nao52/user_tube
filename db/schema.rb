@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_05_034206) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_06_080053) do
+  create_table "channels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "channel_id", null: false
+    t.string "thumbnail_url"
+    t.string "name", null: false
+    t.integer "subscriber_count", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_channels_on_channel_id", unique: true
+  end
+
   create_table "contents", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "video_url", null: false
     t.integer "rating", null: false
@@ -21,6 +32,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_05_034206) do
     t.index ["user_id"], name: "index_contents_on_user_id"
   end
 
+  create_table "popular_videos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "video_id", null: false
+    t.boolean "is_public", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_popular_videos_on_user_id"
+    t.index ["video_id"], name: "index_popular_videos_on_video_id"
+  end
+
   create_table "relationships", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -29,6 +50,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_05_034206) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "subscription_channels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "channel_id", null: false
+    t.boolean "is_public", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_subscription_channels_on_channel_id"
+    t.index ["user_id"], name: "index_subscription_channels_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -53,5 +84,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_05_034206) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
+  create_table "videos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "video_id", null: false
+    t.string "title", null: false
+    t.text "description"
+    t.bigint "channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_videos_on_channel_id"
+    t.index ["video_id"], name: "index_videos_on_video_id", unique: true
+  end
+
   add_foreign_key "contents", "users"
+  add_foreign_key "popular_videos", "users"
+  add_foreign_key "popular_videos", "videos"
+  add_foreign_key "subscription_channels", "channels"
+  add_foreign_key "subscription_channels", "users"
+  add_foreign_key "videos", "channels"
 end

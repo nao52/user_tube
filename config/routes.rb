@@ -8,10 +8,13 @@ Rails.application.routes.draw do
   post "/login", to: "user_sessions#create"
   delete "/logout", to: "user_sessions#destroy"
 
-  resources :users, only: %i[index show create edit update] do
+  get 'auth/:provider/callback', to: 'google_login_api#callback'
+  get 'auth/failure', to: redirect('/')
+
+  resources :users, only: %i[index create edit update] do
     get :confirm, on: :collection
     member do
-      get :contents, :following, :follower
+      get :channels, :videos, :contents, :following, :follower
     end
   end
   resources :password_resets, only: %i[new create edit update]
