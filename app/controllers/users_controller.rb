@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   end
 
   def contents
-    @contents = @user.contents
+    @contents = @user.contents.page(params[:page]).per(8)
   end
 
   def following

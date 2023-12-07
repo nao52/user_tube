@@ -5,6 +5,8 @@
   <div class="col-md-10 col-md-offset-1 mt-30">
     <%= render 'user_link' %>
 
+    <span class="text-center"><%= paginate @contents, theme: 'bootstrap-5' %></span>
     <%= render @contents %>
+    <span class="text-center"><%= paginate @contents, theme: 'bootstrap-5' %></span>
   </div>
 </div>
