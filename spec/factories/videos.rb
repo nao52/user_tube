@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :video do
-    video_id { "test" }
+    sequence(:video_id) { |n| "test-#{n}" }
     title { "test" }
     description { "これはテスト用のデータです" }
     association :channel 

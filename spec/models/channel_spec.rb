@@ -14,6 +14,13 @@ RSpec.describe Channel, type: :model do
       expect(channel_without_channel_id.errors).to_not be_empty
     end
 
+    it 'channel_idがすでに登録されている場合にvalidationが機能してinvalidになるか' do
+      channel = create(:channel)
+      duplicate_channel = channel.dup
+      expect(duplicate_channel).to be_invalid
+      expect(duplicate_channel.errors).to_not be_empty
+    end
+
     it 'nameがない場合にバリデーションが機能してinvalidになるか' do
       channel_without_name = build(:channel, name: "")
       expect(channel_without_name).to be_invalid

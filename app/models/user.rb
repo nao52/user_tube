@@ -42,18 +42,26 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
-  def add_subscriptions(subscription_channels)
+  def update_subscriptions(subscription_channels)
     channels.delete_all if channels.present?
     subscription_channels.each do |channel|
-      channels << channel unless channels.include?(channel)
+      add_subscription(channel)
     end
   end
 
-  def add_popular_videos(popular_videos)
+  def add_subscription(channel)
+    channels << channel unless channels.include?(channel)
+  end
+
+  def update_popular_videos(popular_videos)
     videos.delete_all if videos.present?
     popular_videos.each do |video|
-      videos << video unless videos.include?(video)
+      add_popular_videos(video)
     end
+  end
+
+  def add_popular_videos(video)
+    videos << video unless videos.include?(video)
   end
 
   private

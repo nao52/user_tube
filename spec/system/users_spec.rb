@@ -161,21 +161,60 @@ RSpec.describe "Users", type: :system do
     end
 
     describe 'ユーザー詳細' do
+      context 'ユーザーの登録チャンネル一覧を表示' do
+        before do
+          40.times do
+            channel = create(:channel)
+            user.add_subscription(channel)
+          end
+        end
+
+        it 'ユーザーの登録チャンネル一覧が表示される' do
+          click_link user.name
+          click_link 'マイページ'
+          click_link '登録チャンネル'
+          user.channels.page(1).each do |channel|
+            expect(page).to have_content channel.name
+          end
+          expect(page).to have_selector '.active', text: '登録チャンネル'
+          expect(page).to have_title page_title("#{user.name}の登録チャンネル"), exact: true
+        end
+      end
+
+      context 'ユーザーの高評価した動画一覧を表示' do
+        before do
+          40.times do
+            video = create(:video)
+            user.add_popular_videos(video)
+          end
+        end
+
+        it 'ユーザーの高評価した動画一覧が表示される' do
+          visit channels_user_path(user)
+          click_link '高評価した動画'
+          user.videos.page(1).per(8).each do |video|
+            expect(page).to have_content video.title
+          end
+          expect(page).to have_selector '.active', text: '高評価した動画'
+          expect(page).to have_title page_title("#{user.name}の高評価動画"), exact: true
+        end
+      end
+
       context 'ユーザーの投稿一覧を表示' do
         before do
-          5.times do
+          40.times do
             create(:content, user: user)
           end
         end
 
         it 'ユーザーの投稿一覧が表示される' do
-          click_link user.name
-          click_link 'マイページ'
+          visit channels_user_path(user)
           click_link '投稿'
-          user.contents.each do |content|
+          user.contents.page(1).per(8).each do |content|
             expect(page).to have_content "評価：#{"☆" * content.rating}"
             expect(page).to have_content "感想：#{content.feedback}"
           end
+          expect(page).to have_selector '.active', text: '投稿'
           expect(page).to have_title page_title("#{user.name}のコンテンツ"), exact: true
         end
       end
@@ -189,12 +228,12 @@ RSpec.describe "Users", type: :system do
         end
 
         it 'フォローしているユーザー一覧が表示される' do
-          click_link user.name
-          click_link 'マイページ'
+          visit channels_user_path(user)
           click_link 'フォロー'
           user.following.page(1).each do |user|
             expect(page).to have_content user.name
           end
+          expect(page).to have_selector '.active', text: 'フォロー'
           expect(page).to have_title page_title("#{user.name}のフォロー"), exact: true
         end
       end
@@ -208,12 +247,12 @@ RSpec.describe "Users", type: :system do
         end
 
         it 'フォローしているユーザー一覧が表示される' do
-          click_link user.name
-          click_link 'マイページ'
+          visit channels_user_path(user)
           click_link 'フォロワー'
           user.followers.page(1).each do |user|
             expect(page).to have_content user.name
           end
+          expect(page).to have_selector '.active', text: 'フォロワー'
           expect(page).to have_title page_title("#{user.name}のフォロワー"), exact: true
         end
       end
