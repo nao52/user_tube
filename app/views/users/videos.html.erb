@@ -6,8 +6,6 @@
     <%= button_to "Googleログイン(登録チャンネル/高評価動画を同期)", "/auth/google_oauth2", method: :post, data: { turbo: false }, class: "btn btn-primary btn-block google-btn" if current_user?(@user) %>
     <%= render 'user_link' %>
 
-    <span class="text-center"><%= paginate @videos, theme: 'bootstrap-5' %></span>
-    <%= render @videos %>
-    <span class="text-center"><%= paginate @videos, theme: 'bootstrap-5' %></span>
+    <%= render 'videos/user_videos' %>
   </div>
 </div>
