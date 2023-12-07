@@ -1,0 +1,13 @@
+<% content_for(:title, "#{@user.name}の高評価動画") %>
+
+<div class="row">
+  <%= render 'user_profile' %>
+  <div class="col-md-10 col-md-offset-1 mt-30">
+    <%= button_to "Googleログイン(登録チャンネル/高評価動画を同期)", "/auth/google_oauth2", method: :post, data: { turbo: false }, class: "btn btn-primary btn-block google-btn" if current_user?(@user) %>
+    <%= render 'user_link' %>
+
+    <span class="text-center"><%= paginate @videos, theme: 'bootstrap-5' %></span>
+    <%= render @videos %>
+    <span class="text-center"><%= paginate @videos, theme: 'bootstrap-5' %></span>
+  </div>
+</div>

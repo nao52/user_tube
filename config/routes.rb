@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show create edit update] do
     get :confirm, on: :collection
     member do
-      get :contents, :following, :follower
+      get :videos, :contents, :following, :follower
     end
   end
   resources :password_resets, only: %i[new create edit update]

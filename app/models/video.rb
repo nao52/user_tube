@@ -1,5 +1,7 @@
 class Video < ApplicationRecord
   belongs_to :channel
+  has_many :popular_videos, dependent: :destroy
+  has_many :users, through: :popular_videos, source: :user
 
   validates :video_id, presence: true, uniqueness: true
   validates :title, presence: true

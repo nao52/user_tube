@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs nav-justified">
   <li role="presentation" class=<%= "active" if @channels.present? %>><%= link_to "登録チャンネル", user_path(@user) %></a></li>
-  <li role="presentation" class=<%= "active" if @video.present? %>><a href="#">高評価した動画</a></li>
+  <li role="presentation" class=<%= "active" if @videos.present? %>><%= link_to "高評価した動画", videos_user_path(@user) %></li>
   <li role="presentation" class=<%= "active" if @contents.present? %>><%= link_to "投稿", contents_user_path(@user) %></li>
   <li role="presentation" class=<%= "active" if @followings.present? %>><%= link_to "フォロー", following_user_path(@user) %></li>
   <li role="presentation" class=<%= "active" if @followers.present? %>><%= link_to "フォロワー", follower_user_path(@user) %></li>

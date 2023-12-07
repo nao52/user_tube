@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_login, only: %i[edit update]
   before_action :require_not_login, only: %i[new create confirm signup_check]
-  before_action :set_user, only: %i[show update contents following follower]
+  before_action :set_user, only: %i[show update videos contents following follower]
 
   def index
     @users = User.all.page(params[:page])
@@ -51,6 +51,10 @@ class UsersController < ApplicationController
       flash.now[:danger] = t('.danger')
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def videos
+    @videos = @user.videos.page(params[:page]).per(8)
   end
 
   def contents
