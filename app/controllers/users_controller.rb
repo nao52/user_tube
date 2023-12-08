@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :require_login, only: %i[edit update]
   before_action :require_not_login, only: %i[new create confirm signup_check]
   before_action :set_user, only: %i[update channels videos contents following follower]
+  before_action :set_best_contents, only: %i[channels videos contents following follower]
 
   def index
     @users = User.all.page(params[:page])
@@ -77,5 +78,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def set_best_contents
+    @best_channels = @user.favorite_channels.order(rank: :asc)
+    @best_videos = @user.favorite_videos.order(rank: :asc)
   end
 end

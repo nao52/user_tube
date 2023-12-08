@@ -14,23 +14,15 @@
     </pre>
   </h3>
   <div class="col-md-6">
-    <h3>
-      好きなチャンネルBest3
-      <ol>
-        <li>今日は甘口で</li>
-        <li>ウルトラロマンティック</li>
-        <li>花火の音は聞こえない</li>
-      </ol>
-    </h3>
+    <h3 class="text-center">好きなチャンネルBest3</h3>
+    <ol>
+      <%= render partial: 'channels/best_channels', collection: @best_channels, as: 'channel' %>
+    </ol>
   </div>
   <div class="col-md-6">
-    <h3>
-      好きな動画Best3
-      <ol>
-        <li>今日は甘口で</li>
-        <li>ウルトラロマンティック</li>
-        <li>花火の音は聞こえない</li>
-      </ol>
-    </h3>
+    <h3 class="text-center">好きな動画Best3</h3>
+    <ol>
+      <%= render partial: 'videos/best_videos', collection: @best_videos, as: 'video' %>
+    </ol>
   </div>
 </div>
