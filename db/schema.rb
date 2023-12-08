@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_08_042933) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_08_070749) do
+  create_table "best_channels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "channel_id", null: false
+    t.integer "rank", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_best_channels_on_channel_id"
+    t.index ["user_id", "channel_id"], name: "index_best_channels_on_user_id_and_channel_id", unique: true
+    t.index ["user_id", "rank"], name: "index_best_channels_on_user_id_and_rank", unique: true
+    t.index ["user_id"], name: "index_best_channels_on_user_id"
+  end
+
   create_table "best_videos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "video_id", null: false
@@ -107,6 +119,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_08_042933) do
     t.index ["video_id"], name: "index_videos_on_video_id", unique: true
   end
 
+  add_foreign_key "best_channels", "channels"
+  add_foreign_key "best_channels", "users"
   add_foreign_key "best_videos", "users"
   add_foreign_key "best_videos", "videos"
   add_foreign_key "contents", "users"

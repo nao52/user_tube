@@ -70,6 +70,12 @@ Video.create(
 # 最初のユーザーの高評価動画に追加
 FIRST_USER.update_popular_videos(Video.all)
 
+# 最初のユーザーの好きなチャンネルBEST3を設定
+3.times do |n|
+  channel = FIRST_USER.channels[n]
+  FIRST_USER.best_channels.create(channel: channel, rank: n+1)
+end
+
 # 最初のユーザーの好きな動画BEST3を設定
 3.times do |n|
   video = FIRST_USER.videos[n]
