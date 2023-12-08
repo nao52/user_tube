@@ -68,6 +68,24 @@ class User < ApplicationRecord
     videos << video unless videos.include?(video)
   end
 
+  def update_favorite_channels(channels)
+    return false unless channels.count == 3
+
+    best_channels.delete_all if favorite_channels.present?
+    channels.each_with_index do |channel, index|
+      best_channels.create(channel:, rank: index + 1)
+    end
+  end
+
+  def update_favorite_videos(videos)
+    return false unless videos.count == 3
+
+    best_videos.delete_all if favorite_videos.present?
+    videos.each_with_index do |video, index|
+      best_videos.create(video:, rank: index + 1)
+    end
+  end
+
   private
 
   def downcase_email
