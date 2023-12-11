@@ -30,6 +30,18 @@ ja:
       danger: メールアドレスの送信に失敗しました
     edit:
       title: パスワードの再設定
+  best_channels:
+    edit:
+      title: 好きなチャンネルBEST3の編集
+    update:
+      success: 好きなチャンネルBEST3を更新しました
+      danger: 好きなチャンネルBEST3の更新に失敗しました
+  best_videos:
+    edit:
+      title: 好きな動画BEST3の編集
+    update:
+      success: 好きな動画BEST3を更新しました
+      danger: 好きな動画BEST3の更新に失敗しました
   enums:
     user:
       gender:
