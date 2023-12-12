@@ -48,6 +48,12 @@ ja:
     update:
       success: 公開設定を行いました
       danger: 設定に失敗しました
+  popular_videos:
+    edit:
+      title: 高評価動画の公開設定
+    update:
+      success: 公開設定を行いました
+      danger: 設定に失敗しました
   enums:
     user:
       gender:

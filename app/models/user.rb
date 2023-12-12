@@ -39,6 +39,11 @@ class User < ApplicationRecord
     channels.where(id: subscription_channel_ids)
   end
 
+  def popular_videos_with_public
+    popular_video_ids = popular_videos.where(is_public: true).ids
+    videos.where(id: popular_video_ids)
+  end
+
   def follow(other_user)
     following << other_user unless self == other_user
   end

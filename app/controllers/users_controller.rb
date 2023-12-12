@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   end
 
   def videos
-    @videos = @user.videos.page(params[:page]).per(8)
+    @videos = @user.popular_videos_with_public.page(params[:page]).per(8)
   end
 
   def contents
