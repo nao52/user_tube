@@ -2,7 +2,7 @@
   <div class="user-info">
     <%= link_to channels_user_path(user) do %>
       <%= image_tag(user.avatar_url, class: "img-circle", size: '50x50') %>
-      <span class="user-name"><%= user.name %></span>
+      <span id="user-name-<%= user.id %>" class="user-name"><%= user.name %></span>
     <% end %>
   </div>
   <div class="follow-btn">

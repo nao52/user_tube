@@ -42,6 +42,18 @@ ja:
     update:
       success: 好きな動画BEST3を更新しました
       danger: 好きな動画BEST3の更新に失敗しました
+  subscription_channels:
+    edit:
+      title: 登録チャンネルの公開設定
+    update:
+      success: 登録チャンネルの公開設定を行いました
+      danger: 登録チャンネルの公開設定に失敗しました
+  popular_videos:
+    edit:
+      title: 高評価動画の公開設定
+    update:
+      success: 高評価動画の公開設定を行いました
+      danger: 高評価動画の公開設定に失敗しました
   enums:
     user:
       gender:

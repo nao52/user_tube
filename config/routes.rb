@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   resources :relationships, only: %i[create destroy]
   resource :best_videos, only: %i[edit update]
   resource :best_channels, only: %i[edit update]
+  resource :subscription_channels, only: %i[edit update]
+  resource :popular_videos, only: %i[edit update]
 end

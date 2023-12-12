@@ -1,0 +1,28 @@
+<% content_for(:title, t(".title")) %>
+<h1 class="text-center"><%= t(".title") %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render 'shared/check_public', contents: "高評価動画" %>
+
+    <%= form_with(url: popular_videos_path, method: :patch) do |f| %>
+      <% @popular_videos.each do |popular_video| %>
+        <% video = Video.find(popular_video.video_id) %>
+        <div class="mt-30">
+          <h4 class="video-title"><%= "【#{video.title}】" %></h4>
+          <h4><%= "チャンネル名:『#{video.channel.name}』" %></h4>
+
+          <div>
+            <%= label_tag "is_public#{popular_video.id}" do %>
+              <%= check_box_tag "is_public#{popular_video.id}", true, false, checked: popular_video.is_public, class: "is_public" %>
+              <span>公開設定にする</span>
+            <% end %>
+          </div>
+        </div>
+
+        <hr>
+      <% end %>
+      <%= f.submit "設定する", class: "btn btn-primary btn-block mt-30" %>
+    <% end %>
+  </div>
+</div>

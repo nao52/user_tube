@@ -51,11 +51,11 @@ class UsersController < ApplicationController
   end
 
   def channels
-    @channels = @user.channels.page(params[:page])
+    @channels = @user.subscription_channels_with_public.page(params[:page])
   end
 
   def videos
-    @videos = @user.videos.page(params[:page]).per(8)
+    @videos = @user.popular_videos_with_public.page(params[:page]).per(8)
   end
 
   def contents
