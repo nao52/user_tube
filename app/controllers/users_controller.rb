@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   end
 
   def channels
-    @channels = @user.channels.page(params[:page])
+    @channels = @user.subscription_channels_with_public.page(params[:page])
   end
 
   def videos
