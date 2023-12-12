@@ -2,7 +2,7 @@ class Channel < ApplicationRecord
   require 'google/apis/youtube_v3'
 
   has_many :subscription_channels, dependent: :destroy
-  has_many :subscribers, through: :subscription_channels, source: :user
+  has_many :users, through: :subscription_channels, source: :user
   has_many :videos, dependent: :destroy
 
   validates :channel_id, presence: true, uniqueness: true

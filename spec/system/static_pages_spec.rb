@@ -13,7 +13,7 @@ RSpec.describe "StaticPages", type: :system do
           expect(page).to have_link 'ユーザー登録', href: signup_path
           expect(page).to have_link 'ログイン', href: login_path
           expect(page).to have_link 'ユーザー一覧', href: users_path
-          expect(page).to have_link 'チャンネル一覧', href: '#'
+          expect(page).to have_link 'チャンネル一覧', href: channels_path
           expect(page).to have_link '高評価動画一覧', href: '#'
           expect(page).to have_link '投稿一覧', href: '#'
           expect(page).to have_link '新着コンテンツ一覧', href: '#'
@@ -37,7 +37,7 @@ RSpec.describe "StaticPages", type: :system do
           expect(page).to have_link 'ユーザーチューブ', href: root_path
           expect(page).to have_link user.name, href: '#'
           expect(page).to have_link 'ユーザー一覧', href: users_path
-          expect(page).to have_link 'チャンネル一覧', href: '#'
+          expect(page).to have_link 'チャンネル一覧', href: channels_path
           expect(page).to have_link '高評価動画一覧', href: '#'
           expect(page).to have_link '投稿一覧', href: '#'
           expect(page).to have_link '新着コンテンツ一覧', href: '#'

@@ -9,6 +9,6 @@
     <p>チャンネル登録者数</p>
     <p><%= "#{number_with_delimiter(channel.subscriber_count, delimiter: ',')}人" %></p>
     <p>登録しているユーザー数</p>
-    <p><%= "#{number_with_delimiter(channel.subscribers.count, delimiter: ',')}人" %></p>
+    <p><%= "#{number_with_delimiter(channel.users.size, delimiter: ',')}人" %></p>
   </div>
 </div>
