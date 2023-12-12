@@ -3,6 +3,8 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    <%= render 'shared/check_public', contents: "高評価動画" %>
+
     <%= form_with(url: popular_videos_path, method: :patch) do |f| %>
       <% @popular_videos.each do |popular_video| %>
         <% video = Video.find(popular_video.video_id) %>
@@ -12,7 +14,7 @@
 
           <div>
             <%= label_tag "is_public#{popular_video.id}" do %>
-              <%= check_box_tag "is_public#{popular_video.id}", true, false, checked: popular_video.is_public %>
+              <%= check_box_tag "is_public#{popular_video.id}", true, false, checked: popular_video.is_public, class: "is_public" %>
               <span>公開設定にする</span>
             <% end %>
           </div>
