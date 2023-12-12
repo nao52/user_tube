@@ -54,6 +54,9 @@ ja:
     update:
       success: 高評価動画の公開設定を行いました
       danger: 高評価動画の公開設定に失敗しました
+  channels:
+    index:
+      title: チャンネル一覧
   enums:
     user:
       gender:
