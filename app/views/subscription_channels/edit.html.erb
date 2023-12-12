@@ -18,6 +18,7 @@
           </div>
         </div>
       <% end %>
+      <%= hidden_field_tag 'setting_public', true if flash[:setting_public] %>
       <%= f.submit "設定する", class: "btn btn-primary btn-block mt-30" %>
     <% end %>
   </div>

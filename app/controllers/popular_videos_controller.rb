@@ -5,9 +5,9 @@ class PopularVideosController < ApplicationController
   def edit; end
 
   def update
-    @popular_videos.each_with_index do |popular_video, index|
+    @popular_videos.each do |popular_video|
       ActiveRecord::Base.transaction do
-        is_public = params["is_public#{index + 1}"] || false
+        is_public = params["is_public#{popular_video.id}"] || false
         popular_video.update!(is_public:)
       end
     rescue ActiveRecord::Rollback
