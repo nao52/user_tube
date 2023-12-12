@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
-  let(:user) { create(:user, password: 'password') }
+  let!(:user) { create(:user, password: 'password') }
   
   describe 'ログイン前' do
     describe 'アクセス権限の確認' do
