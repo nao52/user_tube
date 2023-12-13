@@ -146,6 +146,28 @@ footer {
   margin: 30px 0;
 }
 
+/* チャンネル詳細 */
+.channel-detail {
+  height: 380px;
+  p {
+    padding-top: 5px;
+    font-size: 20px;
+  }
+}
+.channel-description {
+  p {
+    border: .5px solid;
+    font-size: 18px;
+    padding: 5px;
+  }
+}
+.channel-link {
+  margin-top: 50px;
+  a {
+    font-size: 18px;
+  }
+}
+
 /* JavaScript */
 
 .dropdown-menu.active {

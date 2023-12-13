@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       content: コンテンツ
       channel: チャンネル
+      channel_comment: チャンネルのコメント
     attributes:
       user:
         name: ユーザー名
@@ -18,3 +19,5 @@ ja:
         video_url: 動画URL
         rating: 評価
         feedback: 感想
+      channel_comment:
+        body: コメント

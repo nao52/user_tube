@@ -81,3 +81,9 @@ end
   video = FIRST_USER.videos[n]
   FIRST_USER.best_videos.create(video: video, rank: n+1)
 end
+
+# チャンネルのコメントを作成
+channel = Channel.first
+User.all.each do |user|
+  user.channel_comments.create(body: "とてもおもしろいチャンネルです！", channel: channel)
+end

@@ -4,6 +4,7 @@ class Channel < ApplicationRecord
   has_many :subscription_channels, dependent: :destroy
   has_many :users, through: :subscription_channels, source: :user
   has_many :videos, dependent: :destroy
+  has_many :channel_comments, dependent: :destroy
 
   validates :channel_id, presence: true, uniqueness: true
   validates :name, presence: true

@@ -1,0 +1,9 @@
+<div class="user-info">
+  <%= link_to channels_user_path(channel_comment.user) do %>
+    <%= image_tag(channel_comment.user.avatar_url, class: "img-circle", size: '50x50') %>
+    <span id="user-name-<%= channel_comment.user.id %>" class="user-name"><%= channel_comment.user.name %></span>
+  <% end %>
+</div>
+<p id="comment-body-<%= channel_comment.id %>"><%= channel_comment.body %></p>
+
+<hr>
