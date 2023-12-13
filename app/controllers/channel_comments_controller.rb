@@ -1,7 +1,7 @@
 class ChannelCommentsController < ApplicationController
   before_action :require_login
   before_action :set_channel, only: %i[new create]
-  before_action :set_channel_comment, only: %i[edit update]
+  before_action :set_channel_comment, only: %i[edit update destroy]
 
   def new
     @channel_comment = current_user.channel_comments.build
@@ -17,8 +17,7 @@ class ChannelCommentsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @channel_comment.update(channel_comment_params)
@@ -29,6 +28,9 @@ class ChannelCommentsController < ApplicationController
   end
 
   def destroy
+    channel_id = @channel_comment.channel_id
+    @channel_comment.destroy
+    redirect_to channel_path(channel_id), success: t('.success')
   end
 
   private
@@ -42,6 +44,6 @@ class ChannelCommentsController < ApplicationController
   end
 
   def set_channel_comment
-    @channel_comment = ChannelComment.find(params[:id])
+    @channel_comment = current_user.channel_comments.find(params[:id])
   end
 end

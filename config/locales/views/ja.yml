@@ -66,6 +66,8 @@ ja:
       title: チャンネルへのコメントを編集
     update:
       success: コメントを編集しました
+    destroy:
+      success: チャンネルへのコメントを削除しました
   enums:
     user:
       gender:
