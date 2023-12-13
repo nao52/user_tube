@@ -1,5 +1,8 @@
 <div id="channel-comments">
-  <span class="text-center"><%= paginate @channel_comments, theme: 'bootstrap-5' %></span>
+  <div class="mt-30">
+    <%= link_to "コメントの新規作成", new_channel_channel_comment_path(@channel), class: "btn btn-primary btn-block" %>
+  </div>
+  <div class="text-center"><%= paginate @channel_comments, theme: 'bootstrap-5' %></div>
   <%= render @channel_comments %>
-  <span class="text-center"><%= paginate @channel_comments, theme: 'bootstrap-5' %></span>
+  <div class="text-center"><%= paginate @channel_comments, theme: 'bootstrap-5' %></div>
 </div>

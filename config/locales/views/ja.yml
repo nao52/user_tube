@@ -57,6 +57,9 @@ ja:
   channels:
     index:
       title: チャンネル一覧
+  channel_comments:
+    new:
+      title: チャンネルへのコメントを作成
   enums:
     user:
       gender:
