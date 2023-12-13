@@ -68,6 +68,9 @@ ja:
       success: コメントを編集しました
     destroy:
       success: チャンネルへのコメントを削除しました
+  videos:
+    index:
+      title: 高評価動画一覧
   enums:
     user:
       gender:
