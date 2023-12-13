@@ -87,3 +87,9 @@ channel = Channel.first
 User.all.each do |user|
   user.channel_comments.create(body: "とてもおもしろいチャンネルです！", channel: channel)
 end
+
+# 動画のコメントを作成
+video = Video.first
+User.all.each do |user|
+  user.video_comments.create(body: "とてもおもしろい動画です！", video: video)
+end
