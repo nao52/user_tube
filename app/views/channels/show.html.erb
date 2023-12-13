@@ -26,14 +26,16 @@
 
     <div class="channel-link">
       <ul class="nav nav-tabs nav-justified">
-        <li role="presentation" class="active" %><%= link_to "コメント一覧", '#' %></a></li>
-        <li role="presentation" %><%= link_to "高評価された動画", '#' %></li>
-        <li role="presentation" %><%= link_to "ユーザー一覧", '#' %></li>
+        <li role="presentation" id="channel-comment-link" class=<%= "active" if @link == 'comment' %>><%= link_to "コメント一覧", channel_path(@channel) %></li>
+        <li role="presentation" id="channel-video-link" class=<%= "active" if @link == 'video' %>><%= link_to "高評価された動画", channel_path(@channel, link: 'video') %></li>
+        <li role="presentation" id="channel-user-link" class=<%= "active" if @link == 'user' %>><%= link_to "ユーザー一覧", channel_path(@channel, link: 'user') %></li>
       </ul>
     </div>
 
     <div class="channel-contents">
-      <%= render 'channel_comments/channel_comments' %>
+      <%= render 'channel_comments/channel_comments' if @link == 'comment' %>
+      <%= render 'videos/channel_videos' if @link == 'video' %>
+      <%= render 'users/channel_users' if @link == 'user' %>
     </div>
   </div>
 </div>
