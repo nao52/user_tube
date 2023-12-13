@@ -64,6 +64,8 @@ ja:
       success: コメントを作成しました
     edit:
       title: チャンネルへのコメントを編集
+    update:
+      success: コメントを編集しました
   enums:
     user:
       gender:
