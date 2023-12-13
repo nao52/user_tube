@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_12_075255) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_13_123357) do
   create_table "best_channels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "channel_id", null: false
@@ -118,6 +118,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_12_075255) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
+  create_table "video_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "body", null: false
+    t.bigint "user_id", null: false
+    t.bigint "video_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_video_comments_on_user_id"
+    t.index ["video_id"], name: "index_video_comments_on_video_id"
+  end
+
   create_table "videos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "video_id", null: false
     t.string "title", null: false
@@ -140,5 +150,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_12_075255) do
   add_foreign_key "popular_videos", "videos"
   add_foreign_key "subscription_channels", "channels"
   add_foreign_key "subscription_channels", "users"
+  add_foreign_key "video_comments", "users"
+  add_foreign_key "video_comments", "videos"
   add_foreign_key "videos", "channels"
 end
