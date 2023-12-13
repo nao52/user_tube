@@ -16,11 +16,11 @@ RSpec.describe "Videos", type: :system do
 
     it 'チャンネル一覧が表示され、ページネーションが機能している' do
       visit videos_path
-      Video.all.page(1).each do |video|
+      Video.all.page(1).per(8).each do |video|
         expect(page).to have_selector "#video-title-#{video.id}", text: video.title
       end
       click_link '次', match: :first
-      Video.all.page(2).each do |video|
+      Video.all.page(2).per(8).each do |video|
         expect(page).to have_selector "#video-title-#{video.id}", text: video.title
       end
     end
