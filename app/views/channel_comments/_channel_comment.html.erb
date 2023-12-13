@@ -5,5 +5,5 @@
   <% end %>
 </div>
 <p id="comment-body-<%= channel_comment.id %>"><%= channel_comment.body %></p>
-
+<%= link_to "編集", edit_channel_comment_path(channel_comment), class: "btn btn-primary" %>
 <hr>

@@ -60,6 +60,8 @@ ja:
   channel_comments:
     new:
       title: チャンネルへのコメントを作成
+    edit:
+      title: チャンネルへのコメントを編集
   enums:
     user:
       gender:

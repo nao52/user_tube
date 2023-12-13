@@ -11,9 +11,11 @@ class ChannelCommentsController < ApplicationController
   end
 
   def edit
+    @channel_comment = ChannelComment.find(params[:id])
   end
 
   def update
+    raise
   end
 
   def destroy
