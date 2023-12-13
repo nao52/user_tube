@@ -5,5 +5,9 @@
   <% end %>
 </div>
 <p id="comment-body-<%= channel_comment.id %>"><%= channel_comment.body %></p>
+<% if current_user?(channel_comment.user) %>
+  <%= link_to "編集", edit_channel_comment_path(channel_comment), class: "btn btn-primary" %>
+  <%= link_to "削除", channel_comment, data: { "turbo-method": :delete, turbo_confirm: "コメントを削除してよろしいですか?" }, class: "btn btn-danger" %>
+<% end %>
 
 <hr>

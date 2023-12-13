@@ -57,6 +57,17 @@ ja:
   channels:
     index:
       title: チャンネル一覧
+  channel_comments:
+    new:
+      title: チャンネルへのコメントを作成
+    create:
+      success: コメントを作成しました
+    edit:
+      title: チャンネルへのコメントを編集
+    update:
+      success: コメントを編集しました
+    destroy:
+      success: チャンネルへのコメントを削除しました
   enums:
     user:
       gender:
