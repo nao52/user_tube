@@ -10,6 +10,11 @@ class Channel < ApplicationRecord
   validates :name, presence: true
   validates :subscriber_count, presence: true, numericality: { only_integer: true }
 
+  def users_with_public
+    subscription_channels_user_ids = subscription_channels.where(is_public: true).map(&:user_id)
+    users.where(id: subscription_channels_user_ids)
+  end
+
   class << self
     def subscription_channels(access_token)
       subscription_channels = []

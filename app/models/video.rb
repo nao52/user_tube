@@ -7,6 +7,11 @@ class Video < ApplicationRecord
   validates :video_id, presence: true, uniqueness: true
   validates :title, presence: true
 
+  def users_with_public
+    popular_videos_user_ids = popular_videos.where(is_public: true).map(&:user_id)
+    users.where(id: popular_videos_user_ids)
+  end
+
   class << self
     def popular_videos(access_token)
       popular_videos = []

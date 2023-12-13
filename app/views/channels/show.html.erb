@@ -1,4 +1,5 @@
 <% content_for(:title, @channel.name) %>
+
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
 
@@ -28,7 +29,7 @@
       <ul class="nav nav-tabs nav-justified">
         <li role="presentation" id="channel-comment-link" class=<%= "active" if @link == 'comment' %>><%= link_to "コメント一覧", channel_path(@channel) %></li>
         <li role="presentation" id="channel-video-link" class=<%= "active" if @link == 'video' %>><%= link_to "高評価された動画", channel_path(@channel, link: 'video') %></li>
-        <li role="presentation" id="channel-user-link" class=<%= "active" if @link == 'user' %>><%= link_to "ユーザー一覧", channel_path(@channel, link: 'user') %></li>
+        <li role="presentation" id="channel-user-link" class=<%= "active" if @link == 'user' %>><%= link_to "登録しているユーザー一覧", channel_path(@channel, link: 'user') %></li>
       </ul>
     </div>
 

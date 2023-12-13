@@ -1,0 +1,13 @@
+<div class="user-info">
+  <%= link_to videos_user_path(video_comment.user) do %>
+    <%= image_tag(video_comment.user.avatar_url, class: "img-circle", size: '50x50') %>
+    <span id="user-name-<%= video_comment.user.id %>" class="user-name"><%= video_comment.user.name %></span>
+  <% end %>
+</div>
+<p id="comment-body-<%= video_comment.id %>"><%= video_comment.body %></p>
+<% if current_user?(video_comment.user) %>
+  <%= link_to "編集", '#', class: "btn btn-primary" %>
+  <%= link_to "削除", '#', data: { "turbo-method": :delete, turbo_confirm: "コメントを削除してよろしいですか?" }, class: "btn btn-danger" %>
+<% end %>
+
+<hr>
