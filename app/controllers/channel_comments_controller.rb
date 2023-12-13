@@ -28,9 +28,14 @@ class ChannelCommentsController < ApplicationController
   end
 
   def destroy
-    channel_id = @channel_comment.channel_id
-    @channel_comment.destroy
-    redirect_to channel_path(channel_id), success: t('.success')
+    @channel = Channel.find(@channel_comment.channel_id)
+    @channel_comments = @channel.channel_comments.includes(:user).page(params[:page])
+    @channel_comment.destroy!
+    flash[:success] = t('.success')
+    respond_to do |format|
+      format.html { redirect_to channel_path(@channel.id), status: :see_other }
+      format.turbo_stream
+    end
   end
 
   private

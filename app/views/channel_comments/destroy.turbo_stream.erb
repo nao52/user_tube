@@ -1,0 +1,12 @@
+<%= turbo_stream.update "channel-comments" do %>
+  <div class="mt-30">
+    <%= link_to "コメントの新規作成", new_channel_channel_comment_path(@channel), class: "btn btn-primary btn-block" %>
+  </div>
+  <div class="text-center"><%= paginate @channel_comments, theme: 'bootstrap-5' %></div>
+  <%= render @channel_comments %>
+  <div class="text-center"><%= paginate @channel_comments, theme: 'bootstrap-5' %></div>
+<% end %>
+
+<%= turbo_stream.update "flash-message" do %>
+  <%= render 'shared/flash_message' %>
+<% end %>
