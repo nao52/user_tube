@@ -71,6 +71,17 @@ ja:
   videos:
     index:
       title: 高評価動画一覧
+  video_comments:
+    new:
+      title: 動画へのコメントを作成
+    create:
+      success: コメントを作成しました
+    edit:
+      title: 動画へのコメントを編集
+    update:
+      success: コメントを編集しました
+    destroy:
+      success: 動画へのコメントを削除しました
   enums:
     user:
       gender:

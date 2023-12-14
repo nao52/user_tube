@@ -1,6 +1,6 @@
 <div id="video-comments">
   <div class="mt-30">
-    <%= link_to "コメントの新規作成", '#', class: "btn btn-primary btn-block" if logged_in? %>
+    <%= link_to "コメントの新規作成", new_video_video_comment_path(@video), class: "btn btn-primary btn-block" if logged_in? %>
   </div>
   <div class="text-center"><%= paginate @video_comments, theme: 'bootstrap-5' %></div>
   <%= render @video_comments %>

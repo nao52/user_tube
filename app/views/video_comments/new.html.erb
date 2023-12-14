@@ -1,2 +1,18 @@
-<h1>VideoComments#new</h1>
-<p>Find me in app/views/video_comments/new.html.erb</p>
+<% content_for(:title, t(".title")) %>
+<h1 class="text-center"><%= t(".title") %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with model: @video_comment, url: video_video_comments_path(@video) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.hidden_field :video_id, value: @video.id %>
+
+      <div class="form-group mt-30">
+        <%= f.text_area :body, size: "40x10", class: "form-control" %>
+      </div>
+
+      <%= f.submit "投稿する", class: "btn btn-primary btn-block mt-30" %>
+    <% end %>
+  </div>
+</div>
