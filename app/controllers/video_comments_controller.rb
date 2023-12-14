@@ -8,17 +8,34 @@ class VideoCommentsController < ApplicationController
   end
 
   def create
-    raise
+    @video_comment = current_user.video_comments.build(video_comment_params)
+
+    if @video_comment.save
+      redirect_to @video, success: t('.success')
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit; end
 
   def update
-    raise
+    if @video_comment.update(video_comment_params)
+      redirect_to @video_comment.video, success: t('.success')
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    raise
+    @video = @video_comment.video
+    @video_comments = @video.video_comments.includes(:user).page(params[:page])
+    @video_comment.destroy!
+    flash[:success] = t('.success')
+    respond_to do |format|
+      format.html { redirect_to @video, status: :see_other }
+      # format.turbo_stream
+    end
   end
 
   private

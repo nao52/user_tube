@@ -11,7 +11,7 @@ class ChannelCommentsController < ApplicationController
     @channel_comment = current_user.channel_comments.build(channel_comment_params)
 
     if @channel_comment.save
-      redirect_to channel_path(@channel), success: t('.success')
+      redirect_to @channel, success: t('.success')
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,14 +21,14 @@ class ChannelCommentsController < ApplicationController
 
   def update
     if @channel_comment.update(channel_comment_params)
-      redirect_to channel_path(@channel_comment.channel_id), success: t('.success')
+      redirect_to @channel_comment.channel, success: t('.success')
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @channel = Channel.find(@channel_comment.channel_id)
+    @channel = @channel_comment.channel
     @channel_comments = @channel.channel_comments.includes(:user).page(params[:page])
     @channel_comment.destroy!
     flash[:success] = t('.success')
