@@ -34,7 +34,7 @@ class VideoCommentsController < ApplicationController
     flash[:success] = t('.success')
     respond_to do |format|
       format.html { redirect_to @video, status: :see_other }
-      # format.turbo_stream
+      format.turbo_stream
     end
   end
 
