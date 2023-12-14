@@ -31,10 +31,9 @@ class ChannelCommentsController < ApplicationController
     @channel = @channel_comment.channel
     @channel_comments = @channel.channel_comments.includes(:user).page(params[:page])
     @channel_comment.destroy!
-    flash[:success] = t('.success')
     respond_to do |format|
-      format.html { redirect_to channel_path(@channel.id), status: :see_other }
-      format.turbo_stream
+      format.html { redirect_to @channel, success: t('.success'), status: :see_other }
+      format.turbo_stream { flash.now[:success] = t('.success') }
     end
   end
 

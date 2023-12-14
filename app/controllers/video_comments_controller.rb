@@ -31,10 +31,9 @@ class VideoCommentsController < ApplicationController
     @video = @video_comment.video
     @video_comments = @video.video_comments.includes(:user).page(params[:page])
     @video_comment.destroy!
-    flash[:success] = t('.success')
     respond_to do |format|
-      format.html { redirect_to @video, status: :see_other }
-      format.turbo_stream
+      format.html { redirect_to @video, success: t('.success'), status: :see_other }
+      format.turbo_stream { flash.now[:success] = t('.success') }
     end
   end
 
