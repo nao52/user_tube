@@ -1,0 +1,38 @@
+<% content_for(:title, @video.title) %>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+
+    <h1 id="video-title-<%= @video.id %>"><%= @video.title %></h1>
+
+    <div class="video-detail">
+      <div class="col-md-5 text-center">
+        <iframe width="336" height="189" src=<%= "https://www.youtube.com/embed/#{@video.video_id}" %> title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="col-md-7">
+        <div>
+          <p>ジャンル</p>
+          <p>恋愛/漫画</p>
+          <p class="video-user"><%= "高評価しているユーザー数：#{number_with_delimiter(@video.users.count, delimiter: ',')}人" %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-description">
+      <h2>動画の概要説明</h2>
+      <p><%= @video.description %></p>
+    </div>
+
+    <div class="video-link">
+      <ul class="nav nav-tabs nav-justified">
+        <li role="presentation" id="video-comment-link" class=<%= "active" if @link == 'comment' %>><%= link_to "コメント一覧", video_path(@video) %></li>
+        <li role="presentation" id="video-user-link" class=<%= "active" if @link == 'user' %>><%= link_to "高評価しているユーザー一覧", video_path(@video, link: 'user') %></li>
+      </ul>
+    </div>
+
+    <div class="video-contents">
+      <%= render 'video_comments/video_comments' if @link == 'comment' %>
+      <%= render 'users/video_users' if @link == 'user' %>
+    </div>
+  </div>
+</div>
