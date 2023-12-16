@@ -82,6 +82,9 @@ ja:
       success: コメントを編集しました
     destroy:
       success: 動画へのコメントを削除しました
+  contents:
+    index:
+      title: 投稿一覧
   enums:
     user:
       gender:

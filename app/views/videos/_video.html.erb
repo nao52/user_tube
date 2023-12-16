@@ -1,8 +1,8 @@
 <div class="row mt-30">
-  <div class="col-md-5 text-center">
+  <div class="col-md-6 text-center">
     <iframe width="336" height="189" src=<%= "https://www.youtube.com/embed/#{video.video_id}" %> title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </div>
-  <div class="col-md-7">
+  <div class="col-md-6">
     <%= link_to video do %>
       <h3 id="video-title-<%= video.id %>" class="video-title"><%= video.title %></h3>
       <p class="video-user"><%= "高評価しているユーザー数：#{number_with_delimiter(video.users.count, delimiter: ',')}人" %></p>
