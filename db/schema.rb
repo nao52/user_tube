@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_13_123357) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_16_115216) do
   create_table "best_channels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "channel_id", null: false
@@ -54,6 +54,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_13_123357) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["channel_id"], name: "index_channels_on_channel_id", unique: true
+  end
+
+  create_table "content_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "body", null: false
+    t.bigint "user_id", null: false
+    t.bigint "content_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["content_id"], name: "index_content_comments_on_content_id"
+    t.index ["user_id"], name: "index_content_comments_on_user_id"
   end
 
   create_table "contents", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -145,6 +155,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_13_123357) do
   add_foreign_key "best_videos", "videos"
   add_foreign_key "channel_comments", "channels"
   add_foreign_key "channel_comments", "users"
+  add_foreign_key "content_comments", "contents"
+  add_foreign_key "content_comments", "users"
   add_foreign_key "contents", "users"
   add_foreign_key "popular_videos", "users"
   add_foreign_key "popular_videos", "videos"
