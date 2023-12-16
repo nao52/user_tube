@@ -113,12 +113,14 @@ footer {
 /* コンテンツ */
 .user-content {
   margin: 20px;
-  border-bottom: 0.5px solid;
 }
 .post-contents {
   p {
     font-size: 20px;
   }
+}
+.content-show {
+  margin: 30px;
 }
 
 /* ユーザー詳細 */
