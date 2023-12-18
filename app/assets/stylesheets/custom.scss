@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 .mt-30 {
   margin-top: 30px;
@@ -214,6 +215,18 @@ footer {
   margin-top: 50px;
   a {
     font-size: 18px;
+  }
+}
+
+.favorite-btn {
+  font-size: 22px;
+}
+
+/* fontawesome */
+.fa-heart {
+  color: rgba(255, 0, 0, 0.5);
+  &:hover {
+    color: rgba(255, 0, 0, 1);
   }
 }
 
