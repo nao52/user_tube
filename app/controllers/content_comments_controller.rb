@@ -29,7 +29,13 @@ class ContentCommentsController < ApplicationController
   end
 
   def destroy
-    raise
+    @content = @content_comment.content
+    @content_comments = @content.content_comments.includes(:user).page(params[:page])
+    @content_comment.destroy!
+    respond_to do |format|
+      format.html { redirect_to @content, success: t('.success'), status: :see_other }
+      # format.turbo_stream { flash.now[:success] = t('.success') }
+    end
   end
 
   private
