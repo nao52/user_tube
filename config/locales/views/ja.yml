@@ -1,4 +1,9 @@
 ja:
+  static_pages:
+    terms:
+      title: 利用規約
+    privacy:
+      title: プライバシーポリシー
   users:
     index:
       title: ユーザー一覧
