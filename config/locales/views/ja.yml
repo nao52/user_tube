@@ -87,6 +87,16 @@ ja:
       title: 投稿一覧
     show:
       title: 投稿詳細
+    new:
+      title: コンテンツの投稿
+    create:
+      success: 新規投稿を行いました
+    edit:
+      title: コンテンツの編集
+    update:
+      success: 投稿の編集を行いました
+    destroy:
+      success: 投稿を削除しました
   enums:
     user:
       gender:

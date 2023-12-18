@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :videos, only: %i[index show], shallow: true do
     resources :video_comments, only: %i[new create edit update destroy]
   end
-  resources :contents, only: %i[index show]
+  resources :contents
   resource :best_videos, only: %i[edit update]
   resource :best_channels, only: %i[edit update]
   resource :subscription_channels, only: %i[edit update]
