@@ -36,7 +36,11 @@ class ContentsController < ApplicationController
   end
 
   def destroy
-    raise
+    @content.destroy!
+    respond_to do |format|
+      format.html { redirect_to contents_url, success: t('.success'), status: :see_other }
+      # format.turbo_stream { flash.now[:success] = t('.success') }
+    end
   end
 
   private

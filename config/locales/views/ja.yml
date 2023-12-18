@@ -95,6 +95,8 @@ ja:
       title: コンテンツの編集
     update:
       success: 投稿の編集を行いました
+    destroy:
+      success: 投稿を削除しました
   enums:
     user:
       gender:
