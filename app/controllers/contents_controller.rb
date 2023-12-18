@@ -5,5 +5,6 @@ class ContentsController < ApplicationController
 
   def show
     @content = Content.find(params[:id])
+    @content_comments = @content.content_comments.includes(:user).page(params[:page])
   end
 end

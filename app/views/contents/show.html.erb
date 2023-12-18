@@ -13,5 +13,11 @@
     <p>評価：<%= @content.decorate.rating(@content.rating) %></p>
     <p id="content-feedback-<%= @content.id %>">感想：<%= @content.feedback %></p>
   </div>
+
+  <div class="col-md-10 col-md-offset-1">
+    <h2 class="text-center">コメント一覧</h2>
+    <div class="text-center"><%= paginate @content_comments, theme: 'bootstrap-5' %></div>
+    <%= render @content_comments %>
+    <div class="text-center"><%= paginate @content_comments, theme: 'bootstrap-5' %></div>
+  </div>
 </div>
-<h2 class="text-center">コメント一覧</h2>
