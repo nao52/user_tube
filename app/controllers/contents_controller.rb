@@ -1,5 +1,6 @@
 class ContentsController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
+  before_action :set_content, only: %i[edit update destroy]
 
   def index
     @contents = Content.includes(:user, video: :channel).page(params[:page]).per(8)
@@ -24,20 +25,27 @@ class ContentsController < ApplicationController
     end
   end
 
-  def edit
-    @content = current_user.contents.find(params[:id])
-  end
+  def edit; end
 
   def update
-    raise
+    if @content.update(content_params)
+      redirect_to @content, success: t('.success')
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    raise
   end
 
   private
 
   def content_params
     params.require(:content).permit(:video_url, :rating, :feedback)
+  end
+
+  def set_content
+    @content = current_user.contents.find(params[:id])
   end
 end

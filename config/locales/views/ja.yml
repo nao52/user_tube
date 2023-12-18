@@ -93,6 +93,8 @@ ja:
       success: 新規投稿を行いました
     edit:
       title: コンテンツの編集
+    update:
+      success: 投稿の編集を行いました
   enums:
     user:
       gender:
