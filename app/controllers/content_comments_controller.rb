@@ -17,8 +17,7 @@ class ContentCommentsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @content_comment.update(content_comment_params)
@@ -29,12 +28,10 @@ class ContentCommentsController < ApplicationController
   end
 
   def destroy
-    @content = @content_comment.content
-    @content_comments = @content.content_comments.includes(:user).page(params[:page])
     @content_comment.destroy!
     respond_to do |format|
-      format.html { redirect_to @content, success: t('.success'), status: :see_other }
-      # format.turbo_stream { flash.now[:success] = t('.success') }
+      format.html { redirect_to @content_comment.content, success: t('.success'), status: :see_other }
+      format.turbo_stream { flash.now[:success] = t('.success') }
     end
   end
 
