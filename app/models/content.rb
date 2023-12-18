@@ -4,7 +4,7 @@ class Content < ApplicationRecord
   before_save :save_video_id
 
   belongs_to :user
-  belongs_to :video
+  belongs_to :video, optional: true
   has_many :content_comments, dependent: :destroy
 
   validates :video_url, presence: true
