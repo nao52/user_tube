@@ -1,0 +1,18 @@
+<% content_for(:title, t(".title")) %>
+<h1 class="text-center"><%= t(".title") %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with model: @content_comment, url: content_content_comments_path(@content) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.hidden_field :content_id, value: @content.id %>
+
+      <div class="form-group mt-30">
+        <%= f.text_area :body, size: "40x10", class: "form-control" %>
+      </div>
+
+      <%= f.submit "投稿する", class: "btn btn-primary btn-block mt-30" %>
+    <% end %>
+  </div>
+</div>

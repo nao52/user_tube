@@ -97,6 +97,17 @@ ja:
       success: 投稿の編集を行いました
     destroy:
       success: 投稿を削除しました
+  content_comments:
+    new:
+      title: 投稿へのコメントを作成
+    create:
+      success: 投稿へのコメントを作成しました
+    edit:
+      title: 投稿へのコメントを編集
+    update:
+      success: 投稿へのコメントを編集しました
+    destroy:
+      success: 投稿へのコメントを削除しました
   enums:
     user:
       gender:
