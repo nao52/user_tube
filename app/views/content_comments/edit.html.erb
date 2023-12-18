@@ -1,2 +1,16 @@
-<h1>ContentComments#edit</h1>
-<p>Find me in app/views/content_comments/edit.html.erb</p>
+<% content_for(:title, t(".title")) %>
+<h1 class="text-center"><%= t(".title") %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with model: @content_comment do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <div class="form-group mt-30">
+        <%= f.text_area :body, size: "40x10", class: "form-control" %>
+      </div>
+
+      <%= f.submit "投稿する", class: "btn btn-primary btn-block mt-30" %>
+    <% end %>
+  </div>
+</div>

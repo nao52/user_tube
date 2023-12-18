@@ -1,6 +1,7 @@
 class ContentCommentsController < ApplicationController
   before_action :require_login
   before_action :set_content, only: %i[new create]
+  before_action :set_content_comment, only: %i[edit update destroy]
 
   def new
     @content_comment = current_user.content_comments.build
@@ -20,7 +21,11 @@ class ContentCommentsController < ApplicationController
   end
 
   def update
-    raise
+    if @content_comment.update(content_comment_params)
+      redirect_to @content_comment.content, success: t('.success')
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -35,5 +40,9 @@ class ContentCommentsController < ApplicationController
 
   def set_content
     @content = Content.find(params[:content_id])
+  end
+
+  def set_content_comment
+    @content_comment = current_user.content_comments.find(params[:id])
   end
 end
