@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
   def index
-    @videos = Video.all.page(params[:page]).per(8)
+    @videos = Video.with_users.order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def show

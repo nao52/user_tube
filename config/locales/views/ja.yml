@@ -108,6 +108,9 @@ ja:
       success: 投稿へのコメントを編集しました
     destroy:
       success: 投稿へのコメントを削除しました
+  recent_contents:
+    show:
+      title: 新着コンテンツ(高評価動画 / 登録チャンネル)
   enums:
     user:
       gender:

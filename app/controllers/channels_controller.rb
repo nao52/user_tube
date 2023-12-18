@@ -1,6 +1,6 @@
 class ChannelsController < ApplicationController
   def index
-    @channels = Channel.all.page(params[:page])
+    @channels = Channel.with_users.order(created_at: :desc).page(params[:page])
   end
 
   def show
