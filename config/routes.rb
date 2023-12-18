@@ -32,4 +32,5 @@ Rails.application.routes.draw do
   resource :best_channels, only: %i[edit update]
   resource :subscription_channels, only: %i[edit update]
   resource :popular_videos, only: %i[edit update]
+  resource :recent_content, only: %i[show]
 end

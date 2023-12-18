@@ -3,7 +3,7 @@ class ContentsController < ApplicationController
   before_action :set_content, only: %i[edit update destroy]
 
   def index
-    @contents = Content.includes(:user, video: :channel).page(params[:page]).per(8)
+    @contents = Content.includes(:user, video: :channel).order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def show
