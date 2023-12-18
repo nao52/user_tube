@@ -20,6 +20,7 @@ class User < ApplicationRecord
   has_many :favorite_channels, through: :best_channels, source: :channel
   has_many :channel_comments, dependent: :destroy
   has_many :video_comments, dependent: :destroy
+  has_many :content_comments, dependent: :destroy
 
   validates :password, presence: true, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

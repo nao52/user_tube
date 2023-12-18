@@ -85,6 +85,8 @@ ja:
   contents:
     index:
       title: 投稿一覧
+    show:
+      title: 投稿詳細
   enums:
     user:
       gender:

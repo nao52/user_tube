@@ -93,3 +93,9 @@ video = Video.first
 User.all.each do |user|
   user.video_comments.create(body: "とてもおもしろい動画です！", video: video)
 end
+
+# 投稿のコメントを作成
+content = Content.first
+User.all.each do |user|
+  user.content_comments.create(body: "とてもおもしろい動画です！", content: content)
+end
