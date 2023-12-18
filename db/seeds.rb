@@ -21,16 +21,16 @@ FIRST_USER = User.create(
 end
 
 # 最初のユーザー5人のコンテンツを3個ずつ作成
-User.order(:created_at).take(5).each do |user|
-  video_url = ["7ddyXO8knCA?si=fJoYsHnfaF-1pbv6", "9n7dz846LME?si=X6im9lycm0NI5V4S", "Mv6cNVbYuE8?si=fggXKAiAGNKVTB-5"]
-  3.times do |n|
-    user.contents.create(
-      video_url: video_url[n],
-      rating: 3,
-      feedback: "テスト用のコメントです(#{n+1})"
-    )
-  end
-end
+# User.order(:created_at).take(5).each do |user|
+#   video_url = ["7ddyXO8knCA?si=fJoYsHnfaF-1pbv6", "9n7dz846LME?si=X6im9lycm0NI5V4S", "Mv6cNVbYuE8?si=fggXKAiAGNKVTB-5"]
+#   3.times do |n|
+#     user.contents.create(
+#       video_url: video_url[n],
+#       rating: 3,
+#       feedback: "テスト用のコメントです(#{n+1})"
+#     )
+#   end
+# end
 
 # 初期ユーザーがすべてのユーザーをフォロー
 User.all.each { |user| FIRST_USER.follow(user) }
@@ -95,7 +95,7 @@ User.all.each do |user|
 end
 
 # 投稿のコメントを作成
-content = Content.first
-User.all.each do |user|
-  user.content_comments.create(body: "とてもおもしろい動画です！", content: content)
-end
+# content = Content.first
+# User.all.each do |user|
+#   user.content_comments.create(body: "とてもおもしろい動画です！", content: content)
+# end

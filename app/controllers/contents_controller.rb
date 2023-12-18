@@ -2,7 +2,7 @@ class ContentsController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
 
   def index
-    @contents = Content.all.page(params[:page]).per(8)
+    @contents = Content.includes(:user, video: :channel).page(params[:page]).per(8)
   end
 
   def show
@@ -15,7 +15,13 @@ class ContentsController < ApplicationController
   end
 
   def create
-    raise
+    @content = current_user.contents.build(content_params)
+
+    if @content.save
+      redirect_to @content, success: t('.success')
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_16_115216) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_18_020303) do
   create_table "best_channels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "channel_id", null: false
@@ -73,7 +73,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_16_115216) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "video_id", null: false
     t.index ["user_id"], name: "index_contents_on_user_id"
+    t.index ["video_id"], name: "index_contents_on_video_id"
   end
 
   create_table "popular_videos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -158,6 +160,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_16_115216) do
   add_foreign_key "content_comments", "contents"
   add_foreign_key "content_comments", "users"
   add_foreign_key "contents", "users"
+  add_foreign_key "contents", "videos"
   add_foreign_key "popular_videos", "users"
   add_foreign_key "popular_videos", "videos"
   add_foreign_key "subscription_channels", "channels"

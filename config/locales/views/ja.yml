@@ -89,6 +89,8 @@ ja:
       title: 投稿詳細
     new:
       title: コンテンツの投稿
+    create:
+      success: 新規投稿を行いました
     edit:
       title: コンテンツの編集
   enums:

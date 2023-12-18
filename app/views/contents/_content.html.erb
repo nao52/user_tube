@@ -4,10 +4,15 @@
   </div>
   <div class="col-md-6 post-contents">
     <%= link_to content do %>
-      <p>動画タイトル:節約のメリット10選</p>
+      <p>動画タイトル:<%= content.video.title %></p>
     <% end %>
-    <p>チャンネル名：倹者の流儀</p>
+    <p>チャンネル名：<%= content.video.channel.name %></p>
     <p>評価：<%= content.decorate.rating(content.rating) %></p>
     <p id="content-feedback-<%= content.id %>">感想：<%= content.feedback %></p>
+    <%= link_to channels_user_path(content.user) do %>
+      <span id="user-name-<%= content.user.id %>" class="user-name"><%= "投稿者：#{content.user.name}" %></span>
+    <% end %>
   </div>
 </div>
+
+<hr>

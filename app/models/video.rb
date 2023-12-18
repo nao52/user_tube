@@ -24,6 +24,13 @@ class Video < ApplicationRecord
       popular_videos
     end
 
+    def find_or_create_from_video_id(video_id)
+      service = Google::Apis::YoutubeV3::YouTubeService.new
+      service.key = Settings.google_api_key
+      video = service.list_videos(:snippet, id: video_id).items.first
+      find_or_create_from_popular_videos(video)
+    end
+
     private
 
     def find_or_create_from_popular_videos(video)
