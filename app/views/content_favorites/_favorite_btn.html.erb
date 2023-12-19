@@ -1,0 +1,7 @@
+<span id="favorite-btn-<%= content.id %>" class="favorite-btn">
+<% if current_user.like_content?(content) %>
+  <%= render 'content_favorites/dislike', content: content %>
+<% else %>
+  <%= render 'content_favorites/like', content: content %>
+<% end %>
+</span>

@@ -1,0 +1,4 @@
+<%= link_to content_favorite_path(content), data: { "turbo-method": :delete }, class: "btn" do %>
+  <i class="fa fa-heart active" aria-hidden="true"></i>
+  <span class="favorite-count"><%= content.decorate.likes_count %></span>
+<% end %>

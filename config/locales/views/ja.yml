@@ -116,6 +116,11 @@ ja:
   recent_contents:
     show:
       title: 新着コンテンツ(高評価動画 / 登録チャンネル)
+  content_favorites:
+    create:
+      success: お気に入りしました
+    destroy:
+      success: お気に入り解除しました
   enums:
     user:
       gender:

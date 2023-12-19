@@ -21,6 +21,8 @@ class User < ApplicationRecord
   has_many :channel_comments, dependent: :destroy
   has_many :video_comments, dependent: :destroy
   has_many :content_comments, dependent: :destroy
+  has_many :content_favorites, dependent: :destroy
+  has_many :like_contents, through: :content_favorites, source: :content
 
   validates :password, presence: true, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -48,7 +50,7 @@ class User < ApplicationRecord
   end
 
   def follow(other_user)
-    following << other_user unless self == other_user
+    following << other_user unless self == other_user && following?(other_user)
   end
 
   def unfollow(other_user)
@@ -57,6 +59,18 @@ class User < ApplicationRecord
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def like_content(content)
+    like_contents << content unless like_content?(content)
+  end
+
+  def dislike_content(content)
+    like_contents.delete(content)
+  end
+
+  def like_content?(content)
+    like_contents.include?(content)
   end
 
   def update_subscriptions(subscription_channels)
