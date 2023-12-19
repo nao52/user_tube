@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :content_comments, only: %i[new create edit update destroy]
   end
   resources :content_favorites, only: %i[create destroy]
+  resources :best_channels_favorites, only: %i[create destroy]
   resource :best_videos, only: %i[edit update]
   resource :best_channels, only: %i[edit update]
   resource :subscription_channels, only: %i[edit update]

@@ -1,0 +1,7 @@
+<%= form_with model: current_user.best_channels_favorites.build, class: "favorite-form" do |f| %>
+  <div><%= hidden_field_tag :best_channel_id, best_channel.id %></div>
+  <%= button_tag type: 'submit', class: "btn btn-clear" do %>
+    <i class="fa fa-heart" aria-hidden="true"></i>
+    <span class="favorite-count"><%= best_channel.decorate.likes_count %></span>
+  <% end %>
+<% end %>
