@@ -218,15 +218,33 @@ footer {
   }
 }
 
-.favorite-btn {
+/* お気に入りボタン */
+
+.btn-clear {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.favorite-form {
+  display: inline-block;
+}
+
+.favorite-count {
   font-size: 22px;
 }
 
 /* fontawesome */
 .fa-heart {
+  font-size: 22px;
   color: rgba(255, 0, 0, 0.5);
   &:hover {
     color: rgba(255, 0, 0, 1);
+  }
+}
+.fa-heart.active {
+  font-size: 22px;
+  color: rgba(255, 0, 0, 1);
+  &:hover {
+    color: rgba(255, 0, 0, 0.5);
   }
 }
 

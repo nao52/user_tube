@@ -8,4 +8,8 @@ class ContentDecorator < ApplicationDecorator
   def rating(rating)
     '☆' * rating
   end
+
+  def likes_count
+    content_favorites.size
+  end
 end
