@@ -23,6 +23,8 @@ class User < ApplicationRecord
   has_many :content_comments, dependent: :destroy
   has_many :content_favorites, dependent: :destroy
   has_many :like_contents, through: :content_favorites, source: :content
+  has_many :best_channels_favorites, dependent: :destroy
+  has_many :like_best_channels, through: :best_channels_favorites, source: :best_channel
 
   validates :password, presence: true, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -71,6 +73,18 @@ class User < ApplicationRecord
 
   def like_content?(content)
     like_contents.include?(content)
+  end
+
+  def like_best_channel(best_channel)
+    like_best_channels << best_channel unless like_best_channel?(best_channel)
+  end
+
+  def dislike_best_channel(best_channel)
+    like_best_channels.delete(best_channel)
+  end
+
+  def like_best_channel?(best_channel)
+    like_best_channels.include?(best_channel)
   end
 
   def update_subscriptions(subscription_channels)

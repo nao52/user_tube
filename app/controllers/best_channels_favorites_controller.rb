@@ -1,0 +1,2 @@
+class BestChannelsFavoritesController < ApplicationController
+end

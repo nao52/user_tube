@@ -31,4 +31,10 @@
       <%= render partial: 'videos/best_videos', collection: @best_videos, as: 'video' %>
     </ol>
   </div>
+  <div class="col-md-6">
+    <%= render 'best_channels_favorites/favorite_btn' if logged_in? %>
+  </div>
+  <div class="col-md-6">
+    テスト2
+  </div>
 </div>
