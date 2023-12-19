@@ -6,7 +6,7 @@ class BestChannelsFavoritesController < ApplicationController
     current_user.like_best_channel(@best_channel)
     respond_to do |format|
       format.html { redirect_to channels_user_path(@best_channel.user), success: t('.success') }
-      # format.turbo_stream { flash.now[:success] = t('.success') }
+      format.turbo_stream { flash.now[:success] = t('.success') }
     end
   end
 
@@ -15,7 +15,7 @@ class BestChannelsFavoritesController < ApplicationController
     current_user.dislike_best_channel(@best_channel)
     respond_to do |format|
       format.html { redirect_to channels_user_path(@best_channel.user), success: t('.success'), status: :see_other }
-      # format.turbo_stream { flash.now[:success] = t('.success') }
+      format.turbo_stream { flash.now[:success] = t('.success') }
     end
   end
 end
