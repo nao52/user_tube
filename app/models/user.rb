@@ -50,7 +50,7 @@ class User < ApplicationRecord
   end
 
   def follow(other_user)
-    following << other_user unless self == other_user
+    following << other_user unless self == other_user && following?(other_user)
   end
 
   def unfollow(other_user)
@@ -62,7 +62,7 @@ class User < ApplicationRecord
   end
 
   def like_content(content)
-    like_contents << content
+    like_contents << content unless like_content?(content)
   end
 
   def dislike_content(content)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_18_081804) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_19_071248) do
   create_table "best_channels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "channel_id", null: false
@@ -72,6 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_18_081804) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["content_id"], name: "index_content_favorites_on_content_id"
+    t.index ["user_id", "content_id"], name: "index_content_favorites_on_user_id_and_content_id", unique: true
     t.index ["user_id"], name: "index_content_favorites_on_user_id"
   end
 
