@@ -82,6 +82,6 @@ class UsersController < ApplicationController
 
   def set_best_contents
     @best_channels = @user.best_channels.order(rank: :asc)
-    @best_videos = @user.favorite_videos.order(rank: :asc)
+    @best_videos = @user.best_videos.order(rank: :asc)
   end
 end

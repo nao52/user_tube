@@ -1,0 +1,7 @@
+<%= form_with model: current_user.best_videos_favorites.build, class: "favorite-form" do |f| %>
+  <div><%= hidden_field_tag :best_video_id, best_video.id %></div>
+  <%= button_tag type: 'submit', class: "btn btn-clear" do %>
+    <i class="fa fa-heart" aria-hidden="true"></i>
+    <span class="favorite-count"><%= best_video.decorate.likes_count %></span>
+  <% end %>
+<% end %>
