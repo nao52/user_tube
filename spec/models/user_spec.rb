@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:user) { create(:user) }
   let(:best_channel) { create(:best_channel, rank: 1) }
+  let(:best_video) { create(:best_video, rank: 1) }
 
   describe "バリデーションチェック" do
     it "設定したすべてのバリデーションが機能しているか" do
@@ -120,6 +121,26 @@ RSpec.describe User, type: :model do
       expect(user.like_best_channel?(best_channel)).to be_truthy
       user.dislike_best_channel(best_channel)
       expect(user.like_best_channel?(best_channel)).to be_falsey
+    end
+
+    it "like_best_videoメソッドを実行した場合にいいね数が増えるか" do
+      before_count = user.like_best_videos.size
+      user.like_best_video(best_video)
+      expect(user.like_best_videos.size).to eq before_count + 1
+    end
+
+    it "dislike_best_videoメソッドを実行した場合にいいね数が減るか" do
+      user.like_best_video(best_video)
+      before_count = user.like_best_videos.size
+      user.dislike_best_video(best_video)
+      expect(user.like_best_videos.size).to eq before_count - 1
+    end
+
+    it "like_best_video?メソッドが機能していいね状態を確認できるか" do
+      user.like_best_video(best_video)
+      expect(user.like_best_video?(best_video)).to be_truthy
+      user.dislike_best_video(best_video)
+      expect(user.like_best_video?(best_video)).to be_falsey
     end
   end
 

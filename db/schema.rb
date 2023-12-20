@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_19_080002) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_20_031242) do
   create_table "best_channels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "channel_id", null: false
@@ -43,6 +43,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_19_080002) do
     t.index ["user_id", "video_id"], name: "index_best_videos_on_user_id_and_video_id", unique: true
     t.index ["user_id"], name: "index_best_videos_on_user_id"
     t.index ["video_id"], name: "index_best_videos_on_video_id"
+  end
+
+  create_table "best_videos_favorites", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "best_video_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["best_video_id"], name: "index_best_videos_favorites_on_best_video_id"
+    t.index ["user_id", "best_video_id"], name: "index_best_videos_favorites_on_user_id_and_best_video_id", unique: true
+    t.index ["user_id"], name: "index_best_videos_favorites_on_user_id"
   end
 
   create_table "channel_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -177,6 +187,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_19_080002) do
   add_foreign_key "best_channels_favorites", "users"
   add_foreign_key "best_videos", "users"
   add_foreign_key "best_videos", "videos"
+  add_foreign_key "best_videos_favorites", "best_videos"
+  add_foreign_key "best_videos_favorites", "users"
   add_foreign_key "channel_comments", "channels"
   add_foreign_key "channel_comments", "users"
   add_foreign_key "content_comments", "contents"
