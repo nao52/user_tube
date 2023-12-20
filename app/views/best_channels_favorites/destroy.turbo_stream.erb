@@ -1,4 +1,4 @@
-<%= turbo_stream.update "favorite-btn-#{@best_channel.id}" do %>
+<%= turbo_stream.update "favorite-btn-channel-#{@best_channel.id}" do %>
   <%= render 'best_channels_favorites/like', best_channel: @best_channel %>
 <% end %>
 
