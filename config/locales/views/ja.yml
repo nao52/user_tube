@@ -138,3 +138,21 @@ ja:
         male: 男性
         female: 女性
         not_applicabel: その他
+    category:
+      title:
+        else: その他
+        film_and_animation: 映画とアニメ
+        autos_and_vehicles: 自動車と乗り物
+        music: 音楽
+        pets_and_animals: ペットと動物
+        sports: スポーツ
+        travel_and_events: 旅行とイベント
+        gaming: ゲーム
+        people_and_blogs: ブログ
+        comedy: コメディー
+        entertainment: エンターテイメント
+        news_and_politics: ニュースと政治
+        howto_and_style: ハウツーとスタイル
+        education: 教育
+        science_and_technology: 科学と技術
+        nonprofits_and_activism: 非営利団体と社会活動

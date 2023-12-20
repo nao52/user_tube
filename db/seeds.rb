@@ -1,3 +1,9 @@
+# カテゴリーの作成
+category_ids = [0, 1, 2, 10, 15, 17, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29]
+category_ids.each do |category_id|
+  Category.create(title: category_id)
+end
+
 # 初期ユーザー
 FIRST_USER = User.create(
   name: "ナゲット",
