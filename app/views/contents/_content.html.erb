@@ -13,8 +13,8 @@
       <span id="user-name-<%= content.user.id %>" class="user-name"><%= "投稿者：#{content.user.name}" %></span>
     <% end %>
   </div>
+  <%= render 'content_favorites/favorite_btn', content: content if logged_in? %>
   <% if current_user?(content.user) %>
-    <%= render 'content_favorites/favorite_btn', content: content %>
     <%= link_to "編集", edit_content_path(content), class: "btn btn-primary" %>
     <%= link_to "削除", content, data: { "turbo-method": :delete, turbo_confirm: "投稿を削除してよろしいですか?" }, class: "btn btn-danger" %>
   <% end %>

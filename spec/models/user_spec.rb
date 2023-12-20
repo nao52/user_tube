@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  let(:user) { create(:user) }
+  let(:best_channel) { create(:best_channel, rank: 1) }
+
   describe "バリデーションチェック" do
     it "設定したすべてのバリデーションが機能しているか" do
       user = build(:user)
@@ -97,6 +100,26 @@ RSpec.describe User, type: :model do
       mixed_case_email = "Foo@ExAMPle.CoM"
       user = create(:user, email: mixed_case_email)
       expect(user.email).to eq mixed_case_email.downcase
+    end
+
+    it "like_best_channelメソッドを実行した場合にいいね数が増えるか" do
+      before_count = user.like_best_channels.size
+      user.like_best_channel(best_channel)
+      expect(user.like_best_channels.size).to eq before_count + 1
+    end
+
+    it "dislike_best_channelメソッドを実行した場合にいいね数が減るか" do
+      user.like_best_channel(best_channel)
+      before_count = user.like_best_channels.size
+      user.dislike_best_channel(best_channel)
+      expect(user.like_best_channels.size).to eq before_count - 1
+    end
+
+    it "like_best_channel?メソッドが機能していいね状態を確認できるか" do
+      user.like_best_channel(best_channel)
+      expect(user.like_best_channel?(best_channel)).to be_truthy
+      user.dislike_best_channel(best_channel)
+      expect(user.like_best_channel?(best_channel)).to be_falsey
     end
   end
 

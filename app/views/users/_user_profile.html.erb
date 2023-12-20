@@ -19,7 +19,7 @@
       <%= link_to '編集', edit_best_channels_path, id: "edit-best-channels", class: "btn btn-primary" if current_user?(@user)  %>
     </h3>
     <ol>
-      <%= render partial: 'channels/best_channels', collection: @best_channels, as: 'channel' %>
+      <%= render partial: 'best_channels/best_channels', collection: @best_channels, as: 'best_channel' %>
     </ol>
   </div>
   <div class="col-md-6">

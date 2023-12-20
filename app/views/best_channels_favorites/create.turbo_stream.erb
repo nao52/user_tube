@@ -1,0 +1,7 @@
+<%= turbo_stream.update "favorite-btn-#{@best_channel.id}" do %>
+  <%= render 'best_channels_favorites/dislike', best_channel: @best_channel %>
+<% end %>
+
+<%= turbo_stream.update "flash-message" do %>
+  <%= render 'shared/flash_message' %>
+<% end %>

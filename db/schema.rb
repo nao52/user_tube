@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_19_071248) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_19_080002) do
   create_table "best_channels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "channel_id", null: false
@@ -21,6 +21,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_19_071248) do
     t.index ["user_id", "channel_id"], name: "index_best_channels_on_user_id_and_channel_id", unique: true
     t.index ["user_id", "rank"], name: "index_best_channels_on_user_id_and_rank", unique: true
     t.index ["user_id"], name: "index_best_channels_on_user_id"
+  end
+
+  create_table "best_channels_favorites", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "best_channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["best_channel_id"], name: "index_best_channels_favorites_on_best_channel_id"
+    t.index ["user_id", "best_channel_id"], name: "index_best_channels_favorites_on_user_id_and_best_channel_id", unique: true
+    t.index ["user_id"], name: "index_best_channels_favorites_on_user_id"
   end
 
   create_table "best_videos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -163,6 +173,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_19_071248) do
 
   add_foreign_key "best_channels", "channels"
   add_foreign_key "best_channels", "users"
+  add_foreign_key "best_channels_favorites", "best_channels"
+  add_foreign_key "best_channels_favorites", "users"
   add_foreign_key "best_videos", "users"
   add_foreign_key "best_videos", "videos"
   add_foreign_key "channel_comments", "channels"
