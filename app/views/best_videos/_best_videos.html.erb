@@ -1,0 +1,4 @@
+<li id="best-video-<%= best_video.video.id %>" class="best-videos"><%= best_video.video.title %></li>
+<div>
+  <%= render 'best_videos_favorites/favorite_btn', best_video: best_video if logged_in? %>
+</div>

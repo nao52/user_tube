@@ -28,7 +28,7 @@
       <%= link_to '編集', edit_best_videos_path, id: "edit-best-videos", class: "btn btn-primary" if current_user?(@user) %>
     </h3>
     <ol>
-      <%= render partial: 'videos/best_videos', collection: @best_videos, as: 'video' %>
+      <%= render partial: 'best_videos/best_videos', collection: @best_videos, as: 'best_video' %>
     </ol>
   </div>
 </div>

@@ -1,0 +1,7 @@
+<span id="favorite-btn-<%= best_video.id %>" class="favorite-btn">
+<% if current_user.like_best_video?(best_video) %>
+  <%= render 'best_videos_favorites/dislike', best_video: best_video %>
+<% else %>
+  <%= render 'best_videos_favorites/like', best_video: best_video %>
+<% end %>
+</span>

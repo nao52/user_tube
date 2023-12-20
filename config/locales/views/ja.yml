@@ -126,6 +126,11 @@ ja:
       success: お気に入りしました
     destroy:
       success: お気に入り解除しました
+  best_videos_favorites:
+    create:
+      success: お気に入りしました
+    destroy:
+      success: お気に入り解除しました
   enums:
     user:
       gender:
