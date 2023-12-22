@@ -15,7 +15,7 @@ class SubscriptionChannelsController < ApplicationController
       return render :edit, status: :unprocessable_entity
     end
 
-    if params[:setting_public]
+    if params[:google_login]
       redirect_to edit_popular_videos_path, success: 'チャンネルの公開設定を行いました。続けて、高評価動画の公開設定を行ってください。'
     else
       redirect_to channels_user_path(current_user), success: t('.success')

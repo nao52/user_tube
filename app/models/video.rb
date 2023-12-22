@@ -1,4 +1,6 @@
 class Video < ApplicationRecord
+  GOOGLE_API_SERVICE = Google::Apis::YoutubeV3::YouTubeService.new
+
   belongs_to :channel
   has_many :popular_videos, dependent: :destroy
   has_many :users, through: :popular_videos, source: :user
@@ -16,35 +18,32 @@ class Video < ApplicationRecord
   end
 
   class << self
-    def popular_videos(access_token)
-      popular_videos = []
-      service = Google::Apis::YoutubeV3::YouTubeService.new
-      service.authorization = Signet::OAuth2::Client.new(access_token:)
-      videos = service.list_videos(:snippet, my_rating: 'like', max_results: 1000)
+    def create_popular_video_list(access_token)
+      video_list = []
+      GOOGLE_API_SERVICE.authorization = Signet::OAuth2::Client.new(access_token:)
+      videos = GOOGLE_API_SERVICE.list_videos(:snippet, my_rating: 'like', max_results: 1000)
       videos.items.each do |video|
-        popular_videos << find_or_create_from_popular_videos(video)
+        video_list << find_or_create_video_by_video(video)
       end
-      popular_videos
+      video_list
     end
 
     def find_or_create_from_video_id(video_id)
-      service = Google::Apis::YoutubeV3::YouTubeService.new
-      service.key = Settings.google_api_key
-      video = service.list_videos(:snippet, id: video_id).items.first
+      video = GOOGLE_API_SERVICE.list_videos(:snippet, id: video_id).items.first
       find_or_create_from_popular_videos(video)
     end
 
     private
 
-    def find_or_create_from_popular_videos(video)
-      video_params = video_params_from_popular_videos(video)
+    def find_or_create_video_by_video(video)
+      video_params = video_params_by_video(video)
       find_or_create_by(video_id: video_params[:video_id]) do |existing_video|
         existing_video.update(video_params)
       end
     end
 
-    def video_params_from_popular_videos(video)
-      channel = Channel.find_or_create_by_channel_id(video.snippet.channel_id)
+    def video_params_by_video(video)
+      channel = Channel.find_or_create_channel_by_channel_id(video.snippet.channel_id)
       {
         video_id: video.id,
         title: video.snippet.title,
