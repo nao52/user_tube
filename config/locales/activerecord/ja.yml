@@ -7,6 +7,7 @@ ja:
       channel_comment: チャンネルのコメント
       video_comment: 動画のコメント
       content_comment: 投稿のコメント
+      edit_users_form: ユーザー編集フォーム
     attributes:
       user:
         name: ユーザー名
@@ -27,3 +28,13 @@ ja:
         body: コメント
       content_comment:
         body: コメント
+  activemodel:
+    attributes:
+      edit_users_form:
+        name: ユーザー名
+        email: メールアドレス
+        age: 年齢
+        gender: 性別
+        profile: プロフィール
+        avatar: プロフィール画像
+        categories: 興味あるジャンル

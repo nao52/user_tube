@@ -3,8 +3,11 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @user) do |f| %>
+    <%= form_with model: @user, url: user_path(current_user), method: "patch" do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
+
+      <div><%= f.hidden_field :id, value: current_user.id %></div>
+
       <div class="form-group">
         <%= f.label :name, class: "form-label" %>
         <%= f.text_field :name, class: "form-control", placeholder: "ユーザー名を入力してください" %>
@@ -25,9 +28,20 @@
         <%= f.select :gender, options_for_select(User.genders_i18n.invert, selected: @user.gender), {}, { class: "form-control" } %>
       </div>
 
+      <p><strong>興味のあるジャンル(3つまで選択可能)</strong></p>
+      <div class="form-group categories row">
+        <% Category.titles_i18n.each do |key, value| %>
+          <% next if key == "else" %>
+          <div class="category-item col-md-6">
+            <%= check_box_tag key, true, false, checked: @user.categories.include?(key), name: "edit_users_form[categories][]", value: key %>
+            <%= label_tag key, value %>
+          </div>
+        <% end %>
+      </div>
+
       <div class="form-group">
         <%= f.label :avatar %>
-        <div class="avatar"><%= image_tag(@user.avatar_url, class: "img-circle", size: '100x100') if @user.avatar? %></div>
+        <div class="avatar"><%= image_tag(@user.avatar_url, class: "img-circle", size: '100x100') if @user.avatar.present? %></div>
         <%= f.file_field :avatar, accept: 'image/*' %>
         <%= f.hidden_field :avatar_cache %>
       </div>
