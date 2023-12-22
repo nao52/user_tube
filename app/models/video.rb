@@ -28,19 +28,14 @@ class Video < ApplicationRecord
       video_list
     end
 
-    def find_or_create_from_video_id(video_id)
-      video = GOOGLE_API_SERVICE.list_videos(:snippet, id: video_id).items.first
-      find_or_create_from_popular_videos(video)
-    end
-
-    private
-
     def find_or_create_video_by_video(video)
       video_params = video_params_by_video(video)
       find_or_create_by(video_id: video_params[:video_id]) do |existing_video|
         existing_video.update(video_params)
       end
     end
+
+    private
 
     def video_params_by_video(video)
       channel = Channel.find_or_create_channel_by_channel_id(video.snippet.channel_id)

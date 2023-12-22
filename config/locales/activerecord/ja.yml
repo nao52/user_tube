@@ -38,3 +38,8 @@ ja:
         profile: プロフィール
         avatar: プロフィール画像
         categories: 興味あるジャンル
+      contents_form:
+        video_url: 動画URL
+        rating: 評価
+        feedback: 感想
+        

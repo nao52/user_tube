@@ -40,6 +40,7 @@ class Channel < ApplicationRecord
     private
 
     def channel_params_by_channel_id(channel_id)
+      GOOGLE_API_SERVICE.key = Settings.google_api_key
       channel_info = GOOGLE_API_SERVICE.list_channels('snippet,statistics', id: channel_id).items[0]
       {
         channel_id:,

@@ -12,23 +12,26 @@ class ContentsController < ApplicationController
   end
 
   def new
-    @content = current_user.contents.build
+    @content_form = ContentsForm.new(current_user)
   end
 
   def create
-    @content = current_user.contents.build(content_params)
+    @content_form = ContentsForm.new(current_user, contents_form_params)
 
-    if @content.save
-      redirect_to @content, success: t('.success')
+    if @content_form.save(contents_form_params)
+      redirect_to contents_url, success: t('.success')
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def edit; end
+  def edit
+    @content_form = ContentsForm.new(current_user, {}, @content)
+  end
 
   def update
-    if @content.update(content_params)
+    @content_form = ContentsForm.new(current_user, contents_form_params, @content)
+    if @content_form.update(contents_form_params)
       redirect_to @content, success: t('.success')
     else
       render :edit, status: :unprocessable_entity
@@ -45,8 +48,8 @@ class ContentsController < ApplicationController
 
   private
 
-  def content_params
-    params.require(:content).permit(:video_url, :rating, :feedback)
+  def contents_form_params
+    params.require(:contents_form).permit(:video_url, :rating, :feedback)
   end
 
   def set_content
