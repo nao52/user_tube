@@ -6,7 +6,7 @@
     <h1><%= @user.name %></h1>
     <h2><%= "年齢：#{@user.age} / 性別：#{@user.gender_i18n}" %></h2>
     <h2>興味のあるジャンル</h2>
-    <h2>美容 / ミュージック / 料理</h2>
+    <h2><%= @user.decorate.interesting_category %></h2>
   </div>
   <h3>
     <pre>

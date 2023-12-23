@@ -79,6 +79,13 @@ footer {
   text-align: right;
 }
 
+.form-group.categories {
+  border: solid 1px #ccc;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 0 1px 10px 1px;
+}
+
 /* ページネーション */
 .pagination>li>a {          
   border: none;
@@ -147,9 +154,9 @@ footer {
   margin: 0;
 }
 
-.video-user {
+.video-user, .video-category {
   font-size: 16px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 /* チャンネル一覧 */

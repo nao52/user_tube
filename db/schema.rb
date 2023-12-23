@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_20_031242) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_22_084049) do
   create_table "best_channels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "channel_id", null: false
@@ -53,6 +53,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_031242) do
     t.index ["best_video_id"], name: "index_best_videos_favorites_on_best_video_id"
     t.index ["user_id", "best_video_id"], name: "index_best_videos_favorites_on_user_id_and_best_video_id", unique: true
     t.index ["user_id"], name: "index_best_videos_favorites_on_user_id"
+  end
+
+  create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_categories_on_title", unique: true
   end
 
   create_table "channel_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -138,6 +145,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_031242) do
     t.index ["user_id"], name: "index_subscription_channels_on_user_id"
   end
 
+  create_table "user_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_user_categories_on_category_id"
+    t.index ["user_id", "category_id"], name: "index_user_categories_on_user_id_and_category_id", unique: true
+    t.index ["user_id"], name: "index_user_categories_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -177,6 +194,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_031242) do
     t.bigint "channel_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_videos_on_category_id"
     t.index ["channel_id"], name: "index_videos_on_channel_id"
     t.index ["video_id"], name: "index_videos_on_video_id", unique: true
   end
@@ -201,7 +220,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_031242) do
   add_foreign_key "popular_videos", "videos"
   add_foreign_key "subscription_channels", "channels"
   add_foreign_key "subscription_channels", "users"
+  add_foreign_key "user_categories", "categories"
+  add_foreign_key "user_categories", "users"
   add_foreign_key "video_comments", "users"
   add_foreign_key "video_comments", "videos"
+  add_foreign_key "videos", "categories"
   add_foreign_key "videos", "channels"
 end

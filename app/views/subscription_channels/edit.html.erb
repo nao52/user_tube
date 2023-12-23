@@ -22,7 +22,7 @@
 
         <hr>
       <% end %>
-      <%= hidden_field_tag 'setting_public', true if flash[:setting_public] %>
+      <%= hidden_field_tag 'google_login', true if flash[:google_login] %>
       <%= f.submit "設定する", class: "btn btn-primary btn-block mt-30" %>
     <% end %>
   </div>

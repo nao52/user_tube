@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_with model: @content do |f| %>
+    <%= form_with model: @content_form, url: url, method: method do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
       <div class="form-group mt-30">

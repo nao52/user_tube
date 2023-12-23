@@ -12,7 +12,7 @@
       <div class="col-md-7">
         <div>
           <p>ジャンル</p>
-          <p>恋愛/漫画</p>
+          <p><%= @video.category.title_i18n %></p>
           <p class="video-user"><%= "高評価しているユーザー数：#{number_with_delimiter(@video.users.count, delimiter: ',')}人" %></p>
         </div>
       </div>

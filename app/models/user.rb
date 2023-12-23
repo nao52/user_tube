@@ -27,6 +27,8 @@ class User < ApplicationRecord
   has_many :like_best_channels, through: :best_channels_favorites, source: :best_channel
   has_many :best_videos_favorites, dependent: :destroy
   has_many :like_best_videos, through: :best_videos_favorites, source: :best_video
+  has_many :user_categories, dependent: :destroy
+  has_many :categories, through: :user_categories, source: :category
 
   validates :password, presence: true, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -101,26 +103,20 @@ class User < ApplicationRecord
     like_best_videos.include?(best_video)
   end
 
-  def update_subscriptions(subscription_channels)
-    channels.delete_all if channels.present?
-    subscription_channels.each do |channel|
-      add_subscription(channel)
-    end
+  def add_or_delete_channels(channel_list)
+    old_channels = channels - channel_list
+    new_channels = channel_list - channels
+
+    old_channels.each { |channel| channels.delete(channel) }
+    new_channels.each { |channel| channels << channel }
   end
 
-  def add_subscription(channel)
-    channels << channel unless channels.include?(channel)
-  end
+  def add_or_delete_videos(video_list)
+    old_videos = videos - video_list
+    new_videos = video_list - videos
 
-  def update_popular_videos(popular_videos)
-    videos.delete_all if videos.present?
-    popular_videos.each do |video|
-      add_popular_videos(video)
-    end
-  end
-
-  def add_popular_videos(video)
-    videos << video unless videos.include?(video)
+    old_videos.each { |video| videos.delete(video) }
+    new_videos.each { |video| videos << video }
   end
 
   def update_favorite_channels(channels)

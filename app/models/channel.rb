@@ -1,5 +1,5 @@
 class Channel < ApplicationRecord
-  require 'google/apis/youtube_v3'
+  GOOGLE_API_SERVICE = Google::Apis::YoutubeV3::YouTubeService.new
 
   has_many :subscription_channels, dependent: :destroy
   has_many :users, through: :subscription_channels, source: :user
@@ -19,31 +19,29 @@ class Channel < ApplicationRecord
   end
 
   class << self
-    def subscription_channels(access_token)
-      subscription_channels = []
-      service = Google::Apis::YoutubeV3::YouTubeService.new
-      service.authorization = Signet::OAuth2::Client.new(access_token:)
-      subscriptions = service.list_subscriptions(:snippet, mine: true, max_results: 100)
+    def create_subscription_channel_list(access_token)
+      channel_list = []
+      GOOGLE_API_SERVICE.authorization = Signet::OAuth2::Client.new(access_token:)
+      subscriptions = GOOGLE_API_SERVICE.list_subscriptions(:snippet, mine: true, max_results: 100)
       subscriptions.items.each do |item|
         channel_id = item.snippet.resource_id.channel_id
-        subscription_channels << find_or_create_by_channel_id(channel_id)
+        channel_list << find_or_create_channel_by_channel_id(channel_id)
       end
-      subscription_channels
+      channel_list
     end
 
-    def find_or_create_by_channel_id(channel_id)
+    def find_or_create_channel_by_channel_id(channel_id)
       channel_params = channel_params_by_channel_id(channel_id)
-      find_or_create_by(channel_id: channel_params[:channel_id]) do |existing_channel|
-        existing_channel.update(channel_params)
+      find_or_create_by(channel_id: channel_params[:channel_id]) do |new_channel|
+        new_channel.update(channel_params)
       end
     end
 
     private
 
     def channel_params_by_channel_id(channel_id)
-      service = Google::Apis::YoutubeV3::YouTubeService.new
-      service.key = Settings.google_api_key
-      channel_info = service.list_channels('snippet,statistics', id: channel_id).items[0]
+      GOOGLE_API_SERVICE.key = Settings.google_api_key
+      channel_info = GOOGLE_API_SERVICE.list_channels('snippet,statistics', id: channel_id).items[0]
       {
         channel_id:,
         thumbnail_url: channel_info.snippet.thumbnails.medium.url,

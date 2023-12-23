@@ -22,11 +22,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = EditUsersForm.new(current_user)
   end
 
   def update
-    if @user.update(user_params)
+    @user = EditUsersForm.new(current_user, update_user_params)
+    if @user.update(update_user_params)
       redirect_to users_url, success: t('.success')
     else
       render :edit, status: :unprocessable_entity
@@ -73,7 +74,11 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :age, :gender, :avatar, :avatar_cache)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :age, :gender, :avatar, :avatar_cache, categories: [])
+  end
+
+  def update_user_params
+    params.require(:edit_users_form).permit(:name, :email, :age, :gender, :avatar, :avatar_cache, categories: [])
   end
 
   def set_user
