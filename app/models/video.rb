@@ -2,6 +2,8 @@ class Video < ApplicationRecord
   GOOGLE_API_SERVICE = Google::Apis::YoutubeV3::YouTubeService.new
 
   belongs_to :channel
+  belongs_to :category
+
   has_many :popular_videos, dependent: :destroy
   has_many :users, through: :popular_videos, source: :user
   has_many :video_comments, dependent: :destroy
@@ -30,8 +32,8 @@ class Video < ApplicationRecord
 
     def find_or_create_video_by_video(video)
       video_params = video_params_by_video(video)
-      find_or_create_by(video_id: video_params[:video_id]) do |existing_video|
-        existing_video.update(video_params)
+      find_or_create_by(video_id: video_params[:video_id]) do |new_video|
+        new_video.update(video_params)
       end
     end
 
@@ -39,11 +41,13 @@ class Video < ApplicationRecord
 
     def video_params_by_video(video)
       channel = Channel.find_or_create_channel_by_channel_id(video.snippet.channel_id)
+      category_id = video.snippet.category_id || 99
       {
         video_id: video.id,
         title: video.snippet.title,
         description: video.snippet.description,
-        channel_id: channel.id
+        channel_id: channel.id,
+        category_id: Category.find_by(title: category_id).id
       }
     end
   end

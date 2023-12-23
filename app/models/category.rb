@@ -3,7 +3,6 @@ class Category < ApplicationRecord
 
   # カテゴリータイトル
   enum title: {
-    else: 0, # その他
     film_and_animation: 1, # 映画とアニメ
     autos_and_vehicles: 2, # 自動車と乗り物
     music: 10, # 音楽
@@ -18,6 +17,7 @@ class Category < ApplicationRecord
     howto_and_style: 26, # ハウツーとスタイル
     education: 27, # 教育
     science_and_technology: 28, # 科学と技術
-    nonprofits_and_activism: 29 # 非営利団体と社会活動
+    nonprofits_and_activism: 29, # 非営利団体と社会活動
+    else: 99 # その他
   }
 end

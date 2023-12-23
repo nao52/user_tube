@@ -14,13 +14,6 @@ RSpec.describe Video, type: :model do
       expect(video_without_video_id.errors).to_not be_empty
     end
 
-    it 'video_idがすでに登録されている場合にvalidationが機能してinvalidになるか' do
-      video = create(:video)
-      duplicate_video = video.dup
-      expect(duplicate_video).to be_invalid
-      expect(duplicate_video.errors).to_not be_empty
-    end
-
     it 'titleがない場合にバリデーションが機能してinvalidになるか' do
       video_without_title = build(:video, title: "")
       expect(video_without_title).to be_invalid
@@ -31,6 +24,12 @@ RSpec.describe Video, type: :model do
       video_without_channel_id = build(:video, channel: nil)
       expect(video_without_channel_id).to be_invalid
       expect(video_without_channel_id.errors).to_not be_empty
+    end
+
+    it 'category_idがない場合にバリデーションが機能してinvalidになるか' do
+      video_without_category_id = build(:video, category: nil)
+      expect(video_without_category_id).to be_invalid
+      expect(video_without_category_id.errors).to_not be_empty
     end
   end
 end

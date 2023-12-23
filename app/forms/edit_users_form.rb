@@ -35,6 +35,9 @@ class EditUsersForm
         user_params.delete(:categories)
       end
       @user.update(user_params)
+      true
+    rescue ActiveRecord::Rollback
+      false
     end
   end
 

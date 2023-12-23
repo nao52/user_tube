@@ -3,6 +3,7 @@ FactoryBot.define do
     video_id { "_2G-SrAXWeg" }
     sequence(:title) { |n| "test-#{n}" }
     description { "これはテスト用のデータです" }
-    association :channel 
+    association :channel
+    association :category
   end
 end

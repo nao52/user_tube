@@ -29,6 +29,9 @@ class ContentsForm
       content_params['video_id'] = video.id
       content_params['video_url'] = create_id_from_youtube_url(content_params['video_url'])
       @user.contents.create(content_params)
+      true
+    rescue ActiveRecord::Rollback
+      false
     end
   end
 
@@ -40,6 +43,9 @@ class ContentsForm
       content_params['video_id'] = video.id
       content_params['video_url'] = create_id_from_youtube_url(content_params['video_url'])
       @content.update(content_params)
+      true
+    rescue ActiveRecord::Rollback
+      false
     end
   end
 
