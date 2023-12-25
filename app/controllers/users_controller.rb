@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   before_action :set_best_contents, only: %i[channels videos contents following follower]
 
   def index
-    @users = User.all.page(params[:page])
+    @search_users_form = SearchUsersForm.new(search_params)
+    @users = @search_users_form.search.page(params[:page])
   end
 
   def new
@@ -79,6 +80,10 @@ class UsersController < ApplicationController
 
   def update_user_params
     params.require(:edit_users_form).permit(:name, :email, :age, :gender, :avatar, :avatar_cache, categories: [])
+  end
+
+  def search_params
+    params[:q]&.permit(:name, :age, :category, :channel_id)
   end
 
   def set_user

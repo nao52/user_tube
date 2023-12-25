@@ -45,6 +45,11 @@ class User < ApplicationRecord
   # 性別 { 回答なし: 0, 男性: 1, 女性: 2, その他: 9 }
   enum gender: { not_known: 0, male: 1, female: 2, not_applicabel: 9 }
 
+  scope :by_age, ->(age) { where(age:) }
+  scope :by_category, ->(category) { joins(:user_categories).merge(where(user_categories: { category_id: Category.titles[category] })) }
+  scope :by_channel, ->(channel_id) { joins(:subscription_channels).merge(where(subscription_channels: { channel_id: })) }
+  scope :name_contain, ->(name) { where('name LIKE ?', "%#{name}%") }
+
   def subscription_channels_with_public
     subscription_channels_channel_ids = subscription_channels.where(is_public: true).map(&:channel_id)
     channels.where(id: subscription_channels_channel_ids)
