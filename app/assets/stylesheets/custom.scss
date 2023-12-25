@@ -92,6 +92,15 @@ footer {
   text-align: center;
 }
 
+/* 検索フォーム */
+.search-form {
+  border: 1px solid;
+  padding: 10px;
+  p {
+    font-size: 22px;
+  }
+}
+
 /* ページネーション */
 .pagination>li>a {          
   border: none;
@@ -121,17 +130,6 @@ footer {
 .favorite-channel {
   ol {
     padding-left: 20px;
-  }
-}
-
-.search-users {
-  border: 1px solid;
-  padding: 10px;
-  p {
-    font-size: 22px;
-  }
-  .test {
-    background-color: yellow;
   }
 }
 

@@ -3,8 +3,36 @@
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <span class="text-center"><%= paginate @channels, theme: 'bootstrap-5' %></span>
-    <%= render @channels %>
-    <span class="text-center"><%= paginate @channels, theme: 'bootstrap-5' %></span>
+    <div class="search-form">
+      <p>チャンネルの絞り込み</p>
+      <div class="row">
+        <%= form_with model: @search_channels_form, scope: :q, url: channels_path, method: :get do |f| %>
+          <div class="col-md-4 col-md-offset-1 form-group">
+            <%= f.label :name, "チャンネル名" %>
+            <%= f.search_field :name, class: "form-control" %>
+          </div>
+
+          <div class="col-md-4 col-md-offset-2 form-group">
+            <%= f.label :description, "内容" %>
+            <%= f.search_field :description, class: "form-control" %>
+          </div>
+
+          <div class="col-md-6 col-md-offset-3">
+            <div class="row">
+              <div class="col-md-5"><button type="button" id="clear-btn" class="btn btn-defalult btn-block">クリア</button></div>
+              <div class="col-md-5"><%= f.submit "検索", class: "btn btn-primary btn-block" %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <% if @channels.size > 0 %>
+      <span class="text-center"><%= paginate @channels, theme: 'bootstrap-5' %></span>
+      <%= render @channels %>
+      <span class="text-center"><%= paginate @channels, theme: 'bootstrap-5' %></span>
+    <% else %>
+      <p class="not-found">検索結果が存在しません</p>
+    <% end %>
   </div>
 </div>
