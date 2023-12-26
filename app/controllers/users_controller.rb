@@ -83,7 +83,7 @@ class UsersController < ApplicationController
   end
 
   def search_params
-    params[:q]&.permit(:name, :age, :category, :channel_id)
+    params[:q]&.permit(:name, :age, :category_title, :channel_id)
   end
 
   def set_user
