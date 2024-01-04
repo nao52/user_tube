@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
     @user = User.create!(user_params)
     auto_login(@user)
-    redirect_to root_url, success: t('.success')
+    redirect_to channels_user_path(@user), success: t('.success')
   end
 
   def edit
