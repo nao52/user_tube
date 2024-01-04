@@ -5,7 +5,7 @@ bundle install
 bundle exec rails assets:precompile
 bundle exec rails assets:clean
 
-アプリリリース後に戻す
+# アプリリリース後に戻す
 bundle exec rails db:migrate
 
 # 本番環境にテストデータを作成
