@@ -4,11 +4,20 @@
 <div class="row mt-30">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(url: best_videos_path, method: :patch) do |f| %>
-      <% @best_videos.each_with_index do |best_video, index| %>
-        <div class="form-group">
-          <%= label_tag "video[best#{index+1}]", "好きな動画BEST#{index+1}" %>
-          <%= select_tag "video[best#{index+1}]", options_from_collection_for_select(@user.videos, :id, :title, { selected: best_video.id }), class:"form-control" %>
-        </div>
+      <% if @best_videos.count == 3 %>
+        <% @best_videos.each_with_index do |best_video, index| %>
+          <div class="form-group">
+            <%= label_tag "video[best#{index+1}]", "好きな動画BEST#{index+1}" %>
+            <%= select_tag "video[best#{index+1}]", options_from_collection_for_select(@user.videos, :id, :title, { selected: best_video.id }), class:"form-control" %>
+          </div>
+        <% end %>
+      <% else %>
+        <% 3.times do |index| %>
+          <div class="form-group">
+            <%= label_tag "video[best#{index+1}]", "好きなチャンネルBEST#{index+1}" %>
+            <%= select_tag "video[best#{index+1}]", options_from_collection_for_select(@user.videos, :id, :title), class:"form-control" %>
+          </div>
+        <% end %>
       <% end %>
       <%= link_to 'キャンセル', channels_user_path(@user), class: "btn btn-default btn-block" %>
       <%= f.submit '更新する', class: "btn btn-primary btn-block" %>

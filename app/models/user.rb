@@ -127,7 +127,12 @@ class User < ApplicationRecord
   def update_favorite_channels(channels)
     return false unless channels.count == 3
 
-    best_channels.delete_all if favorite_channels.present?
+    if favorite_channels.present?
+      best_channels.each do |best_channel|
+        best_channel.best_channels_favorites.delete_all
+        best_channel.delete
+      end
+    end
     channels.each_with_index do |channel, index|
       best_channels.create(channel:, rank: index + 1)
     end
@@ -136,7 +141,12 @@ class User < ApplicationRecord
   def update_favorite_videos(videos)
     return false unless videos.count == 3
 
-    best_videos.delete_all if favorite_videos.present?
+    if favorite_videos.present?
+      best_videos.each do |best_video|
+        best_video.best_videos_favorites.delete_all
+        best_video.delete
+      end
+    end
     videos.each_with_index do |video, index|
       best_videos.create(video:, rank: index + 1)
     end
