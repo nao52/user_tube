@@ -1,5 +1,5 @@
 <% flash.each do |message_type, message| %>
-  <% unless %w[user_name google_login].any?(message_type) %>
+  <% unless %w[user_params user_name google_login].any?(message_type) %>
     <div class="alert alert-<%= message_type %>">
       <%= message %>
     </div>
