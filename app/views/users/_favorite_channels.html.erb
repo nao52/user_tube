@@ -1,0 +1,11 @@
+<div class="favorite-channel">
+  <p>好きなチャンネルBest3</p>
+  <ol>
+    <% user.best_channels.order(rank: :asc).each do |best_channel| %>
+      <li>
+        <%= image_tag best_channel.channel.thumbnail_url, class: "img-circle", size: '15x15' if best_channel.channel.thumbnail_url %>
+        <%= best_channel.channel.name %>
+      </li>
+    <% end %>
+  </ol>
+</div>

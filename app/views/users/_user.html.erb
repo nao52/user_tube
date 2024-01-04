@@ -9,16 +9,12 @@
     <%= render 'users/follow_btn', user: user unless current_user?(user) %>
   </div>
   <div class="profile">
-    <p>ユーザーのプロフィール文章がここに入ります。これはサンプルの文章です。</p>
+    <pre><%= user.profile if user.profile %></pre>
+    <p><%= "年齢 : #{user.age}歳" if user.age %></p>
+    <p>好きなジャンル</p>
+    <p><%= user.decorate.interesting_category %></p>
   </div>
-  <div class="favorite-channel">
-    <p>好きなチャンネルBest3</p>
-    <ol>
-      <li>今日は甘口で</li>
-      <li>ウルトラロマンティック</li>
-      <li>花火の音は聞こえない</li>
-    </ol>
-  </div>
+  <%= render 'favorite_channels', user: user if user.best_channels.present? %>
 </div>
 
 <hr>
