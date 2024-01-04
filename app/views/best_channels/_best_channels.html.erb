@@ -1,7 +1,9 @@
-<li id="best-channel-<%= best_channel.channel.id %>" class="best-channels">
-  <%= image_tag best_channel.channel.thumbnail_url, class: "img-circle", size: '30x30' if best_channel.channel.thumbnail_url %>
-  <%= best_channel.channel.name %>
-</li>
+<%= link_to best_channel.channel do %>
+  <li id="best-channel-<%= best_channel.channel.id %>" class="best-channels">
+    <%= image_tag best_channel.channel.thumbnail_url, class: "img-circle", size: '30x30' if best_channel.channel.thumbnail_url %>
+    <%= best_channel.channel.name %>
+  </li>
+<% end %>
 <div>
   <%= render 'best_channels_favorites/favorite_btn', best_channel: best_channel if logged_in? %>
 </div>
