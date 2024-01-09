@@ -2,7 +2,9 @@ class SubscriptionChannelsController < ApplicationController
   before_action :require_login
   before_action :set_subscription_channels
 
-  def edit; end
+  def edit
+    redirect_to channels_user_url(current_user), warning: '登録チャンネルを同期してください' if @subscription_channels.empty?
+  end
 
   def update
     @subscription_channels.each do |subscription_channel|
