@@ -2,7 +2,9 @@ class PopularVideosController < ApplicationController
   before_action :require_login
   before_action :set_popular_videos
 
-  def edit; end
+  def edit
+    redirect_to videos_user_url(current_user), warning: '高評価動画を同期してください' if @popular_videos.empty?
+  end
 
   def update
     @popular_videos.each do |popular_video|
