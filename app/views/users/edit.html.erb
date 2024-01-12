@@ -29,8 +29,20 @@
       </div>
 
       <div class="form-group">
+        <%= f.hidden_field :age_is_public, value: false, id: nil %>
+        <%= f.check_box :age_is_public, { checked: @user.age_is_public }, true, false %>
+        <%= f.label :age_is_public, "年齢(年代で表示)を公開する", class: "form-label" %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :gender, class: "form-label" %>
         <%= f.select :gender, options_for_select(User.genders_i18n.invert, selected: @user.gender), {}, { class: "form-control" } %>
+      </div>
+
+      <div class="form-group">
+        <%= f.hidden_field :gender_is_public, value: false, id: nil %>
+        <%= f.check_box :gender_is_public, { checked: @user.gender_is_public }, true, false %>
+        <%= f.label :gender_is_public, "性別を公開する", class: "form-label" %>
       </div>
 
       <p><strong>興味のあるジャンル(3つまで選択可能)</strong></p>

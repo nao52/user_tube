@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def update
     @user = EditUsersForm.new(current_user, update_user_params)
     if @user.update(update_user_params)
-      redirect_to users_url, success: t('.success')
+      redirect_to channels_user_path(current_user), success: t('.success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
   end
 
   def update_user_params
-    params.require(:edit_users_form).permit(:name, :email, :profile, :age, :gender, :avatar, :avatar_cache, categories: [])
+    params.require(:edit_users_form).permit(:name, :email, :profile, :age, :age_is_public, :gender, :gender_is_public, :avatar, :avatar_cache, categories: [])
   end
 
   def search_params
