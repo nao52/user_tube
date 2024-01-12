@@ -4,7 +4,7 @@
   </div>
   <div class="col-md-9 user-status">
     <h1><%= @user.name %></h1>
-    <h2><%= "年齢：#{@user.decorate.generation}" if @user.age %><%= " / " if @user.age && @user.gender != "not_known" %><%="性別：#{@user.gender_i18n}" if @user.gender != "not_known" %></h2>
+    <h2><%= @user.decorate.age_and_gereration %></h2>
     <h2>興味のあるジャンル</h2>
     <h2><%= @user.decorate.interesting_category %></h2>
   </div>
