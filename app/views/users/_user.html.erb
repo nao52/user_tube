@@ -10,7 +10,7 @@
   </div>
   <div class="profile">
     <pre><%= user.profile if user.profile %></pre>
-    <p><%= "年齢 : #{user.age}歳" if user.age %></p>
+    <p><%= "年齢 : #{user.decorate.generation}" if user.age %></p>
     <p>好きなジャンル</p>
     <p><%= user.decorate.interesting_category %></p>
   </div>
