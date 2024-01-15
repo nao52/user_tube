@@ -33,6 +33,23 @@ class Video < ApplicationRecord
       video_list
     end
 
+    def find_or_create_videos_by_playlist_id(playlist_id)
+      videos = []
+      GOOGLE_API_SERVICE.key = Settings.google_api_key
+      playlist_items = GOOGLE_API_SERVICE.list_playlist_items(:snippet, playlist_id:)
+      playlist_items.items.each do |playlist_item|
+        video_id = playlist_item.snippet.resource_id.video_id
+        videos << find_or_create_video_by_video_id(video_id)
+      end
+      videos
+    end
+
+    def find_or_create_video_by_video_id(video_id)
+      GOOGLE_API_SERVICE.key = Settings.google_api_key
+      video = GOOGLE_API_SERVICE.list_videos(:snippet, id: video_id).items.first
+      find_or_create_video_by_video(video)
+    end
+
     def find_or_create_video_by_video(video)
       video_params = video_params_by_video(video)
       find_or_create_by(video_id: video_params[:video_id]) do |new_video|
