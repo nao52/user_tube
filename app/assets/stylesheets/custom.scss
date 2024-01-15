@@ -288,8 +288,8 @@ footer {
   }
 }
 
-/* プライバシーポリシー */
-.privacy-policy {
+/* プライバシーポリシー & 利用規約 */
+.privacy-policy, .terms {
   h1 {
     font-size: 22px;
     font-weight: bold;
@@ -308,7 +308,7 @@ footer {
   .email {
     padding-left: 32px;
   }
-  .date {
+  .date, .preamble {
     padding: 0;
   }
 }

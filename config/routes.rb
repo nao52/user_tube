@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   root "static_pages#top"
   get "/privacypolicy", to: "static_pages#privacypolicy"
-  get "/term", to: "static_pages#term"
+  get "/terms", to: "static_pages#terms"
   get  "/signup", to: "users#new"
   post "/singup/check", to: "users#signup_check"
   get "/login", to: "user_sessions#new"
