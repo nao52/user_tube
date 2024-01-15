@@ -1,12 +1,21 @@
 class UsersController < ApplicationController
   before_action :require_login, only: %i[edit update]
   before_action :require_not_login, only: %i[new create confirm signup_check]
-  before_action :set_user, only: %i[update channels videos contents following follower]
-  before_action :set_best_contents, only: %i[channels videos contents following follower]
+  before_action :set_user, only: %i[show update show]
+  before_action :set_best_contents, only: %i[show]
 
   def index
     @search_users_form = SearchUsersForm.new(search_params)
     @users = @search_users_form.search.page(params[:page])
+  end
+
+  def show
+    @link = params[:link] ||= 'channel'
+    @channels = @user.subscription_channels_with_public.page(params[:page]) if @link == 'channel'
+    @videos = @user.popular_videos_with_public.page(params[:page]).per(8) if @link == 'video'
+    @contents = @user.contents.page(params[:page]).per(8) if @link == 'content'
+    @followings = @user.following.page(params[:page]) if @link == 'following'
+    @followers = @user.followers.page(params[:page]) if @link == 'follower'
   end
 
   def new

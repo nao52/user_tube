@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'google_login_api#callback'
   get 'auth/failure', to: redirect('/')
 
-  resources :users, only: %i[index create edit update] do
+  resources :users, only: %i[index show create edit update] do
     get :confirm, on: :collection
     member do
-      get :channels, :videos, :contents, :following, :follower, :edit_best
+      get :edit_best
     end
   end
   resources :password_resets, only: %i[new create edit update]
