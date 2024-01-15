@@ -25,7 +25,6 @@ RSpec.describe Category, type: :model do
   describe "enumが適切に機能しているか" do
     it "タイトルについて適切な値が出力されるか" do
       category_list = {
-        "0" => "その他",
         "1" => "映画とアニメ",
         "2" => "自動車と乗り物",
         "10" => "音楽",
@@ -40,7 +39,8 @@ RSpec.describe Category, type: :model do
         "26" => "ハウツーとスタイル",
         "27" => "教育",
         "28" => "科学と技術",
-        "29" => "非営利団体と社会活動"
+        "29" => "非営利団体と社会活動",
+        "99" => "その他"
       }
       category_list.each do |key, value|
         category = create(:category, title: key.to_i)
