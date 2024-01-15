@@ -313,6 +313,37 @@ footer {
   }
 }
 
+.all-check-box {
+  margin: 20px 0;
+  span {
+    font-size: 18px;
+  }
+}
+
+/* チャンネルの公開設定 */
+.setting-channels {
+  display: flex;
+  flex-wrap: wrap;
+  .setting-channel {
+    background-color: #7ec8e3; /* 背景色を設定 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加 */
+    border-radius: 8px; /* 角を丸める */
+    height: 150px;
+    flex: 0 0 calc(33.33% - 10px);
+    padding: 10px;
+    margin: 5px;
+    box-sizing: border-box;
+    position: relative;
+    .check-public {
+      position: absolute;
+      bottom: 0;
+      span {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
 /* JavaScript */
 
 .dropdown-menu.active {

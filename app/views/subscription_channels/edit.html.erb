@@ -2,28 +2,33 @@
 <h1 class="text-center"><%= t(".title") %></h1>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-8 col-md-offset-2">
     <%= render 'shared/check_public', contents: "登録チャンネル" %>
 
     <%= form_with(url: subscription_channels_path, method: :patch) do |f| %>
-      <% @subscription_channels.each do |subscription_channel| %>
-        <% channel = Channel.find(subscription_channel.channel_id) %>
-        <div class="mt-30">
-          <%= image_tag channel.thumbnail_url, class: "img-circle", size: '50x50' if channel.thumbnail_url %>
-          <span class="channel-name"><%= channel.name %></span>
+      <div class="setting-channels">
+        <% @subscription_channels.each do |subscription_channel| %>
+          <div class="setting-channel">
+            <% channel = Channel.find(subscription_channel.channel_id) %>
+              <div>
+                <%= image_tag channel.thumbnail_url, class: "img-circle", size: '50x50' if channel.thumbnail_url %>
+                <span class="channel-name"><%= channel.name %></span>              
+              </div>
 
-          <div>
-            <%= label_tag "is_public#{subscription_channel.id}" do %>
-              <%= check_box_tag "is_public#{subscription_channel.id}", true, false, checked: subscription_channel.is_public, class: "is_public" %>
-              <span>公開設定にする</span>
-            <% end %>
+              <div class="check-public">
+                <%= label_tag "is_public#{subscription_channel.id}" do %>
+                  <%= check_box_tag "is_public#{subscription_channel.id}", true, false, checked: subscription_channel.is_public, class: "is_public" %>
+                  <span>公開設定にする</span>
+                <% end %>
+              </div>
           </div>
-        </div>
 
-        <hr>
-      <% end %>
+        <% end %>
+      </div>
+
       <%= hidden_field_tag 'google_login', true if flash[:google_login] %>
       <%= f.submit "設定する", class: "btn btn-primary btn-block mt-30" %>
     <% end %>
+
   </div>
 </div>
