@@ -34,9 +34,8 @@ class Channel < ApplicationRecord
 
     def find_or_create_channel_by_channel_id(channel_id)
       channel_params = channel_params_by_channel_id(channel_id)
-      find_or_create_by(channel_id: channel_params[:channel_id]) do |new_channel|
-        new_channel.update(channel_params)
-      end
+      channel = find_or_initialize_by(channel_id: channel_params[:channel_id])
+      channel.update(channel_params)
     end
 
     private

@@ -161,9 +161,8 @@ class User < ApplicationRecord
     playlists.items.each do |playlist_item|
       playlist_params = playlist_params_by_playlist_item(playlist_item)
       playlist_id = playlist_params[:playlist_id]
-      playlist = self.playlists.find_or_create_by(playlist_id:) do |new_playlist|
-        new_playlist.update(playlist_params)
-      end
+      playlist = self.playlists.find_or_initialize_by(playlist_id:)
+      playlist.update(playlist_params)
       videos = Video.find_or_create_videos_by_playlist_id(playlist_id)
       PlaylistVideo.update_playlist(playlist, videos)
     end

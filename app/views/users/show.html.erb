@@ -6,11 +6,12 @@
     <%= render 'shared/google_login_btn' if current_user?(@user) %>
 
     <ul class="nav nav-tabs nav-justified">
-      <li role="presentation" class=<%= "active" if @link == 'channel' %>><%= link_to "登録チャンネル", user_path(@user) %></a></li>
-      <li role="presentation" class=<%= "active" if @link == 'video' %>><%= link_to "高評価した動画", user_path(@user, link: 'video') %></li>
-      <li role="presentation" class=<%= "active" if @link == 'content' %>><%= link_to "投稿", user_path(@user, link: 'content') %></li>
-      <li role="presentation" class=<%= "active" if @link == 'following' %>><%= link_to "フォロー", user_path(@user, link: 'following') %></li>
-      <li role="presentation" class=<%= "active" if @link == 'follower' %>><%= link_to "フォロワー", user_path(@user, link: 'follower') %></li>
+      <li role="presentation" class=<%= "active" if @link == 'channel' %>><%= link_to "登録チャンネル", channels_user_path(@user) %></a></li>
+      <li role="presentation" class=<%= "active" if @link == 'video' %>><%= link_to "高評価した動画", videos_user_path(@user) %></li>
+      <li role="presentation" class=<%= "active" if @link == 'playlist' %>><%= link_to "プレイリスト", playlists_user_path(@user) %></li>
+      <li role="presentation" class=<%= "active" if @link == 'content' %>><%= link_to "投稿", contents_user_path(@user) %></li>
+      <li role="presentation" class=<%= "active" if @link == 'following' %>><%= link_to "フォロー", following_user_path(@user) %></li>
+      <li role="presentation" class=<%= "active" if @link == 'follower' %>><%= link_to "フォロワー", follower_user_path(@user) %></li>
     </ul>
 
     <div class="user-contents">
@@ -21,6 +22,9 @@
       <% if @link == 'video' %>
         <%= link_to "公開設定を変更する", edit_popular_videos_path, class: "btn btn-primary btn-block mt-30" if current_user?(@user) && @videos.present? %>
         <%= render 'videos/user_videos' %>
+      <% end %>
+      <% if @link == 'playlist' %>
+        <%= render 'playlists/user_playlists' %>
       <% end %>
       <%= render 'contents/user_contents' if @link == 'content' %>
       <%= render 'user_following' if @link == 'following' %>

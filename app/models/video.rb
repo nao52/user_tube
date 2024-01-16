@@ -52,9 +52,8 @@ class Video < ApplicationRecord
 
     def find_or_create_video_by_video(video)
       video_params = video_params_by_video(video)
-      find_or_create_by(video_id: video_params[:video_id]) do |new_video|
-        new_video.update(video_params)
-      end
+      video = find_or_initialize_by(video_id: video_params[:video_id])
+      video.update(video_params)
     end
 
     private
