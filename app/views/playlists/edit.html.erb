@@ -1,0 +1,30 @@
+<% content_for(:title, t(".title")) %>
+<h1 class="text-center"><%= t(".title") %></h1>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <%= render 'shared/check_public', contents: "プレイリスト" %>
+
+    <%= form_with(url: playlists_path, method: :patch) do |f| %>
+      <div class="setting-playlists">
+        <% @playlists.each do |playlist| %>
+          <div class="setting-playlist">
+            <div class="submnail">
+              <%= image_tag "http://img.youtube.com/vi/#{playlist.videos.first.video_id}/hqdefault.jpg", size: '200x150' %>
+            </div>
+            <div>
+              <h4 class="playlist-title"><%= "【#{playlist.title}】" %></h4>
+            </div>
+            <div class="check-public">
+              <%= label_tag "is_public#{playlist.id}" do %>
+                <%= check_box_tag "is_public#{playlist.id}", true, false, checked: playlist.is_public, class: "is_public" %>
+                <span>公開設定にする</span>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <%= f.submit "設定する", class: "btn btn-primary btn-block mt-30" %>
+    <% end %>
+  </div>
+</div>

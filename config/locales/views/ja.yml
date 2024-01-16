@@ -131,6 +131,12 @@ ja:
       success: お気に入りしました
     destroy:
       success: お気に入り解除しました
+  playlists:
+    edit:
+      title: プレイリストの公開設定
+    update:
+      success: プレイリストの公開設定を行いました
+      danger: プレイリストの公開設定に失敗しました
   enums:
     user:
       gender:

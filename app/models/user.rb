@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  GOOGLE_API_SERVICE = Google::Apis::YoutubeV3::YouTubeService.new
+
   authenticates_with_sorcery!
   mount_uploader :avatar, AvatarUploader
 
@@ -29,6 +31,7 @@ class User < ApplicationRecord
   has_many :like_best_videos, through: :best_videos_favorites, source: :best_video
   has_many :user_categories, dependent: :destroy
   has_many :categories, through: :user_categories, source: :category
+  has_many :playlists, dependent: :destroy
 
   validates :password, presence: true, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -152,9 +155,30 @@ class User < ApplicationRecord
     end
   end
 
+  def create_playlist(access_token)
+    GOOGLE_API_SERVICE.authorization = Signet::OAuth2::Client.new(access_token:)
+    playlists = GOOGLE_API_SERVICE.list_playlists(:snippet, mine: true)
+    playlists.items.each do |playlist_item|
+      playlist_params = playlist_params_by_playlist_item(playlist_item)
+      playlist_id = playlist_params[:playlist_id]
+      playlist = self.playlists.find_or_initialize_by(playlist_id:)
+      playlist.update(playlist_params)
+      videos = Video.find_or_create_videos_by_playlist_id(playlist_id)
+      PlaylistVideo.update_playlist(playlist, videos)
+    end
+  end
+
   private
 
   def downcase_email
     email.downcase!
+  end
+
+  def playlist_params_by_playlist_item(playlist_item)
+    {
+      playlist_id: playlist_item.id,
+      title: playlist_item.snippet.title,
+      description: playlist_item.snippet.description
+    }
   end
 end

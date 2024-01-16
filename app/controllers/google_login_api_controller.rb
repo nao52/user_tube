@@ -10,8 +10,9 @@ class GoogleLoginApiController < ApplicationController
       current_user.add_or_delete_channels(channel_list)
       video_list = Video.create_popular_video_list(access_token)
       current_user.add_or_delete_videos(video_list)
+      current_user.create_playlist(access_token)
     end
     flash[:google_login] = true
-    redirect_to edit_subscription_channels_path, success: '登録チャンネル/高評価動画を同期しました。登録チャンネルの公開設定を行ってください。'
+    redirect_to edit_subscription_channels_path, success: '登録チャンネル/高評価動画/プレイリストを同期しました。登録チャンネルの公開設定を行ってください。'
   end
 end

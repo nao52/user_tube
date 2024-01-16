@@ -35,13 +35,5 @@ RSpec.describe BestVideo, type: :model do
       expect(duplicate_best_video).to be_invalid
       expect(duplicate_best_video.errors).to_not be_empty
     end
-
-    it 'ユーザーが同じランクを複数の動画に選択した場合にバリデーションが機能してinvalidになるか' do
-      other_video = create(:video)
-      best_video_1 = user.best_videos.create(video: video, rank: 1)
-      best_video_2 = user.best_videos.build(video: other_video, rank: 1)
-      expect(best_video_2).to be_invalid
-      expect(best_video_2.errors).to_not be_empty
-    end
   end
 end

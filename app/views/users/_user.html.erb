@@ -14,7 +14,7 @@
     <p>好きなジャンル</p>
     <p><%= user.decorate.interesting_category %></p>
   </div>
-  <%= render 'favorite_channels', user: user if user.best_channels.present? %>
+  <%= render 'users/favorite_channels', user: user if user.best_channels.present? %>
 </div>
 
 <hr>

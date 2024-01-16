@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :require_login, only: %i[edit update]
   before_action :require_not_login, only: %i[new create confirm signup_check]
-  before_action :set_user, only: %i[update channels videos contents following follower]
-  before_action :set_best_contents, only: %i[channels videos contents following follower]
+  before_action :set_user, only: %i[update channels videos playlists contents following follower]
+  before_action :set_best_contents, only: %i[channels videos playlists contents following follower]
 
   def index
     @search_users_form = SearchUsersForm.new(search_params)
@@ -53,23 +53,39 @@ class UsersController < ApplicationController
   end
 
   def channels
+    @link = 'channel'
     @channels = @user.subscription_channels_with_public.page(params[:page])
+    render 'users/show'
   end
 
   def videos
+    @link = 'video'
     @videos = @user.popular_videos_with_public.page(params[:page]).per(8)
+    render 'users/show'
+  end
+
+  def playlists
+    @link = 'playlist'
+    @playlists = @user.playlists.where(is_public: true).page(params[:page]).per(8)
+    render 'users/show'
   end
 
   def contents
+    @link = 'content'
     @contents = @user.contents.page(params[:page]).per(8)
+    render 'users/show'
   end
 
   def following
+    @link = 'following'
     @followings = @user.following.page(params[:page])
+    render 'users/show'
   end
 
   def follower
+    @link = 'follower'
     @followers = @user.followers.page(params[:page])
+    render 'users/show'
   end
 
   private

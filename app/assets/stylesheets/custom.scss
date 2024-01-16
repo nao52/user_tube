@@ -371,6 +371,33 @@ footer {
   }
 }
 
+/* プレイリストの公開設定 */
+.setting-playlists {
+  display: flex;
+  flex-wrap: wrap;
+  .setting-playlist {
+    background-color: #7ec8e3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    height: 300px;
+    flex: 0 0 calc(33.33% - 10px);
+    padding: 10px;
+    margin: 5px;
+    box-sizing: border-box;
+    position: relative;
+    .submnail {
+      margin-bottom: 10px;
+    }
+    .check-public {
+      position: absolute;
+      bottom: 0;
+      span {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
 /* JavaScript */
 
 .dropdown-menu.active {

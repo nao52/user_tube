@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[index create edit update] do
     get :confirm, on: :collection
     member do
-      get :channels, :videos, :contents, :following, :follower, :edit_best
+      get :edit_best, :channels, :videos, :playlists, :contents, :following, :follower
     end
   end
   resources :password_resets, only: %i[new create edit update]
@@ -38,4 +38,5 @@ Rails.application.routes.draw do
   resource :subscription_channels, only: %i[edit update]
   resource :popular_videos, only: %i[edit update]
   resource :recent_content, only: %i[show]
+  resource :playlists, only: %i[edit update]
 end

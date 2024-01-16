@@ -4,5 +4,6 @@ FactoryBot.define do
     rating { 3 }
     feedback { "面白い動画でした" }
     association :user
+    association :video
   end
 end

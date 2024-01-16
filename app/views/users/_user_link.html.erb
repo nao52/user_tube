@@ -1,7 +1,0 @@
-<ul class="nav nav-tabs nav-justified">
-  <li role="presentation" class=<%= "active" if current_path_include?('users#channels') %>><%= link_to "登録チャンネル", channels_user_path(@user) %></a></li>
-  <li role="presentation" class=<%= "active" if current_path_include?('users#videos') %>><%= link_to "高評価した動画", videos_user_path(@user) %></li>
-  <li role="presentation" class=<%= "active" if current_path_include?('users#contents') %>><%= link_to "投稿", contents_user_path(@user) %></li>
-  <li role="presentation" class=<%= "active" if current_path_include?('users#following') %>><%= link_to "フォロー", following_user_path(@user) %></li>
-  <li role="presentation" class=<%= "active" if current_path_include?('users#follower') %>><%= link_to "フォロワー", follower_user_path(@user) %></li>
-</ul>
