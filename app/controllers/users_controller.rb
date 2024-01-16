@@ -66,7 +66,7 @@ class UsersController < ApplicationController
 
   def playlists
     @link = 'playlist'
-    @playlists = @user.playlists.page(params[:page]).per(8)
+    @playlists = @user.playlists.where(is_public: true).page(params[:page]).per(8)
     render 'users/show'
   end
 

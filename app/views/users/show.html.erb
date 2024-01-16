@@ -24,6 +24,7 @@
         <%= render 'videos/user_videos' %>
       <% end %>
       <% if @link == 'playlist' %>
+        <%= link_to "公開設定を変更する", edit_playlists_path, class: "btn btn-primary btn-block mt-30" if current_user?(@user) && @playlists.present? %>
         <%= render 'playlists/user_playlists' %>
       <% end %>
       <%= render 'contents/user_contents' if @link == 'content' %>

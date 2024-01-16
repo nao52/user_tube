@@ -26,6 +26,8 @@
           </div>
         <% end %>
       </div>
+
+      <%= hidden_field_tag 'google_login', true if flash[:google_login] %>
       <%= f.submit "設定する", class: "btn btn-primary btn-block mt-30" %>
     <% end %>
   </div>
