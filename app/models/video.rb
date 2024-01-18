@@ -54,6 +54,7 @@ class Video < ApplicationRecord
       video_params = video_params_by_video(video)
       video = find_or_initialize_by(video_id: video_params[:video_id])
       video.update(video_params)
+      video
     end
 
     private

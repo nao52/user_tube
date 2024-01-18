@@ -23,6 +23,9 @@ a {
 }
 
 header {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
   a {
     font-size: 20px;
   }
@@ -32,18 +35,27 @@ header {
 }
 
 .sidebar {
+  position: fixed;
+  top: 71px;
   a {
     font-size: 20px;
   }
 }
 
+.main-contents {
+  margin-top: 70px;
+}
+
 .main {
-  margin: 50px 0;
-  font-size: 22px;
+  padding-top: 70px;
+  min-height: calc(100vh - 263px);
 }
 
 footer {
-  margin-top: 20px;
+  width: 100%;
+  .navbar {
+    margin-bottom: 0;
+  }
   p {
     font-size: 20px;
   }
@@ -101,6 +113,38 @@ footer {
   text-align: center;
 }
 
+/* トップページ */
+.top-sentence {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  .image-item {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    flex: 0 0 calc(33.33% - 10px);
+    padding: 10px;
+    margin: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    height: auto;
+    width: 80%;
+    display: block;
+  }
+}
+.services > div {
+  p {
+    margin-top: 50px;
+    padding: 10px;
+    text-align: center;
+  }
+}
 
 /* 検索フォーム */
 .search-form {
@@ -175,8 +219,14 @@ footer {
 }
 
 .best-videos, .best-channels {
-  padding: 10px 0;
-  font-size: 22px;
+  padding-top: 10px;
+  font-size: 18px;
+  p {
+    margin: 0;
+  }
+}
+.best-videos::marker, .best-channels::marker {
+  font-size: 20px;
 }
 
 .google-btn {
@@ -325,7 +375,6 @@ footer {
   display: flex;
   flex-wrap: wrap;
   .setting-channel {
-    background-color: #7ec8e3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     height: 150px;
@@ -349,7 +398,6 @@ footer {
   display: flex;
   flex-wrap: wrap;
   .setting-video {
-    background-color: #7ec8e3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     height: 300px;
@@ -376,7 +424,6 @@ footer {
   display: flex;
   flex-wrap: wrap;
   .setting-playlist {
-    background-color: #7ec8e3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     height: 300px;

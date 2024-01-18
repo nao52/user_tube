@@ -36,6 +36,7 @@ class Channel < ApplicationRecord
       channel_params = channel_params_by_channel_id(channel_id)
       channel = find_or_initialize_by(channel_id: channel_params[:channel_id])
       channel.update(channel_params)
+      channel
     end
 
     private

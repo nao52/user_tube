@@ -1,5 +1,8 @@
 <%= link_to best_video.video do %>
-  <li id="best-video-<%= best_video.video.id %>" class="best-videos"><%= best_video.video.title %></li>
+<li id="best-video-<%= best_video.video.id %>" class="best-videos">
+  <p><%= best_video.video.title %></p>
+</li>
+<%= image_tag "http://img.youtube.com/vi/#{best_video.video.video_id}/hqdefault.jpg", size: '160x120' %>
 <% end %>
 <div>
   <%= render 'best_videos_favorites/favorite_btn', best_video: best_video if logged_in? %>
