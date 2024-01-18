@@ -5,61 +5,52 @@
   <div class="images">
     <div class="image-item">
       <p>視聴の傾向が偏りがち</p>
-      <%= image_tag "top_page(1)", size: "200x200" %>
+      <%= image_tag "top_page_1", size: "200x200" %>
     </div>
     <div class="image-item">
       <p>同世代に人気の動画やチャンネルは？</p>
-      <%= image_tag "top_page(2)", size: "200x200" %>
+      <%= image_tag "top_page_2", size: "200x200" %>
     </div>
     <div class="image-item">
       <p>好きなチャンネルや動画をおすすめしたい！</p>
-      <%= image_tag "top_page(3)", size: "200x200" %>
+      <%= image_tag "top_page_3", size: "200x200" %>
     </div>
   </div>
 </div>
 
-<div class="main">
-  <div class="services">
-    <p class="top-sentence">このWebサイトでは、以下のようなサービスを提供します！！</p>
-    <div>
-      <p>(1) 視聴した動画についてレビューをしたり、ユーザー同士で共有することができます。</p>
-      <div class="images">
-        <%= image_tag "top_page(4)", class: "image-item" %>
-        <%= image_tag "top_page(5)", class: "image-item" %>
-      </div>
+<div class="services">
+  <p class="top-sentence">このWebサイトでは、以下のようなサービスを提供します！！</p>
+  <div>
+    <p>(1) 視聴した動画についてレビューをしたり、ユーザー同士で共有することができます。</p>
+    <div class="images">
+      <%= image_tag "top_page_4", class: "image-item" %>
+      <%= image_tag "top_page_5", class: "image-item" %>
     </div>
-    <div>
-      <p>(2) 視聴した動画についてレビューをしたり、ユーザー同士で共有することができます。</p>
-      <div class="images">
-        <%= image_tag "top_page(4)", class: "image-item" %>
-        <%= image_tag "top_page(5)", class: "image-item" %>
-      </div>
+  </div>
+  <div>
+    <p>(2) Googleログインを行うことで、高評価動画・登録チャンネル・プレイリストなどを同期できます。</p>
+    <div class="images">
+      <%= image_tag "top_page_6", class: "image-item" %>
+      <%= image_tag "top_page_7", class: "image-item" %>
+      <%= image_tag "top_page_8", class: "image-item" %>
     </div>
-    <div>
-      <p>(3) Googleログインを行うことで、高評価動画・登録チャンネル・プレイリストなどを同期できます。</p>
-      <div class="images">
-        <%= image_tag "top_page(6)", class: "image-item" %>
-        <%= image_tag "top_page(7)", class: "image-item" %>
-        <%= image_tag "top_page(8)", class: "image-item" %>
-      </div>
+  </div>
+  <div>
+    <p>(3) 高評価動画・登録チャンネル・プレイリストなどは個別に公開/非公開を設定できます。</p>
+    <div class="images">
+      <%= image_tag "top_page_9", class: "image-item" %>
+      <%= image_tag "top_page_10", class: "image-item" %>
+      <%= image_tag "top_page_11", class: "image-item" %>
     </div>
-    <div>
-      <p>(4) 高評価動画・登録チャンネル・プレイリストなどは個別に公開/非公開を設定できます。</p>
-      <div class="images">
-        <%= image_tag "top_page(9)", class: "image-item" %>
-        <%= image_tag "top_page(10)", class: "image-item" %>
-        <%= image_tag "top_page(11)", class: "image-item" %>
-      </div>
-    </div>
-    <div>
-      <p>(5) 好きな動画やチャンネルについて、お気に入りBest3を設定し、公開することができます。</p>
-      <div class="images">
-        <%= image_tag "top_page(12)", class: "image-item" %>
-      </div>
+  </div>
+  <div>
+    <p>(4) 好きな動画やチャンネルについて、お気に入りBest3を設定し、公開することができます。</p>
+    <div class="images">
+      <%= image_tag "top_page_12", class: "image-item" %>
     </div>
   </div>
 </div>
 
 <%= link_to signup_path, class: "text-center" do %>
-  <h2>実際に使ってみる！！</h2>
+  <h2 class="try-link">実際に使ってみる！！</h2>
 <% end %>
