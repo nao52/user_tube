@@ -1,40 +1,65 @@
 <h1 class="text-center">【ユーザーチューブ】</h1>
 
-<div class="main row">
-  <div class="col-md-10 col-md-offset-1">
-    <p class="top-sentence">あなたは普段YouTubeを見る中で次のようなことを思ったことはありませんか？</p>
-    <div class="images">
-      <div class="image-item">
-        <p>視聴の傾向が偏りがち</p>
-        <%= image_tag "top_page(1)", size: "200x200" %>
+<div class="main">
+  <p class="top-sentence">あなたは普段YouTubeを見る中で次のようなことを思ったことはありませんか？</p>
+  <div class="images">
+    <div class="image-item">
+      <p>視聴の傾向が偏りがち</p>
+      <%= image_tag "top_page(1)", size: "200x200" %>
+    </div>
+    <div class="image-item">
+      <p>同世代に人気の動画やチャンネルは？</p>
+      <%= image_tag "top_page(2)", size: "200x200" %>
+    </div>
+    <div class="image-item">
+      <p>好きなチャンネルや動画をおすすめしたい！</p>
+      <%= image_tag "top_page(3)", size: "200x200" %>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="services">
+    <p class="top-sentence">このWebサイトでは、以下のようなサービスを提供します！！</p>
+    <div>
+      <p>(1) 視聴した動画についてレビューをしたり、ユーザー同士で共有することができます。</p>
+      <div class="images">
+        <%= image_tag "top_page(4)", class: "image-item" %>
+        <%= image_tag "top_page(5)", class: "image-item" %>
       </div>
-      <div class="image-item">
-        <p>同世代に人気の動画やチャンネルは？</p>
-        <%= image_tag "top_page(2)", size: "200x200" %>
+    </div>
+    <div>
+      <p>(2) 視聴した動画についてレビューをしたり、ユーザー同士で共有することができます。</p>
+      <div class="images">
+        <%= image_tag "top_page(4)", class: "image-item" %>
+        <%= image_tag "top_page(5)", class: "image-item" %>
       </div>
-      <div class="image-item">
-        <p>好きなチャンネルや動画をおすすめしたい！</p>
-        <%= image_tag "top_page(3)", size: "200x200" %>
+    </div>
+    <div>
+      <p>(3) Googleログインを行うことで、高評価動画・登録チャンネル・プレイリストなどを同期できます。</p>
+      <div class="images">
+        <%= image_tag "top_page(6)", class: "image-item" %>
+        <%= image_tag "top_page(7)", class: "image-item" %>
+        <%= image_tag "top_page(8)", class: "image-item" %>
+      </div>
+    </div>
+    <div>
+      <p>(4) 高評価動画・登録チャンネル・プレイリストなどは個別に公開/非公開を設定できます。</p>
+      <div class="images">
+        <%= image_tag "top_page(9)", class: "image-item" %>
+        <%= image_tag "top_page(10)", class: "image-item" %>
+        <%= image_tag "top_page(11)", class: "image-item" %>
+      </div>
+    </div>
+    <div>
+      <p>(5) 好きな動画やチャンネルについて、お気に入りBest3を設定し、公開することができます。</p>
+      <div class="images">
+        <%= image_tag "top_page(12)", class: "image-item" %>
       </div>
     </div>
   </div>
 </div>
 
-<p class="top-sentence">このWebサイトでは、以下のようなサービスを提供します！！</p>
-
-<div class="main row">
-  <div class="col-md-10 col-md-offset-1">
-    <ol>
-      <li>知人や友人が登録しているチャンネルやお気に入りの動画を知ることができます。</li>
-      <li>視聴した動画についてレビューをしたり、ユーザー同士で共有することができます。</li>
-      <li>動画やチャンネルについて、カテゴリーごと(ゲーム実況、金融系、美容系など)に検索できます。</li>
-      <li>Googleログインを行うことで、高評価動画・登録チャンネル・プレイリストなどを同期できます。</li>
-      <li>高評価動画・登録チャンネル・プレイリストなどは個別に公開/非公開を設定できます。</li>
-      <li>好きな動画やチャンネルについて、特にお気に入りのBest3を設定し、公開することができます。</li>
-    </ol>
-  </div>
-</div>
-
-<%= link_to "#", class: "text-center" do %>
-  <h2>実際に使ってみる！</h2>
+<%= link_to signup_path, class: "text-center" do %>
+  <h2>実際に使ってみる！！</h2>
 <% end %>

@@ -23,6 +23,9 @@ a {
 }
 
 header {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
   a {
     font-size: 20px;
   }
@@ -32,9 +35,15 @@ header {
 }
 
 .sidebar {
+  position: fixed;
+  top: 71px;
   a {
     font-size: 20px;
   }
+}
+
+.main-contents {
+  margin-top: 71px;
 }
 
 .main {
@@ -110,17 +119,27 @@ footer {
 .images {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
   .image-item {
-    text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    height: 300px;
     flex: 0 0 calc(33.33% - 10px);
     padding: 10px;
     margin: 5px;
     box-sizing: border-box;
     text-align: center;
     position: relative;
+    height: auto;
+    width: 80%;
+    display: block;
+  }
+}
+.services > div {
+  p {
+    margin-top: 50px;
+    padding: 10px;
+    text-align: center;
   }
 }
 
@@ -353,7 +372,6 @@ footer {
   display: flex;
   flex-wrap: wrap;
   .setting-channel {
-    background-color: #7ec8e3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     height: 150px;
@@ -377,7 +395,6 @@ footer {
   display: flex;
   flex-wrap: wrap;
   .setting-video {
-    background-color: #7ec8e3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     height: 300px;
@@ -404,7 +421,6 @@ footer {
   display: flex;
   flex-wrap: wrap;
   .setting-playlist {
-    background-color: #7ec8e3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     height: 300px;

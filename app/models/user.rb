@@ -158,11 +158,13 @@ class User < ApplicationRecord
   def create_playlist(access_token)
     GOOGLE_API_SERVICE.authorization = Signet::OAuth2::Client.new(access_token:)
     playlists = GOOGLE_API_SERVICE.list_playlists(:snippet, mine: true)
+    return if playlists.items.empty?
+
     playlists.items.each do |playlist_item|
       playlist_params = playlist_params_by_playlist_item(playlist_item)
       playlist_id = playlist_params[:playlist_id]
       playlist = self.playlists.find_or_initialize_by(playlist_id:)
-      playlist.update(playlist_params)
+      playlist.update!(playlist_params)
       videos = Video.find_or_create_videos_by_playlist_id(playlist_id)
       PlaylistVideo.update_playlist(playlist, videos)
     end
