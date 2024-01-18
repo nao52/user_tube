@@ -197,8 +197,14 @@ footer {
 }
 
 .best-videos, .best-channels {
-  padding: 10px 0;
-  font-size: 22px;
+  padding-top: 10px;
+  font-size: 18px;
+  p {
+    margin: 0;
+  }
+}
+.best-videos::marker, .best-channels::marker {
+  font-size: 20px;
 }
 
 .google-btn {
