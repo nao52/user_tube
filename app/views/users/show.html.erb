@@ -6,8 +6,8 @@
     <%= render 'shared/google_login_btn' if current_user?(@user) %>
 
     <ul class="nav nav-tabs nav-justified">
-      <li role="presentation" class=<%= "active" if @link == 'channel' %>><%= link_to "登録チャンネル", channels_user_path(@user) %></a></li>
       <li role="presentation" class=<%= "active" if @link == 'video' %>><%= link_to "高評価した動画", videos_user_path(@user) %></li>
+      <li role="presentation" class=<%= "active" if @link == 'channel' %>><%= link_to "登録チャンネル", channels_user_path(@user) %></a></li>
       <li role="presentation" class=<%= "active" if @link == 'playlist' %>><%= link_to "プレイリスト", playlists_user_path(@user) %></li>
       <li role="presentation" class=<%= "active" if @link == 'content' %>><%= link_to "投稿", contents_user_path(@user) %></li>
       <li role="presentation" class=<%= "active" if @link == 'following' %>><%= link_to "フォロー", following_user_path(@user) %></li>

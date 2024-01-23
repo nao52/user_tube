@@ -13,6 +13,7 @@ class ContentsController < ApplicationController
 
   def new
     @content_form = ContentsForm.new(current_user)
+    @content_form.video_url = params[:video_url]
   end
 
   def create
