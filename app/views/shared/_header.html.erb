@@ -10,7 +10,7 @@
             <li id="dropdown" class="dropdown">
               <%= link_to current_user.name, '#', id: "account-name", class: "dropdown-toggle" %>
               <ul id="dropdown-menu" class="dropdown-menu">
-                <li><%= link_to "マイページ", channels_user_path(current_user) %></li>
+                <li><%= link_to "マイページ", videos_user_path(current_user) %></li>
                 <li><%= link_to "ユーザーの編集", edit_user_path(current_user) %></li>
                 <li><%= link_to "投稿の新規作成", new_content_path %></li>
                 <li class="divider"></li>
