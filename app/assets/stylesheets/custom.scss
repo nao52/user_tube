@@ -208,31 +208,50 @@ footer {
 
 /* ユーザー詳細 */
 .user-profile {
-  border: 1px solid;
   padding: 20px;
+  .back-link {
+    margin-bottom: 20px;
+  }
+  .avatar-image {
+    border: solid 1px black;
+  }
   .user-status {
-    padding-left: 50px;
-    height: 250px;
+    h2 {
+      margin: 0;
+      font-size: 26px;
+    }
+    p {
+      padding-top: 5px;
+      font-size: 20px;
+    }
+    .following-link {
+      margin-top: 20px;
+      a {
+        padding: 0 10px;
+        font-size: 14px;
+      }
+    }
   }
   .user-profile-text {
     margin-top: 20px;
-    padding: 10px;
-    background-color: #FFFAFA	;
+    padding: 10px 20px;
+    border: solid 1px #ccc;
+    border-radius: 3px;
     pre {
-      font-size: 20px;
+      font-size: 16px;
     }
+  }
+  .best-contents {
+    margin-top: 20px;
   }
 }
 
-.best-videos, .best-channels {
-  padding-top: 10px;
-  font-size: 18px;
-  p {
-    margin: 0;
-  }
+.best-channels.hidden {
+  display: none;
 }
-.best-videos::marker, .best-channels::marker {
-  font-size: 20px;
+
+.best-videos.hidden {
+  display: none;
 }
 
 .google-btn {

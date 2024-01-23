@@ -1,0 +1,14 @@
+<% content_for(:title, @user.name) %>
+
+<div class="row">
+  <%= render 'user_profile' %>
+
+  <div class="col-md-10 col-md-offset-1 mt-30">
+    <%= render 'contents_link' %>
+
+    <div class="user-contents">
+      <%= render 'contents/user_contents' %>
+    </div>
+  </div>
+</div>
+

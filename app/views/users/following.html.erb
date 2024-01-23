@@ -1,0 +1,12 @@
+<% content_for(:title, @user.name) %>
+
+<div class="row">
+  <%= render 'user_profile' %>
+  <div class="col-md-10 col-md-offset-1">
+    <ul class="nav nav-tabs nav-justified">
+      <li role="presentation" class="active"><%= link_to "フォロー中(#{@user.following.size})", following_user_path(@user) %></li>
+      <li role="presentation" class=""><%= link_to "フォロワー(#{@user.followers.size})", follower_user_path(@user) %></li>
+    </ul>
+    <%= render 'user_following' %>
+  </div>
+</div>

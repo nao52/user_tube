@@ -1,3 +1,7 @@
-<span class="text-center"><%= paginate @contents, theme: 'bootstrap-5' %></span>
-<%= render @contents %>
-<span class="text-center"><%= paginate @contents, theme: 'bootstrap-5' %></span>
+<% if @contents.size > 0 %>
+  <span class="text-center"><%= paginate @contents, theme: 'bootstrap-5' %></span>
+  <%= render @contents %>
+  <span class="text-center"><%= paginate @contents, theme: 'bootstrap-5' %></span>
+<% else %>
+  <p class="not-found">投稿はありません</p>
+<% end %>

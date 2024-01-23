@@ -1,12 +1,16 @@
 class UsersController < ApplicationController
   before_action :require_login, only: %i[edit update]
   before_action :require_not_login, only: %i[new create confirm signup_check]
-  before_action :set_user, only: %i[update channels videos playlists contents following follower]
-  before_action :set_best_contents, only: %i[channels videos playlists contents following follower]
+  before_action :set_user, only: %i[show update channels videos playlists contents following follower]
 
   def index
     @search_users_form = SearchUsersForm.new(search_params)
     @users = @search_users_form.search.page(params[:page])
+  end
+
+  def show
+    @best_channels = @user.best_channels.order(rank: :asc)
+    @best_videos = @user.best_videos.order(rank: :asc)
   end
 
   def new
@@ -29,7 +33,7 @@ class UsersController < ApplicationController
   def update
     @user = EditUsersForm.new(current_user, update_user_params)
     if @user.update(update_user_params)
-      redirect_to channels_user_path(current_user), success: t('.success')
+      redirect_to current_user, success: t('.success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -53,39 +57,27 @@ class UsersController < ApplicationController
   end
 
   def channels
-    @link = 'channel'
     @channels = @user.subscription_channels_with_public.page(params[:page])
-    render 'users/show'
   end
 
   def videos
-    @link = 'video'
     @videos = @user.popular_videos_with_public.page(params[:page]).per(8)
-    render 'users/show'
   end
 
   def playlists
-    @link = 'playlist'
     @playlists = @user.playlists.where(is_public: true).page(params[:page]).per(8)
-    render 'users/show'
   end
 
   def contents
-    @link = 'content'
     @contents = @user.contents.page(params[:page]).per(8)
-    render 'users/show'
   end
 
   def following
-    @link = 'following'
     @followings = @user.following.page(params[:page])
-    render 'users/show'
   end
 
   def follower
-    @link = 'follower'
     @followers = @user.followers.page(params[:page])
-    render 'users/show'
   end
 
   private
@@ -95,7 +87,7 @@ class UsersController < ApplicationController
   end
 
   def update_user_params
-    params.require(:edit_users_form).permit(:name, :email, :profile, :age, :age_is_public, :gender, :gender_is_public, :avatar, :avatar_cache, categories: [])
+    params.require(:edit_users_form).permit(:name, :profile, :age, :age_is_public, :gender, :gender_is_public, :avatar, :avatar_cache, categories: [])
   end
 
   def search_params
@@ -104,10 +96,5 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def set_best_contents
-    @best_channels = @user.best_channels.order(rank: :asc)
-    @best_videos = @user.best_videos.order(rank: :asc)
   end
 end
