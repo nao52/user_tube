@@ -4,8 +4,7 @@
     <span id="channel-name-<%= channel.id %>" class="channel-name"><%= channel.name %></span>
   <% end %>
   <div class="mt-30">
-    <p>ジャンル</p>
-    <p>恋愛/漫画</p>
+    <p><%= "ジャンル：#{channel.decorate.categories}" if channel.videos.present? %></p>
     <p>チャンネル登録者数</p>
     <p><%= "#{number_with_delimiter(channel.subscriber_count, delimiter: ',')}人" %></p>
     <p>登録しているユーザー数</p>
