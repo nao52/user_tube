@@ -274,18 +274,19 @@ footer {
 
 .profile-link {
   position: relative;
-  &:hover .test {
+  &:hover .profile-link-message {
     display: block;
     font-size: 16px;
     color: #000;
   }
 }
 
-.test {
+.profile-link-message {
   position: absolute;
   display: none;
   top: -30px;
-  left: 40px;
+  left: -120px;
+  width: 500px;
 }
 
 /* チャンネル一覧 */
