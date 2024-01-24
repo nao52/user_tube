@@ -31,12 +31,13 @@
 <% else %>
   <div class="col-md-10 col-md-offset-1 user-profile">
     <div class="user-status row">
-      <div class="col-md-3 text-center">
-        <%= link_to @user, class: "best-contents-link" do %>
+      <%= link_to @user do %>
+        <div class="col-md-3 text-center profile-link">
           <%= image_tag(@user.avatar_url, class: "img-circle avatar-image", size: '100x100') %>
           <h2 class="profile-name"><%= @user.name %></h2>
-        <% end %>
-      </div>
+          <p class="test">ユーザーのプロフィールを表示します</p>
+        </div>
+      <% end %>
       <div class="col-md-9">
         <%= render 'shared/google_login_btn' if current_user?(@user) %>
       </div>
