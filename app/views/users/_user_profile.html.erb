@@ -1,28 +1,32 @@
 <% if %w[show following follower].include?(action_name) %>
-  <div class="col-md-10 col-md-offset-1 user-profile">
-    <div class="user-status row">
-      <div class="col-md-3 text-center">
-        <%= image_tag(@user.avatar_url, class: "img-circle avatar-image", size: '100x100') %>
-        <h2 class="profile-name"><%= @user.name %></h2>
-        <div class="following-link">
-          <%= link_to "#{@user.following.size}フォロー中", following_user_path(@user) %>
-          <%= link_to "#{@user.followers.size}フォロワー", follower_user_path(@user) %>
+  <div class="col-md-10 col-md-offset-1">
+    <%= breadcrumbs separator: " &rsaquo; " %>
+
+    <div class="user-profile">
+      <div class="user-status row">
+        <div class="col-md-3 text-center">
+          <%= image_tag(@user.avatar_url, class: "img-circle avatar-image", size: '100x100') %>
+          <h2 class="profile-name"><%= @user.name %></h2>
+          <div class="following-link">
+            <%= link_to "#{@user.following.size}フォロー中", following_user_path(@user) %>
+            <%= link_to "#{@user.followers.size}フォロワー", follower_user_path(@user) %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <p><%= @user.decorate.age_and_gereration %></p>
+          <p><%= "興味のあるジャンル" if @user.categories %></p>
+          <p><%= @user.decorate.interesting_category %></p>
+        </div>
+        <div class="col-md-3">
+          <%= link_to "プロフィールを編集", edit_user_path(current_user), class: "btn btn-default" if current_user?(@user) unless @followings || @followers %>
         </div>
       </div>
-      <div class="col-md-6">
-        <p><%= @user.decorate.age_and_gereration %></p>
-        <p><%= "興味のあるジャンル" if @user.categories %></p>
-        <p><%= @user.decorate.interesting_category %></p>
-      </div>
-      <div class="col-md-3">
-        <%= link_to "プロフィールを編集", edit_user_path(current_user), class: "btn btn-default" if current_user?(@user) unless @followings || @followers %>
-      </div>
+      <% if @user.profile.present? %>
+        <div class="user-profile-text">
+          <pre><%= @user.profile %></pre>
+        </div>
+      <% end %>
     </div>
-    <% if @user.profile.present? %>
-      <div class="user-profile-text">
-        <pre><%= @user.profile %></pre>
-      </div>
-    <% end %>
   </div>
 <% else %>
   <div class="col-md-10 col-md-offset-1 user-profile">
