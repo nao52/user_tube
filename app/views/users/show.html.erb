@@ -9,9 +9,10 @@
       <li role="presentation" id="best-channel-link" class="active"><%= link_to "好きなチャンネルBest3", '#' %></li>
       <li role="presentation" id="best-video-link" class=""><%= link_to "好きな動画Best3", '#' %></a></li>
     </ul>
-    <ol class="best-channels">
+    <div class="best-channels">
       <%= render partial: 'best_channels/best_channels', collection: @best_channels, as: 'best_channel' %>
-    </ol>
+    </div>
+
     <ol class="best-videos hidden">
       <%= render partial: 'best_videos/best_videos', collection: @best_videos, as: 'best_video' %>
     </ol>

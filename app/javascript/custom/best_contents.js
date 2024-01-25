@@ -12,6 +12,8 @@ document.addEventListener("turbo:load", function() {
     best_video_link.classList.remove("active");
     document.querySelector(".best-channels").classList.remove("hidden");
     document.querySelector(".best-videos").classList.add("hidden");
+    document.querySelector("#edit-best-channels").classList.remove("hidden");
+    document.querySelector("#edit-best-videos").classList.add("hidden");
   });
 
   best_video_link.addEventListener("click", (event) => {
@@ -20,5 +22,7 @@ document.addEventListener("turbo:load", function() {
     best_video_link.classList.add("active");
     document.querySelector(".best-channels").classList.add("hidden");
     document.querySelector(".best-videos").classList.remove("hidden");
+    document.querySelector("#edit-best-channels").classList.add("hidden");
+    document.querySelector("#edit-best-videos").classList.remove("hidden");
   });
 });

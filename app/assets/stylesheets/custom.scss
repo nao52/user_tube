@@ -250,11 +250,39 @@ footer {
   }
 }
 
-.best-channels.hidden {
+.best-channels {
+  padding: 20px 10px;
+  p {
+    font-size: 20px;
+  }
+  a {
+    display: inline-block;
+    height: 40px;
+    img {
+      border: solid .5px;
+    }
+    .channel-name {
+      font-size: 18px;
+      padding-left: 10px;
+    }
+  }
+  .channel-info {
+    p {
+      font-size: 16px;
+      margin: 0;
+      padding: 5px 0;
+    }
+  }
+  button {
+    padding-left: 0;
+  }
+}
+
+.best-channels.hidden, .best-videos.hidden {
   display: none;
 }
 
-.best-videos.hidden {
+#edit-best-channels.hidden, #edit-best-videos.hidden {
   display: none;
 }
 
