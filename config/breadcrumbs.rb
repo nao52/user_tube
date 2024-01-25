@@ -16,6 +16,16 @@ crumb :user_edit do |user|
   parent :user_show, user
 end
 
+crumb :best_channels_edit do |user|
+  link "好きなチャンネルBest3の編集", edit_best_videos_path
+  parent :user_show, user
+end
+
+crumb :best_videos_edit do |user|
+  link "好きな動画Best3の編集", edit_best_channels_path
+  parent :user_show, user
+end
+
 crumb :following do |user|
   link "フォロー中", following_user_path(user)
   parent :user_show, user
