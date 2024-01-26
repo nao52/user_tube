@@ -1,0 +1,6 @@
+<ul class="nav nav-tabs nav-justified user-contents-link">
+  <li role="presentation" class=<%= "active" if action_name == "videos" %>><%= link_to "高評価した動画", videos_user_path(@user) %></li>
+  <li role="presentation" class=<%= "active" if action_name == "channels" %>><%= link_to "登録チャンネル", channels_user_path(@user) %></a></li>
+  <li role="presentation" class=<%= "active" if action_name == "playlists" %>><%= link_to "プレイリスト", playlists_user_path(@user) %></li>
+  <li role="presentation" class=<%= "active" if action_name == "contents" %>><%= link_to "投稿", contents_user_path(@user) %></li>
+</ul>

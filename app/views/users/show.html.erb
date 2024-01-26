@@ -1,35 +1,19 @@
 <% content_for(:title, @user.name) %>
+<% breadcrumb :user_show, @user %>
 
 <div class="row">
   <%= render 'user_profile' %>
-  <div class="col-md-10 col-md-offset-1 mt-30">
-    <%= render 'shared/google_login_btn' if current_user?(@user) %>
-
+  
+  <div class="col-md-10 col-md-offset-1">
     <ul class="nav nav-tabs nav-justified">
-      <li role="presentation" class=<%= "active" if @link == 'video' %>><%= link_to "高評価した動画", videos_user_path(@user) %></li>
-      <li role="presentation" class=<%= "active" if @link == 'channel' %>><%= link_to "登録チャンネル", channels_user_path(@user) %></a></li>
-      <li role="presentation" class=<%= "active" if @link == 'playlist' %>><%= link_to "プレイリスト", playlists_user_path(@user) %></li>
-      <li role="presentation" class=<%= "active" if @link == 'content' %>><%= link_to "投稿", contents_user_path(@user) %></li>
-      <li role="presentation" class=<%= "active" if @link == 'following' %>><%= link_to "フォロー", following_user_path(@user) %></li>
-      <li role="presentation" class=<%= "active" if @link == 'follower' %>><%= link_to "フォロワー", follower_user_path(@user) %></li>
+      <li role="presentation" id="best-channel-link" class="active"><%= link_to "好きなチャンネルBest3", '#' %></li>
+      <li role="presentation" id="best-video-link" class=""><%= link_to "好きな動画Best3", '#' %></a></li>
     </ul>
-
-    <div class="user-contents">
-      <% if @link == 'channel' %>
-        <%= link_to "公開設定を変更する", edit_subscription_channels_path, class: "btn btn-primary btn-block mt-30" if current_user?(@user) && @channels.present? %>
-        <%= render 'channels/user_channels' %>
-      <% end %>
-      <% if @link == 'video' %>
-        <%= link_to "公開設定を変更する", edit_popular_videos_path, class: "btn btn-primary btn-block mt-30" if current_user?(@user) && @videos.present? %>
-        <%= render 'videos/user_videos' %>
-      <% end %>
-      <% if @link == 'playlist' %>
-        <%= link_to "公開設定を変更する", edit_playlists_path, class: "btn btn-primary btn-block mt-30" if current_user?(@user) && @playlists.present? %>
-        <%= render 'playlists/user_playlists' %>
-      <% end %>
-      <%= render 'contents/user_contents' if @link == 'content' %>
-      <%= render 'user_following' if @link == 'following' %>
-      <%= render 'user_followers' if @link == 'follower' %>
+    <div class="best-channels">
+      <%= render partial: 'best_channels/best_channels', collection: @best_channels, as: 'best_channel' %>
+    </div>
+    <div class="best-videos hidden">
+      <%= render partial: 'best_videos/best_videos', collection: @best_videos, as: 'best_video' %>
     </div>
   </div>
 </div>

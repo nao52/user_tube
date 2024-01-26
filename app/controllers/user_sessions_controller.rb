@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password], params[:remember_me])
 
     if @user
-      redirect_to channels_user_path(@user), success: t('.success')
+      redirect_to root_path, success: t('.success')
     else
       flash.now[:danger] = t('.danger')
       render :new, status: :unprocessable_entity

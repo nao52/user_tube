@@ -1,4 +1,6 @@
 <% content_for(:title, t(".title")) %>
+<% breadcrumb :user_edit, current_user %>
+
 <h1 class="text-center"><%= t(".title") %></h1>
 
 <div class="row">
@@ -11,11 +13,6 @@
       <div class="form-group">
         <%= f.label :name, class: "form-label" %>
         <%= f.text_field :name, class: "form-control", placeholder: "ユーザー名を入力してください" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :email, class: "form-label" %>
-        <%= f.email_field :email, class: "form-control", placeholder: "メールアドレスを入力してください" %>
       </div>
 
       <div class="form-group">

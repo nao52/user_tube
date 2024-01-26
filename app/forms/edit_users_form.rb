@@ -3,7 +3,6 @@ class EditUsersForm
   include ActiveModel::Attributes
 
   attribute :name, default: ''
-  attribute :email, default: ''
   attribute :age, default: nil
   attribute :age_is_public, default: false
   attribute :gender, default: ''
@@ -14,7 +13,6 @@ class EditUsersForm
   attribute :categories, default: []
 
   validates :name, presence: true, length: { maximum: 50 }
-  validates :email, presence: true, length: { maximum: 255 }, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
   validates :age, allow_nil: true, allow_blank: true, numericality: { only_integer: true, in: 13..100 }
   validates :gender, presence: true
   validates :profile, length: { maximum: 400 }
@@ -52,7 +50,6 @@ class EditUsersForm
   def default_attributes
     {
       'name' => @user.attributes['name'],
-      'email' => @user.attributes['email'],
       'age' => @user.attributes['age'],
       'age_is_public' => @user.attributes['age_is_public'],
       'gender' => @user.attributes['gender'],

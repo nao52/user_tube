@@ -113,6 +113,10 @@ footer {
   text-align: center;
 }
 
+.breadcrumbs {
+  font-size: 16px;
+}
+
 /* トップページ */
 .top-sentence {
   text-align: center;
@@ -208,31 +212,97 @@ footer {
 
 /* ユーザー詳細 */
 .user-profile {
-  border: 1px solid;
   padding: 20px;
+  .back-link {
+    margin-bottom: 20px;
+  }
+  .avatar-image {
+    border: solid 1px black;
+  }
   .user-status {
-    padding-left: 50px;
-    height: 250px;
+    h2 {
+      margin: 0;
+      font-size: 26px;
+    }
+    p {
+      padding-top: 5px;
+      font-size: 20px;
+    }
+    .following-link {
+      margin-top: 20px;
+      a {
+        padding: 0 5px;
+        font-size: 14px;
+      }
+    }
   }
   .user-profile-text {
     margin-top: 20px;
-    padding: 10px;
-    background-color: #FFFAFA	;
+    padding: 10px 20px;
+    border: solid 1px #ccc;
+    border-radius: 3px;
     pre {
-      font-size: 20px;
+      font-size: 16px;
+    }
+  }
+  .best-contents {
+    margin-top: 20px;
+  }
+}
+
+.best-channels {
+  padding: 20px 10px;
+  p {
+    font-size: 20px;
+  }
+  a {
+    display: inline-block;
+    height: 40px;
+    img {
+      border: solid .5px;
+    }
+    .channel-name {
+      font-size: 18px;
+      padding-left: 10px;
+    }
+  }
+  .channel-info {
+    p {
+      font-size: 16px;
+      margin: 0;
+      padding: 5px 0;
+    }
+  }
+  button {
+    padding-left: 0;
+  }
+}
+
+.best-videos {
+  padding: 20px 0;
+  .best-video {
+    display: flex;
+    .video-info {
+      margin-left: 20px;
+      p {
+        font-size: 20px;
+      }
+      a {
+        margin-bottom: 20px;
+      }
+      .title {
+        font-weight: bold;
+      }
     }
   }
 }
 
-.best-videos, .best-channels {
-  padding-top: 10px;
-  font-size: 18px;
-  p {
-    margin: 0;
-  }
+.best-channels.hidden, .best-videos.hidden {
+  display: none;
 }
-.best-videos::marker, .best-channels::marker {
-  font-size: 20px;
+
+#edit-best-channels.hidden, #edit-best-videos.hidden {
+  display: none;
 }
 
 .google-btn {
@@ -244,14 +314,64 @@ footer {
 }
 
 .video-user, .video-category {
-  font-size: 16px;
-  margin-top: 20px;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.profile-link {
+  position: relative;
+  &:hover .profile-link-message {
+    display: block;
+    font-size: 16px;
+    color: #000;
+  }
+}
+
+.profile-link-message {
+  position: absolute;
+  display: none;
+  top: -30px;
+  left: -120px;
+  width: 500px;
+}
+
+/* 動画一覧 */
+.video, .playlist {
+  display: flex;
+  margin: 20px 0;
+  .video-info, .playlist-info {
+    margin-left: 10px;
+    p, pre {
+      font-size: 20px;
+    }
+    a {
+      margin-bottom: 20px;
+    }
+    .title {
+      font-weight: bold;
+    }
+  }
 }
 
 /* チャンネル一覧 */
-.channel-item {
-  height: 250px;
-  margin: 30px 0;
+.channels {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .channel {
+    height: 250px;
+    width: 48%;
+    margin-bottom: 10px;
+    padding: 15px;
+    .img-circle {
+      border: solid .5px;
+    }
+    p {
+      font-size: 18px;
+    }
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
 }
 
 /* チャンネル詳細 */

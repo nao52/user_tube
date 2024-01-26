@@ -1,9 +1,23 @@
-<%= link_to best_channel.channel do %>
-  <li id="best-channel-<%= best_channel.channel.id %>" class="best-channels">
-    <%= image_tag best_channel.channel.thumbnail_url, class: "img-circle", size: '30x30' if best_channel.channel.thumbnail_url %>
-    <%= best_channel.channel.name %>
-  </li>
-<% end %>
-<div>
+<% channel = best_channel.channel %>
+<div id="best-channel-<%= channel.id %>">
+  <p>- Best<%= best_channel_counter + 1 %>位</p>
+  <%= link_to channel do %>
+    <%= image_tag channel.thumbnail_url, class: "img-circle", size: '40x40' if channel.thumbnail_url %>
+    <span class="channel-name"><%= channel.name %></span>
+  <% end %>
+
+  <div class="channel-info">
+    <% if channel.videos.present? %>
+      <p>ジャンル</p>
+      <p><%= channel.decorate.categories %></p>
+    <% end %>
+    <p>チャンネル登録者数</p>
+    <p><%= "#{number_with_delimiter(channel.subscriber_count, delimiter: ',')}人" %></p>
+    <p>登録しているユーザー数</p>
+    <p><%= "#{number_with_delimiter(channel.users.size, delimiter: ',')}人" %></p>
+  </div>
+  
   <%= render 'best_channels_favorites/favorite_btn', best_channel: best_channel if logged_in? %>
 </div>
+
+<hr>

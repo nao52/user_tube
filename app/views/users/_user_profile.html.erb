@@ -1,34 +1,48 @@
-<div class="col-md-10 col-md-offset-1 user-profile">
-  <div class="col-md-3 text-center">
-    <%= image_tag(@user.avatar_url, class: "img-circle", size: '250x250') %>
-  </div>
-  <div class="col-md-9 user-status">
-    <h1><%= @user.name %></h1>
-    <h2><%= @user.decorate.age_and_gereration %></h2>
-    <h2>興味のあるジャンル</h2>
-    <h2><%= @user.decorate.interesting_category %></h2>
-  </div>
-  <% if @user.profile.present? %>
-    <div class="user-profile-text col-md-12">
-      <pre><%= @user.profile %></pre>
+<% if %w[show following follower].include?(action_name) %>
+  <div class="col-md-10 col-md-offset-1">
+    <div class="user-profile">
+      <div class="user-status row">
+        <div class="col-md-3 text-center">
+          <%= image_tag(@user.avatar_url, class: "img-circle avatar-image", size: '100x100') %>
+          <h2 class="profile-name"><%= @user.name %></h2>
+          <div class="following-link">
+            <%= link_to "#{@user.following.size}フォロー中", following_user_path(@user) %>
+            <%= link_to "#{@user.followers.size}フォロワー", follower_user_path(@user) %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <p><%= @user.decorate.age_and_gereration %></p>
+          <p><%= "興味のあるジャンル" if @user.categories %></p>
+          <p><%= @user.decorate.interesting_category %></p>
+        </div>
+        <div class="col-md-3">
+          <% if current_user?(@user) && action_name == "show" %>
+            <%= link_to "プロフィールを編集", edit_user_path(current_user), class: "btn btn-default btn-block" %>
+            <%= link_to "好きなチャンネルの編集", edit_best_channels_path, id: "edit-best-channels", class: "btn btn-default btn-block" %>
+            <%= link_to "好きな動画の編集", edit_best_videos_path, id: "edit-best-videos", class: "btn btn-default btn-block hidden" %>
+          <% end %>
+        </div>
+      </div>
+      <% if @user.profile.present? %>
+        <div class="user-profile-text">
+          <pre><%= @user.profile %></pre>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-  <div class="col-md-6">
-    <h3 class="text-center">
-      好きなチャンネルBest3
-      <%= link_to '編集', edit_best_channels_path, id: "edit-best-channels", class: "btn btn-primary" if current_user?(@user)  %>
-    </h3>
-    <ol>
-      <%= render partial: 'best_channels/best_channels', collection: @best_channels, as: 'best_channel' %>
-    </ol>
   </div>
-  <div class="col-md-6">
-    <h3 class="text-center">
-      好きな動画Best3
-      <%= link_to '編集', edit_best_videos_path, id: "edit-best-videos", class: "btn btn-primary" if current_user?(@user) %>
-    </h3>
-    <ol>
-      <%= render partial: 'best_videos/best_videos', collection: @best_videos, as: 'best_video' %>
-    </ol>
+<% else %>
+  <div class="col-md-10 col-md-offset-1 user-profile">
+    <div class="user-status row">
+      <%= link_to @user do %>
+        <div class="col-md-3 text-center profile-link">
+          <%= image_tag(@user.avatar_url, class: "img-circle avatar-image", size: '100x100') %>
+          <h2 class="profile-name"><%= @user.name %></h2>
+          <p class="profile-link-message">ユーザーのプロフィールを表示します</p>
+        </div>
+      <% end %>
+      <div class="col-md-9">
+        <%= render 'shared/google_login_btn' if current_user?(@user) %>
+      </div>
+    </div>
   </div>
-</div>
+<% end %>

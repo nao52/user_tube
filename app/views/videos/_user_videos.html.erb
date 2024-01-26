@@ -1,3 +1,7 @@
-<span class="text-center"><%= paginate @videos, theme: 'bootstrap-5' %></span>
-<%= render @videos %>
-<span class="text-center"><%= paginate @videos, theme: 'bootstrap-5' %></span>
+<% if @videos.size > 0 %>
+  <span class="text-center"><%= paginate @videos, theme: 'bootstrap-5' %></span>
+  <%= render @videos %>
+  <span class="text-center"><%= paginate @videos, theme: 'bootstrap-5' %></span>
+<% else %>
+  <p class="not-found">公開中の高評価動画はありません</p>
+<% end %>
