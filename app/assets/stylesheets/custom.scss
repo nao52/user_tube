@@ -2,6 +2,10 @@
 @import "bootstrap";
 @import "font-awesome";
 
+.smart-phone {
+  display: none;
+}
+
 .mt-30 {
   margin-top: 30px;
 }
@@ -686,4 +690,51 @@ footer {
     background-color: #303030;
     opacity: 8%;
   }  
+}
+
+/* スマートフォン */
+@media only screen and (max-width: 544px) {
+  .pc {
+    display: none;
+  }
+  .smart-phone {
+    display: block;
+  }
+  .main {
+    padding-top: 100px;
+  }
+
+  header {
+    height: 50px;
+    .navbar-default {
+      margin-bottom: 0;
+    }
+    .navbar-right {
+      display: none;
+    }
+  }
+
+  .site-link {
+    z-index: 2;
+    position: fixed;
+    display: flex;
+    top: 50px;
+    background-color: rgb(240, 240, 240);
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    div {
+      padding: 20px 10px;
+      a {
+        display: block;
+      }
+      a.active {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // .sidebar {
+  //   display: none;
+  // }
 }

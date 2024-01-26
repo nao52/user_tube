@@ -26,3 +26,13 @@
     </div>
   </nav>
 </header>
+
+<div class="smart-phone">
+  <div class="site-link">
+    <div><%= link_to "ユーザー一覧", users_path, class: "#{"active" if controller_name == "users"}" %></div>
+    <div><%= link_to "チャンネル一覧", channels_path, class: "#{"active" if controller_name == "channels"}" %></div>
+    <div><%= link_to "高評価動画一覧", videos_path, class: "#{"active" if controller_name == "videos"}" %></div>
+    <div><%= link_to "投稿一覧", contents_path, class: "#{"active" if controller_name == "contents"}" %></div>
+    <div><%= link_to "新着コンテンツ一覧", recent_content_path, class: "#{"active" if controller_name == "recent_contents"}" %></div> 
+  </div>
+</div>
