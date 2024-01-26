@@ -1,9 +1,9 @@
-<div class="row mt-30">
-  <div class="col-md-6 text-center">
+<div class="playlist">
+  <div class="text-center">
     <iframe width="336" height="189" src="https://www.youtube.com/embed/videoseries?si=Byq0ZjwPmNEy9V9I&amp;list=<%= playlist.playlist_id %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </div>
-  <div class="col-md-6">
-    <h3 id="playlist-title-<%= playlist.id %>" class="playlist-title"><%= "タイトル：#{playlist.title}" %></h3>
+  <div class="playlist-info">
+    <p id="playlist-title-<%= playlist.id %>" class="title"><%= "タイトル：#{playlist.title}" %></p>
     <pre><%= "#{playlist.description}" %></pre>
   </div>
 </div>

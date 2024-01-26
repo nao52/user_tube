@@ -336,11 +336,12 @@ footer {
 }
 
 /* 動画一覧 */
-.video {
+.video, .playlist {
   display: flex;
-  .video-info {
-    margin-left: 20px;
-    p {
+  margin: 20px 0;
+  .video-info, .playlist-info {
+    margin-left: 10px;
+    p, pre {
       font-size: 20px;
     }
     a {
