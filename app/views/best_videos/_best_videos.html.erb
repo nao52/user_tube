@@ -1,9 +1,19 @@
-<%= link_to best_video.video do %>
-<li id="best-video-<%= best_video.video.id %>">
-  <p><%= best_video.video.title %></p>
-</li>
-<%= image_tag "http://img.youtube.com/vi/#{best_video.video.video_id}/hqdefault.jpg", size: '160x120' %>
-<% end %>
-<div>
-  <%= render 'best_videos_favorites/favorite_btn', best_video: best_video if logged_in? %>
+<% video = best_video.video %>
+<div id="best-video-<%= video.id %>" class="best-video">
+  <div class="text-center">
+    <iframe width="336" height="189" src=<%= "https://www.youtube.com/embed/#{video.video_id}" %> title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <div class="video-info">
+    <p>- Best<%= best_video_counter + 1 %>位</p>
+    <%= link_to video do %>
+      <p id="video-title-<%= video.id %>" class="title"><%= video.title %></p>
+    <% end %>
+    <p><%= "ジャンル：#{video.category.title_i18n}" %></p>
+    <%= link_to video.channel do %>
+      <p><%= "チャンネル名：#{video.channel.name}" %></p>
+    <% end %>
+    <div><%= render 'best_videos_favorites/favorite_btn', best_video: best_video if logged_in? %></div>
+  </div>
 </div>
+
+<hr>

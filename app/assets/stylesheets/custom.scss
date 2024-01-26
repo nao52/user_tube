@@ -278,6 +278,25 @@ footer {
   }
 }
 
+.best-videos {
+  padding: 20px 0;
+  .best-video {
+    display: flex;
+    .video-info {
+      margin-left: 20px;
+      p {
+        font-size: 20px;
+      }
+      a {
+        margin-bottom: 20px;
+      }
+      .title {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
 .best-channels.hidden, .best-videos.hidden {
   display: none;
 }
@@ -314,6 +333,23 @@ footer {
   top: -30px;
   left: -120px;
   width: 500px;
+}
+
+/* 動画一覧 */
+.video {
+  display: flex;
+  .video-info {
+    margin-left: 20px;
+    p {
+      font-size: 20px;
+    }
+    a {
+      margin-bottom: 20px;
+    }
+    .title {
+      font-weight: bold;
+    }
+  }
 }
 
 /* チャンネル一覧 */

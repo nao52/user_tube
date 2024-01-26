@@ -1,13 +1,16 @@
-<div class="row mt-30">
-  <div class="col-md-6 text-center">
+<div class="video">
+  <div class="text-center">
     <iframe width="336" height="189" src=<%= "https://www.youtube.com/embed/#{video.video_id}" %> title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </div>
-  <div class="col-md-6">
+  <div class="video-info">
     <%= link_to video do %>
-      <h3 id="video-title-<%= video.id %>" class="video-title"><%= video.title %></h3>
+      <p id="video-title-<%= video.id %>" class="title"><%= video.title %></p>
     <% end %>
     <p class="video-user"><%= "高評価しているユーザー数：#{number_with_delimiter(video.users.count, delimiter: ',')}人" %></p>
     <p class="video-category"><%= "ジャンル：#{video.category.title_i18n}" %></p>
+    <%= link_to video.channel do %>
+      <p><%= "チャンネル名：#{video.channel.name}" %></p>
+    <% end %>
     <%= link_to "動画のレビューを投稿する", new_content_path(video_url: video.video_id), class: "btn btn-primary" if logged_in? && current_user.videos.include?(video) %>
   </div>
 </div>
