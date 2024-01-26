@@ -1,10 +1,6 @@
 <% if @channels.size > 0 %>
   <span class="text-center"><%= paginate @channels, theme: 'bootstrap-5' %></span>
-  <div class="row">
-    <div class="col-md-12">
-      <%= render @channels %>
-    </div>
-  </div>
+  <div class="channels"><%= render @channels %></div>
   <span class="text-center"><%= paginate @channels, theme: 'bootstrap-5' %></span>
 <% else %>
   <p class="not-found">公開中の登録チャンネルはありません</p>

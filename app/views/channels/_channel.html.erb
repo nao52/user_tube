@@ -1,13 +1,15 @@
-<div class="col-md-6 channel-item">
+<div class="channel">
   <%= link_to channel_path(channel) do %>
-    <%= image_tag channel.thumbnail_url, class: "img-circle", size: '50x50' if channel.thumbnail_url %>
-    <span id="channel-name-<%= channel.id %>" class="channel-name"><%= channel.name %></span>
+    <div>
+      <%= image_tag channel.thumbnail_url, class: "img-circle", size: '50x50' if channel.thumbnail_url %>
+      <span id="channel-name-<%= channel.id %>" class="channel-name"><%= channel.name %></span>
+    </div>
+    <div class="channel-info">
+      <p><%= "ジャンル：#{channel.decorate.categories}" if channel.videos.present? %></p>
+      <p>チャンネル登録者数</p>
+      <p><%= "#{number_with_delimiter(channel.subscriber_count, delimiter: ',')}人" %></p>
+      <p>登録ユーザー数</p>
+      <p><%= "#{number_with_delimiter(channel.users.size, delimiter: ',')}人" %></p>
+    </div>
   <% end %>
-  <div class="mt-30">
-    <p><%= "ジャンル：#{channel.decorate.categories}" if channel.videos.present? %></p>
-    <p>チャンネル登録者数</p>
-    <p><%= "#{number_with_delimiter(channel.subscriber_count, delimiter: ',')}人" %></p>
-    <p>登録しているユーザー数</p>
-    <p><%= "#{number_with_delimiter(channel.users.size, delimiter: ',')}人" %></p>
-  </div>
 </div>

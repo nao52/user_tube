@@ -29,7 +29,7 @@
 
     <% if @channels.size > 0 %>
       <span class="text-center"><%= paginate @channels, theme: 'bootstrap-5' %></span>
-      <%= render @channels %>
+      <div class="channels"><%= render @channels %></div>
       <span class="text-center"><%= paginate @channels, theme: 'bootstrap-5' %></span>
     <% else %>
       <p class="not-found">検索結果が存在しません</p>

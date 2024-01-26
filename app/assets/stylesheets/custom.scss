@@ -353,9 +353,24 @@ footer {
 }
 
 /* チャンネル一覧 */
-.channel-item {
-  height: 250px;
-  margin: 30px 0;
+.channels {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .channel {
+    height: 250px;
+    width: 48%;
+    margin-bottom: 10px;
+    padding: 15px;
+    .img-circle {
+      border: solid .5px;
+    }
+    p {
+      font-size: 18px;
+    }
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
 }
 
 /* チャンネル詳細 */
