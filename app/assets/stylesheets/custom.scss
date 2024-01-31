@@ -591,6 +591,8 @@ footer {
 
 .dropdown-menu.active {
   display: block;
+  position: absolute;
+  left: -90px;
 }
 
 /* Googleログインボタン */
@@ -730,10 +732,6 @@ footer {
     a {
       text-align: center;
     }
-    .dropdown-menu.active {
-      position: absolute;
-      left: -70px;
-    }
   }
   .site-link {
     z-index: 2;
@@ -805,11 +803,14 @@ footer {
   }
 
   /* 動画一覧 */
-  .video {
+  .video, .playlist {
     flex-flow: column;
-    .video-info > .btn {
-      width: 100%;
-      margin-left: 10px;
+    .video-info {
+      margin: 0;
+      .btn {
+        width: 100%;
+        margin-left: 0;
+      }
     }
   }
 }
