@@ -356,7 +356,7 @@ footer {
   display: flex;
   margin: 20px 0;
   .video-info, .playlist-info {
-    margin-left: 10px;
+    margin-left: 20px;
     p, pre {
       font-size: 20px;
     }
@@ -802,5 +802,14 @@ footer {
   /* チャンネル一覧 */
   .channels > .channel {
     width: 100%;
+  }
+
+  /* 動画一覧 */
+  .video {
+    flex-flow: column;
+    .video-info > .btn {
+      width: 100%;
+      margin-left: 10px;
+    }
   }
 }
