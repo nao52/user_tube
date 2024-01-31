@@ -71,8 +71,10 @@ header {
 
 footer {
   width: 100%;
+  position: relative;
   .navbar {
     margin-bottom: 0;
+    padding-top: 10px;
   }
   p {
     font-size: 20px;
@@ -80,14 +82,9 @@ footer {
   a {
     font-size: 16px;
   }
-  .col-md-3 {
-    height: 261px;
-    padding-top: 5px;
-  }
   .footer-item {
     display:flex;
     flex-flow: column;
-    justify-content:space-between;
     p {
       font-size: 16px;
     }
@@ -96,7 +93,9 @@ footer {
     }
   }
   .copyright {
-    margin-top: auto;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
     p {
       font-size: 14px;
     }
@@ -719,6 +718,7 @@ footer {
     padding-top: 100px;
   }
 
+  /* ヘッダー */
   header {
     .navbar-default {
       margin-bottom: 0;
@@ -737,7 +737,6 @@ footer {
       left: -70px;
     }
   }
-
   .site-link {
     z-index: 2;
     position: fixed;
@@ -755,6 +754,37 @@ footer {
       a.active {
         text-decoration: underline;
       }
+    }
+  }
+
+  /* フッター */
+  footer {
+    .footer-item {
+      text-align: center;
+      border-bottom: solid #ccc .5px;
+      p {
+        font-size: 14px;
+      }
+      .footer-title {
+        font-size: 18px;
+      }
+    }
+    .col-xs-6 {
+      padding-top: 10px;
+      margin-bottom: 50px;
+      height: 200px;
+      p {
+        display: none;
+      }
+      li > a {
+        font-size: 12px;
+        width: 100%;
+      }
+    }
+    .copyright {
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
     }
   }
 }
