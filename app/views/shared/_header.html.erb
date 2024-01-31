@@ -1,38 +1,15 @@
-<header>
-  <nav class="navbar navbar-static-top navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <%= link_to "ユーザーチューブ", root_path, class: "navbar-brand" %>
-      </div>
-      <div class="collapse navbar-collapse navbar-right">
-        <ul class="nav navbar-nav">
-          <% if logged_in? %>
-            <li id="dropdown" class="dropdown">
-              <%= link_to current_user.name, '#', id: "account-name", class: "dropdown-toggle" %>
-              <ul id="dropdown-menu" class="dropdown-menu">
-                <li><%= link_to "マイページ", videos_user_path(current_user) %></li>
-                <li><%= link_to "ユーザーの編集", edit_user_path(current_user) %></li>
-                <li><%= link_to "投稿の新規作成", new_content_path %></li>
-                <li class="divider"></li>
-                <li><%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %></li>
-              </ul>
-            </li>
-          <% else %>
-            <li><%= link_to "ユーザー登録", signup_path %></li>
-            <li><%= link_to "ログイン", login_path %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
+<% if logged_in? %>
+  <%= render 'shared/after_login_header' %>
+<% else %>
+  <%= render 'shared/before_login_header' %>
+<% end %>
 
 <div class="smart-phone">
   <div class="site-link">
-    <div><%= link_to "ユーザー一覧", users_path, class: "#{"active" if controller_name == "users"}" %></div>
-    <div><%= link_to "チャンネル一覧", channels_path, class: "#{"active" if controller_name == "channels"}" %></div>
-    <div><%= link_to "高評価動画一覧", videos_path, class: "#{"active" if controller_name == "videos"}" %></div>
-    <div><%= link_to "投稿一覧", contents_path, class: "#{"active" if controller_name == "contents"}" %></div>
-    <div><%= link_to "新着コンテンツ一覧", recent_content_path, class: "#{"active" if controller_name == "recent_contents"}" %></div> 
+    <div><%= link_to "ユーザー一覧", users_path, class: "#{"active" if current_page?(users_path)}" %></div>
+    <div><%= link_to "チャンネル一覧", channels_path, class: "#{"active" if current_page?(channels_path)}" %></div>
+    <div><%= link_to "高評価動画一覧", videos_path, class: "#{"active" if current_page?(videos_path)}" %></div>
+    <div><%= link_to "投稿一覧", contents_path, class: "#{"active" if current_page?(contents_path)}" %></div>
+    <div><%= link_to "新着コンテンツ一覧", recent_content_path, class: "#{"active" if current_page?(recent_content_path)}" %></div> 
   </div>
 </div>

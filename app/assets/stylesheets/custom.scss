@@ -29,13 +29,27 @@ a {
 header {
   position: fixed;
   width: 100%;
-  z-index: 2;
+  z-index: 5;
+  nav {
+    height: 50px;
+  }
+  .pull-right > ul {
+    margin: 0 auto;
+  }
   a {
     font-size: 20px;
+    padding: 15px;
+    margin: 0 10px;
   }
   .navbar-brand {
     font-size: 20px;
   }
+  #account-name {
+    display: block;
+    padding: 15px 30px;
+    height: 50px;
+  }
+  
 }
 
 .sidebar {
@@ -178,6 +192,7 @@ footer {
 
 .pagination>.active>a {     
   background: #93c9ff;
+  z-index: 1;
 }
 
 /* ユーザー一覧 */
@@ -705,12 +720,21 @@ footer {
   }
 
   header {
-    height: 50px;
     .navbar-default {
       margin-bottom: 0;
     }
-    .navbar-right {
-      display: none;
+    #navbar-menu.in {
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      float: right;
+    }
+    a {
+      text-align: center;
+    }
+    .dropdown-menu.active {
+      position: absolute;
+      left: -70px;
     }
   }
 
@@ -733,8 +757,4 @@ footer {
       }
     }
   }
-
-  // .sidebar {
-  //   display: none;
-  // }
 }
