@@ -65,13 +65,14 @@ header {
 }
 
 .main {
-  padding-top: 70px;
+  padding-top: 50px;
   min-height: calc(100vh - 263px);
 }
 
 footer {
   width: 100%;
   position: relative;
+  margin-top: 15px;
   .navbar {
     margin-bottom: 0;
     padding-top: 10px;
@@ -785,6 +786,19 @@ footer {
       width: 100%;
       text-align: center;
       font-size: 14px;
+    }
+  }
+
+  /* メイン */
+  .main {
+    .images {
+      img {
+        width: 250px;
+        height: 250px;
+      }
+    }
+    .try-link {
+      font-size: 20px;
     }
   }
 }
