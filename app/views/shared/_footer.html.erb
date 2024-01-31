@@ -7,41 +7,35 @@
             <p>お気に入りの動画を共有しよう。</p>
             <p class="footer-title">ユーザーチューブ</p>
           </div>
-          <div class='copyright'>
-            <p>Copyright © 2023. nao All Rights reserved.</p>
-          </div>
         </div>
-        <div class="col-md-3">
-          <div class="collapse navbar-collapse">
-            <p>このサイトについて</p>
-            <ul class="nav nav nav-pills nav-stacked">
-              <li><%= link_to "- トップページ", root_path %></li>
-              <li><%= link_to "- 利用規約", terms_path %></li>
-              <li><%= link_to "- プライバシーポリシー", privacypolicy_path %></li>
-            </ul>
-          </div>
+        <div class="col-md-3 col-xs-6">
+          <p>このサイトについて</p>
+          <ul class="nav nav nav-pills nav-stacked">
+            <li><%= link_to "- トップページ", root_path %></li>
+            <li><%= link_to "- 利用規約", terms_path %></li>
+            <li><%= link_to "- プライバシーポリシー", privacypolicy_path %></li>
+          </ul>
         </div>
-        <div class="col-md-3">
-          <div class="collapse navbar-collapse">
-            <p>一覧ページ</p>
-            <ul class="nav nav nav-pills nav-stacked">
-              <li><%= link_to "- ユーザー一覧", users_path %></li>
-              <li><%= link_to "- チャンネル一覧", channels_path %></li>
-              <li><%= link_to "- 高評価動画一覧", videos_path %></li>
-              <li><%= link_to "- 投稿一覧", contents_path %></li>
-              <li><%= link_to "- 新着コンテンツ一覧", recent_content_path %></li>
-            </ul>
-          </div>
+        <div class="col-md-3 col-xs-6">
+          <p>一覧ページ</p>
+          <ul class="nav nav nav-pills nav-stacked">
+            <li><%= link_to "- ユーザー一覧", users_path %></li>
+            <li><%= link_to "- チャンネル一覧", channels_path %></li>
+            <li><%= link_to "- 高評価動画一覧", videos_path %></li>
+            <li><%= link_to "- 投稿一覧", contents_path %></li>
+            <li><%= link_to "- 新着コンテンツ一覧", recent_content_path %></li>
+          </ul>
         </div>
-        <div class="col-md-3">
-          <div class="collapse navbar-collapse">
-            <p>製作者について(外部サイト)</p>
-            <ul class="nav nav nav-pills nav-stacked">
-              <li><%= link_to "- GitHub", '#' %></li>
-              <li><%= link_to "- Qiita", '#' %></li>
-              <li><%= link_to "- wantedly", '#' %></li>
-            </ul>
-          </div>
+        <div class="col-md-3 pc">
+          <p>製作者について(外部サイト)</p>
+          <ul class="nav nav nav-pills nav-stacked">
+            <li><%= link_to "- GitHub", '#' %></li>
+            <li><%= link_to "- Qiita", '#' %></li>
+            <li><%= link_to "- wantedly", '#' %></li>
+          </ul>
+        </div>
+        <div class='copyright'>
+          <p>Copyright © 2023. nao All Rights reserved.</p>
         </div>
       </div>
     </div>

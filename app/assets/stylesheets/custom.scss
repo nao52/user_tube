@@ -2,6 +2,10 @@
 @import "bootstrap";
 @import "font-awesome";
 
+.smart-phone {
+  display: none;
+}
+
 .mt-30 {
   margin-top: 30px;
 }
@@ -25,13 +29,27 @@ a {
 header {
   position: fixed;
   width: 100%;
-  z-index: 2;
+  z-index: 5;
+  nav {
+    height: 50px;
+  }
+  .pull-right > ul {
+    margin: 0 auto;
+  }
   a {
     font-size: 20px;
+    padding: 15px;
+    margin: 0 10px;
   }
   .navbar-brand {
     font-size: 20px;
   }
+  #account-name {
+    display: block;
+    padding: 15px 30px;
+    height: 50px;
+  }
+  
 }
 
 .sidebar {
@@ -47,14 +65,17 @@ header {
 }
 
 .main {
-  padding-top: 70px;
+  padding-top: 50px;
   min-height: calc(100vh - 263px);
 }
 
 footer {
   width: 100%;
+  position: relative;
+  margin-top: 15px;
   .navbar {
     margin-bottom: 0;
+    padding-top: 10px;
   }
   p {
     font-size: 20px;
@@ -62,14 +83,9 @@ footer {
   a {
     font-size: 16px;
   }
-  .col-md-3 {
-    height: 261px;
-    padding-top: 5px;
-  }
   .footer-item {
     display:flex;
     flex-flow: column;
-    justify-content:space-between;
     p {
       font-size: 16px;
     }
@@ -78,7 +94,9 @@ footer {
     }
   }
   .copyright {
-    margin-top: auto;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
     p {
       font-size: 14px;
     }
@@ -91,13 +109,10 @@ footer {
 
 .user-info {
   display: inline-block;
-  width: 82%;
 }
 
 .follow-btn {
   display: inline-block;
-  width: 15%;
-  text-align: right;
 }
 
 .form-group.categories {
@@ -174,6 +189,7 @@ footer {
 
 .pagination>.active>a {     
   background: #93c9ff;
+  z-index: 1;
 }
 
 /* ユーザー一覧 */
@@ -340,7 +356,7 @@ footer {
   display: flex;
   margin: 20px 0;
   .video-info, .playlist-info {
-    margin-left: 10px;
+    margin-left: 20px;
     p, pre {
       font-size: 20px;
     }
@@ -575,6 +591,8 @@ footer {
 
 .dropdown-menu.active {
   display: block;
+  position: absolute;
+  left: -90px;
 }
 
 /* Googleログインボタン */
@@ -686,4 +704,113 @@ footer {
     background-color: #303030;
     opacity: 8%;
   }  
+}
+
+/* スマートフォン */
+@media only screen and (max-width: 544px) {
+  .pc {
+    display: none;
+  }
+  .smart-phone {
+    display: block;
+  }
+  .main {
+    padding-top: 100px;
+  }
+
+  /* ヘッダー */
+  header {
+    .navbar-default {
+      margin-bottom: 0;
+    }
+    #navbar-menu.in {
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      float: right;
+    }
+    a {
+      text-align: center;
+    }
+  }
+  .site-link {
+    z-index: 2;
+    position: fixed;
+    display: flex;
+    top: 50px;
+    background-color: rgb(240, 240, 240);
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    div {
+      padding: 20px 10px;
+      a {
+        display: block;
+      }
+      a.active {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  /* フッター */
+  footer {
+    .footer-item {
+      text-align: center;
+      border-bottom: solid #ccc .5px;
+      p {
+        font-size: 14px;
+      }
+      .footer-title {
+        font-size: 18px;
+      }
+    }
+    .col-xs-6 {
+      padding-top: 10px;
+      margin-bottom: 50px;
+      height: 200px;
+      p {
+        display: none;
+      }
+      li > a {
+        font-size: 12px;
+        width: 100%;
+      }
+    }
+    .copyright {
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+    }
+  }
+
+  /* メイン */
+  .main {
+    .images {
+      img {
+        width: 250px;
+        height: 250px;
+      }
+    }
+    .try-link {
+      font-size: 20px;
+    }
+  }
+
+  /* チャンネル一覧 */
+  .channels > .channel {
+    width: 100%;
+  }
+
+  /* 動画一覧 */
+  .video, .playlist {
+    flex-flow: column;
+    .video-info {
+      margin: 0;
+      .btn {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+  }
 }
