@@ -1,12 +1,14 @@
 <div class="user-card">
-  <div class="user-info">
-    <%= link_to videos_user_path(user) do %>
-      <%= image_tag(user.avatar_url, class: "img-circle", size: '50x50') %>
-      <span id="user-name-<%= user.id %>" class="user-name"><%= user.name %></span>
-    <% end %>
-  </div>
-  <div class="follow-btn">
-    <%= render 'users/follow_btn', user: user unless current_user?(user) %>
+  <div class="row">
+    <div class="user-info col-md-9 col-xs-7">
+      <%= link_to videos_user_path(user) do %>
+        <%= image_tag(user.avatar_url, class: "img-circle", size: '50x50') %>
+        <span id="user-name-<%= user.id %>" class="user-name"><%= user.name %></span>
+      <% end %>
+    </div>
+    <div class="follow-btn col-md-3 col-xs-5">
+      <%= render 'users/follow_btn', user: user unless current_user?(user) %>
+    </div>
   </div>
   <div class="profile">
     <pre><%= user.profile if user.profile %></pre>
