@@ -39,6 +39,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    User.find(params[:id]).destroy!
+    redirect_to root_url, status: :see_other, success: t('.success')
+  end
+
   def confirm
     params[:user] = flash[:user_params]
     return redirect_to root_url if params[:user].nil?

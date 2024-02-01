@@ -20,6 +20,7 @@
             <%= link_to "プロフィールを編集", edit_user_path(current_user), class: "btn btn-default btn-block" %>
             <%= link_to "好きなチャンネルの編集", edit_best_channels_path, id: "edit-best-channels", class: "btn btn-default btn-block" %>
             <%= link_to "好きな動画の編集", edit_best_videos_path, id: "edit-best-videos", class: "btn btn-default btn-block hidden" %>
+            <%= link_to "ユーザーの削除", '#', data: { "turbo-method": :delete, turbo_confirm: "ユーザーの削除を行います。投稿やユーザープロフィールといったすべてのデータが削除されます。よろしいですか？" }, class: "btn btn-danger btn-block" %>
           <% end %>
         </div>
       </div>

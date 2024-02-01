@@ -18,15 +18,13 @@ document.addEventListener("turbo:load", function() {
   if (hamburger !== null) {
     hamburger.addEventListener("click", function(event) {
       event.preventDefault();
-
       const navbarMenu = document.querySelector("#navbar-menu");
-      const is_menu_visible = navbarMenu.classList.contains("in");
-
-      if (is_menu_visible) {
-        navbarMenu.classList.remove("in");
-      } else {
-        navbarMenu.classList.add("in");
-      }
+      navbarMenu.classList.toggle("in");
+      document.addEventListener("click", function(event) {
+        if(event.target.closest('header') === null) {
+          navbarMenu.classList.remove("in");
+        }
+      });
     });
   }
 });
