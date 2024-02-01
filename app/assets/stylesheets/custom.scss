@@ -67,6 +67,9 @@ header {
 .main {
   padding-top: 50px;
   min-height: calc(100vh - 263px);
+  .container-fluid > .row > .col-md-10 {
+    margin-top: 20px;
+  }
 }
 
 footer {
@@ -727,6 +730,14 @@ footer {
   .main {
     padding-top: 100px;
   }
+  h1 {
+    font-size: 24px;
+  }
+
+  /* バンくずリスト */
+  .breadcrumb > li {
+    font-size: 12px;
+  }
 
   /* ヘッダー */
   header {
@@ -820,6 +831,84 @@ footer {
       .btn {
         width: 100%;
         margin-left: 0;
+      }
+    }
+  }
+
+  /* ユーザー詳細ページ */
+  .user-status {
+    .col-md-9 {
+      margin-top: 15px;
+      p {
+        font-size: 14px;
+      }
+    }
+    .col-xs-6 {
+      .following-link {
+        margin-top: 5px;
+        a {
+          font-size: 12px;
+        }
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+    .col-xs-12 {
+      margin-top: 15px;
+    }
+  }
+  .user-contents-link {
+    display: flex;
+    li {
+      font-size: 10px;
+      width: 25%;
+      a {
+        padding: 10px 5px;
+      }
+    }
+  }
+  .best-contents-link, .follow-users-link {
+    display: flex;
+    li {
+      width: 50%;
+    }
+  }
+  .best-videos {
+    .best-video {
+      display: block;
+    }
+  }
+
+  /* 動画の公開設定 */
+  .setting-videos {
+    .setting-video {
+      height: 350px;
+      flex: 0 0 calc(100%);
+      img {
+        width: 60%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  /* チャンネルの公開設定 */
+  .setting-channel {
+    height: 150px;
+    flex: 0 0 calc(49% - 10px);
+  }
+
+  /* プレイリストの公開設定 */
+  .setting-playlists {
+    .setting-playlist {
+      flex: 0 0 calc(100%);
+      img {
+        width: 60%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
       }
     }
   }

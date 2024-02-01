@@ -9,7 +9,7 @@ class BestVideosController < ApplicationController
   def update
     videos = Video.find([params[:video][:best1], params[:video][:best2], params[:video][:best3]])
     if @user.update_favorite_videos(videos)
-      redirect_to videos_user_url(@user), success: t('.success')
+      redirect_to @user, success: t('.success')
     else
       @best_videos = @user.favorite_videos.order(rank: :asc)
       flash.now[:danger] = t('.danger')
