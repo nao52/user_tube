@@ -10,6 +10,7 @@ class SearchVideosForm
 
     relation = relation.by_category(category_id) if category_title.present?
     description_words.each do |word|
+      word.downcase!
       relation = relation.description_contain(word)
     end
     relation

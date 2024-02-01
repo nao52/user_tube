@@ -14,6 +14,7 @@ class SearchUsersForm
     relation = relation.by_category(category_id) if category_title.present?
     relation = relation.by_channel(channel_id) if channel_id.present?
     names.each do |name|
+      name.downcase!
       relation = relation.name_contain(name)
     end
     relation

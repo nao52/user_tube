@@ -51,7 +51,7 @@ class User < ApplicationRecord
   scope :by_age, ->(age) { where(age:) }
   scope :by_category, ->(category_id) { joins(:user_categories).merge(where(user_categories: { category_id: })) }
   scope :by_channel, ->(channel_id) { joins(:subscription_channels).merge(where(subscription_channels: { channel_id: })) }
-  scope :name_contain, ->(name) { where('name LIKE ?', "%#{name}%") }
+  scope :name_contain, ->(name) { where('LOWER(name) LIKE ?', "%#{name}%") }
 
   def subscription_channels_with_public
     subscription_channels_channel_ids = subscription_channels.where(is_public: true).map(&:channel_id)
