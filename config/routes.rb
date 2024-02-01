@@ -19,7 +19,10 @@ Rails.application.routes.draw do
       get :edit_best, :channels, :videos, :playlists, :contents, :following, :follower
     end
   end
-  resources :password_resets, only: %i[new create edit update]
+
+  # 本番環境でメールサーバーの契約予定がないため削除
+  # resources :password_resets, only: %i[new create edit update]
+  
   resources :relationships, only: %i[create destroy]
   resources :channels, only: %i[index show], shallow: true do
     resources :channel_comments, only: %i[new create edit update destroy]
