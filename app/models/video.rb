@@ -15,7 +15,7 @@ class Video < ApplicationRecord
   scope :with_users, -> { joins(:popular_videos).merge(where(popular_videos: { video_id: ids })) }
   scope :recent_and_with_users, -> { where('videos.created_at >= ?', 3.days.ago.beginning_of_day).joins(:users).group('videos.id').having('COUNT(users.id) > 0') }
   scope :by_category, ->(category_id) { where(category_id:) }
-  scope :description_contain, ->(word) { where('description LIKE ?', "%#{word}%") }
+  scope :description_contain, ->(word) { where('LOWER(description) LIKE ?', "%#{word}%") }
 
   def users_with_public
     popular_videos_user_ids = popular_videos.where(is_public: true).map(&:user_id)

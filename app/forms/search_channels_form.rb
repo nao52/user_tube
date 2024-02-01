@@ -9,9 +9,11 @@ class SearchChannelsForm
     relation = Channel.distinct.with_users
 
     names.each do |name|
+      name.downcase!
       relation = relation.name_contain(name)
     end
     description_words.each do |word|
+      word.downcase!
       relation = relation.description_contain(word)
     end
     relation
