@@ -67,6 +67,9 @@ header {
 .main {
   padding-top: 50px;
   min-height: calc(100vh - 263px);
+  .container-fluid > .row > .col-md-10 {
+    margin-top: 20px;
+  }
 }
 
 footer {
@@ -820,6 +823,16 @@ footer {
       .btn {
         width: 100%;
         margin-left: 0;
+      }
+    }
+  }
+
+  /* ユーザー詳細ページ */
+  .user-status {
+    .col-md-9 {
+      margin-top: 15px;
+      p {
+        font-size: 14px;
       }
     }
   }
