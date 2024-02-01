@@ -9,7 +9,7 @@ class BestChannelsController < ApplicationController
   def update
     channels = Channel.find([params[:channel][:best1], params[:channel][:best2], params[:channel][:best3]])
     if @user.update_favorite_channels(channels)
-      redirect_to channels_user_url(@user), success: t('.success')
+      redirect_to @user, success: t('.success')
     else
       @best_channels = @user.favorite_channels.order(rank: :asc)
       flash.now[:danger] = t('.danger')

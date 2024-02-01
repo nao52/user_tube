@@ -730,6 +730,14 @@ footer {
   .main {
     padding-top: 100px;
   }
+  h1 {
+    font-size: 24px;
+  }
+
+  /* バンくずリスト */
+  .breadcrumb > li {
+    font-size: 12px;
+  }
 
   /* ヘッダー */
   header {
@@ -834,6 +842,41 @@ footer {
       p {
         font-size: 14px;
       }
+    }
+    .col-xs-6 {
+      .following-link {
+        margin-top: 5px;
+        a {
+          font-size: 12px;
+        }
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+    .col-xs-12 {
+      margin-top: 15px;
+    }
+  }
+  .user-contents-link {
+    display: flex;
+    li {
+      font-size: 10px;
+      width: 25%;
+      a {
+        padding: 10px 5px;
+      }
+    }
+  }
+  .best-contents-link, .follow-users-link {
+    display: flex;
+    li {
+      width: 50%;
+    }
+  }
+  .best-videos {
+    .best-video {
+      display: block;
     }
   }
 

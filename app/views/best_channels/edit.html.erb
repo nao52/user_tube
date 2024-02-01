@@ -21,7 +21,7 @@
           </div>
         <% end %>
       <% end %>
-      <%= link_to 'キャンセル', channels_user_path(@user), class: "btn btn-default btn-block" %>
+      <%= link_to 'キャンセル', @user, class: "btn btn-default btn-block" %>
       <%= f.submit '更新する', class: "btn btn-primary btn-block" %>
     <% end %>
   </div>
