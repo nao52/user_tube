@@ -836,4 +836,37 @@ footer {
       }
     }
   }
+
+  /* 動画の公開設定 */
+  .setting-videos {
+    .setting-video {
+      height: 350px;
+      flex: 0 0 calc(100%);
+      img {
+        width: 60%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  /* チャンネルの公開設定 */
+  .setting-channel {
+    height: 150px;
+    flex: 0 0 calc(49% - 10px);
+  }
+
+  /* プレイリストの公開設定 */
+  .setting-playlists {
+    .setting-playlist {
+      flex: 0 0 calc(100%);
+      img {
+        width: 60%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
 }
