@@ -595,6 +595,16 @@ footer {
   left: -90px;
 }
 
+/* Google API サービスポリシーへのリンク */
+.google-api-policy {
+  color: blue;
+  text-decoration: underline;
+  &:hover {
+    color: red;
+    text-decoration: underline;
+  }
+}
+
 /* Googleログインボタン */
 .google-login-btn {
   display: flex;
