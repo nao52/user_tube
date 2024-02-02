@@ -1,6 +1,4 @@
 class ContentFavoritesController < ApplicationController
-  before_action :require_login, only: %i[create destroy]
-
   def create
     @content = Content.find(params[:content_id])
     current_user.like_content(@content)

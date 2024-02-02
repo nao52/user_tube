@@ -1,4 +1,6 @@
 class ChannelsController < ApplicationController
+  skip_before_action :require_login
+
   def index
     @search_channels_form = SearchChannelsForm.new(search_params)
     @channels = @search_channels_form.search.order(created_at: :desc).page(params[:page])

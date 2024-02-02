@@ -1,5 +1,5 @@
 class PasswordResetsController < ApplicationController
-  before_action :require_not_login
+  skip_before_action :require_login
 
   def new; end
 

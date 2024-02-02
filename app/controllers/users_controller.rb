@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: %i[edit update]
-  before_action :require_not_login, only: %i[new create confirm signup_check]
+  skip_before_action :require_login, only: %i[index show new create confirm signup_check channels videos playlists contents following follower]
   before_action :set_user, only: %i[show update channels videos playlists contents following follower]
 
   def index
