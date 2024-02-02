@@ -1,6 +1,4 @@
 class BestVideosFavoritesController < ApplicationController
-  before_action :require_login, only: %i[create destroy]
-
   def create
     @best_video = BestVideo.find(params[:best_video_id])
     current_user.like_best_video(@best_video)

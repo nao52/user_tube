@@ -1,6 +1,4 @@
 class RelationshipsController < ApplicationController
-  before_action :require_login
-
   def create
     @followed_user = User.find(params[:followed_id])
     current_user.follow(@followed_user)

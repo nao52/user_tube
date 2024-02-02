@@ -1,6 +1,4 @@
 class BestChannelsFavoritesController < ApplicationController
-  before_action :require_login, only: %i[create destroy]
-
   def create
     @best_channel = BestChannel.find(params[:best_channel_id])
     current_user.like_best_channel(@best_channel)

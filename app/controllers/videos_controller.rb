@@ -1,4 +1,6 @@
 class VideosController < ApplicationController
+  skip_before_action :require_login
+
   def index
     @search_videos_form = SearchVideosForm.new(search_params)
     @videos = @search_videos_form.search.order(created_at: :desc).page(params[:page]).per(8)

@@ -1,5 +1,4 @@
 class SubscriptionChannelsController < ApplicationController
-  before_action :require_login
   before_action :set_subscription_channels
 
   def edit
