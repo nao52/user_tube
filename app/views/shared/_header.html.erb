@@ -6,10 +6,10 @@
 
 <div class="smart-phone">
   <div class="site-link">
-    <div><%= link_to "ユーザー一覧", users_path, class: "#{"active" if current_page?(users_path)}" %></div>
-    <div><%= link_to "チャンネル一覧", channels_path, class: "#{"active" if current_page?(channels_path)}" %></div>
     <div><%= link_to "高評価動画一覧", videos_path, class: "#{"active" if current_page?(videos_path)}" %></div>
+    <div><%= link_to "チャンネル一覧", channels_path, class: "#{"active" if current_page?(channels_path)}" %></div>
     <div><%= link_to "投稿一覧", contents_path, class: "#{"active" if current_page?(contents_path)}" %></div>
     <div><%= link_to "新着コンテンツ一覧", recent_content_path, class: "#{"active" if current_page?(recent_content_path)}" %></div> 
+    <div><%= link_to "ユーザー一覧", users_path, class: "#{"active" if current_page?(users_path)}" %></div>
   </div>
 </div>
