@@ -13,7 +13,7 @@ class Video < ApplicationRecord
   validates :title, presence: true
 
   scope :with_users, -> { joins(:popular_videos).where(popular_videos: { video_id: ids }) }
-  scope :with_following_users, ->(following_user_ids) { joins(:popular_videos).where(popular_videos: { video_id: ids, user_id: following_user_ids }) }
+  scope :with_following_users, ->(following_user_ids) { joins(:popular_videos).where(popular_videos: { user_id: following_user_ids }) }
   scope :recent_and_with_users, -> { where('videos.created_at >= ?', 3.days.ago.beginning_of_day).joins(:users).group('videos.id').having('COUNT(users.id) > 0') }
   scope :by_category, ->(category_id) { where(category_id:) }
   scope :by_users_generation, ->(users_generation) { joins(:users).where('age BETWEEN ? AND ?', users_generation, users_generation + 9) }

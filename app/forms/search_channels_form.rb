@@ -6,9 +6,11 @@ class SearchChannelsForm
   attribute :description, :string
   attribute :category_title, :string
   attribute :users_generation, :integer
+  attribute :following_user_ids, :string
+  attribute :follow_users, :boolean
 
   def search
-    relation = Channel.distinct.with_users
+    relation = follow_users ? Channel.distinct.with_following_users(following_user_ids.split(',')) : Channel.distinct.with_users
 
     relation = relation.by_category(category_id) if category_title.present?
     relation = relation.by_users_generation(users_generation) if users_generation.present?

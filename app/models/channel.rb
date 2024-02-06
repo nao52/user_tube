@@ -10,7 +10,8 @@ class Channel < ApplicationRecord
   validates :name, presence: true
   validates :subscriber_count, presence: true, numericality: { only_integer: true }
 
-  scope :with_users, -> { joins(:subscription_channels).merge(where(subscription_channels: { channel_id: ids })) }
+  scope :with_users, -> { joins(:subscription_channels).where(subscription_channels: { channel_id: ids }) }
+  scope :with_following_users, ->(following_user_ids) { joins(:subscription_channels).where(subscription_channels: { user_id: following_user_ids }) }
   scope :recent_and_with_users, -> { where('channels.created_at >= ?', 3.days.ago.beginning_of_day).joins(:users).group('channels.id').having('COUNT(users.id) > 0') }
   scope :name_contain, ->(name) { where('LOWER(name) LIKE ?', "%#{name}%") }
   scope :description_contain, ->(word) { where('LOWER(description) LIKE ?', "%#{word}%") }

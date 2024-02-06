@@ -17,6 +17,6 @@ class ChannelsController < ApplicationController
   private
 
   def search_params
-    params[:q]&.permit(:name, :description, :category_title, :users_generation)
+    params[:q]&.permit(:name, :description, :category_title, :users_generation, :following_user_ids, :follow_users)
   end
 end
