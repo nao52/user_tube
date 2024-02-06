@@ -3,7 +3,7 @@ class VideosController < ApplicationController
 
   def index
     @search_videos_form = SearchVideosForm.new(search_params)
-    @videos = @search_videos_form.search.order(created_at: :desc).page(params[:page]).per(8)
+    @videos = @search_videos_form.search.user_count_order.page(params[:page]).per(8)
   end
 
   def show
@@ -16,6 +16,6 @@ class VideosController < ApplicationController
   private
 
   def search_params
-    params[:q]&.permit(:description, :category_title)
+    params[:q]&.permit(:channel_name, :description, :category_title, :users_generation, :following_user_ids, :follow_users)
   end
 end

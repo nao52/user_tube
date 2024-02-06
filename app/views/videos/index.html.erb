@@ -7,6 +7,11 @@
       <p>高評価動画の絞り込み</p>
       <div class="row">
         <%= form_with model: @search_videos_form, scope: :q, url: videos_path, method: :get do |f| %>
+          <div class="col-md-4 col-md-offset-1 form-group">
+            <%= f.label :channel_name, "チャンネル名" %>
+            <%= f.search_field :channel_name, class: "form-control" %>
+          </div>
+
           <div class="col-md-4 col-md-offset-2 form-group">
             <%= f.label :description, "内容" %>
             <%= f.search_field :description, class: "form-control" %>
@@ -16,6 +21,20 @@
             <%= f.label :category_title, "興味のあるジャンル" %>
             <%= f.select :category_title, Category.titles_i18n.invert.to_a, { include_blank: "興味のあるジャンル" }, class: "form-control" %>
           </div>
+
+          <div class="col-md-4 col-md-offset-2 form-group">
+            <%= f.label :users_generation, "登録ユーザの年齢" %>
+            <%= f.select :users_generation, options_for_select(generations_hash, selected: @search_videos_form.users_generation), { include_blank: "年齢" }, class: "form-control" %>
+          </div>
+
+          <% if logged_in? %>
+            <div class="col-md-6 col-md-offset-3 form-group">
+              <%= f.hidden_field :follow_users, value: false, id: nil %>
+              <%= f.hidden_field :following_user_ids, value: current_user.following_ids.join(','), id: nil %>
+              <%= f.check_box :follow_users, { checked: @search_videos_form.follow_users }, true, false %>
+              <%= f.label :follow_users, "フォローユーザーが高評価している動画のみ表示", class: "form-label" %>
+            </div>
+          <% end %>
 
           <div class="col-md-6 col-md-offset-3">
             <div class="row">
@@ -27,7 +46,7 @@
       </div>
     </div>
 
-    <% if @videos.size > 0 %>
+    <% if @videos.length > 0 %>
       <span class="text-center"><%= paginate @videos, theme: 'bootstrap-5' %></span>
       <%= render @videos %>
       <span class="text-center"><%= paginate @videos, theme: 'bootstrap-5' %></span>

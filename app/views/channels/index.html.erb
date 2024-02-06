@@ -17,6 +17,25 @@
             <%= f.search_field :description, class: "form-control" %>
           </div>
 
+          <div class="col-md-4 col-md-offset-1 form-group">
+            <%= f.label :category_title, "興味のあるジャンル" %>
+            <%= f.select :category_title, Category.titles_i18n.invert.to_a, { include_blank: "興味のあるジャンル" }, class: "form-control" %>
+          </div>
+
+          <div class="col-md-4 col-md-offset-2 form-group">
+            <%= f.label :users_generation, "登録ユーザの年齢" %>
+            <%= f.select :users_generation, options_for_select(generations_hash, selected: @search_channels_form.users_generation), { include_blank: "年齢" }, class: "form-control" %>
+          </div>
+
+          <% if logged_in? %>
+            <div class="col-md-6 col-md-offset-3 form-group">
+              <%= f.hidden_field :follow_users, value: false, id: nil %>
+              <%= f.hidden_field :following_user_ids, value: current_user.following_ids.join(','), id: nil %>
+              <%= f.check_box :follow_users, { checked: @search_channels_form.follow_users }, true, false %>
+              <%= f.label :follow_users, "フォローユーザーが登録しているチャンネルのみ表示", class: "form-label" %>
+            </div>
+          <% end %>
+
           <div class="col-md-6 col-md-offset-3">
             <div class="row">
               <div class="col-md-5"><button type="button" id="clear-btn" class="btn btn-defalult btn-block">クリア</button></div>
@@ -27,7 +46,7 @@
       </div>
     </div>
 
-    <% if @channels.size > 0 %>
+    <% if @channels.length > 0 %>
       <span class="text-center"><%= paginate @channels, theme: 'bootstrap-5' %></span>
       <div class="channels"><%= render @channels %></div>
       <span class="text-center"><%= paginate @channels, theme: 'bootstrap-5' %></span>

@@ -3,7 +3,7 @@ class ChannelsController < ApplicationController
 
   def index
     @search_channels_form = SearchChannelsForm.new(search_params)
-    @channels = @search_channels_form.search.order(created_at: :desc).page(params[:page])
+    @channels = @search_channels_form.search.user_count_order.page(params[:page])
   end
 
   def show
@@ -17,6 +17,6 @@ class ChannelsController < ApplicationController
   private
 
   def search_params
-    params[:q]&.permit(:name, :description)
+    params[:q]&.permit(:name, :description, :category_title, :users_generation, :following_user_ids, :follow_users)
   end
 end

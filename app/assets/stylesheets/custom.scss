@@ -381,12 +381,18 @@ footer {
   justify-content: space-between;
   margin-top: 20px;
   .channel {
-    height: 250px;
+    height: 200px;
     width: 48%;
     margin-bottom: 10px;
     padding: 15px;
     .img-circle {
       border: solid .5px;
+    }
+    .channel-name {
+      font-weight: bold;
+    }
+    .channel-info {
+      margin-top: 20px;
     }
     p {
       font-size: 18px;

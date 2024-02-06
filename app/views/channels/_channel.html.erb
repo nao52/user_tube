@@ -6,10 +6,7 @@
     </div>
     <div class="channel-info">
       <p><%= "ジャンル：#{channel.decorate.categories}" if channel.videos.present? %></p>
-      <p>チャンネル登録者数</p>
-      <p><%= "#{number_with_delimiter(channel.subscriber_count, delimiter: ',')}人" %></p>
-      <p>登録ユーザー数</p>
-      <p><%= "#{number_with_delimiter(channel.users.size, delimiter: ',')}人" %></p>
+      <p><%= "登録ユーザー数：#{number_with_delimiter(channel.users.size, delimiter: ',')}人" %></p>
     </div>
   <% end %>
 </div>
