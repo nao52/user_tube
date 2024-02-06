@@ -18,6 +18,8 @@ class Channel < ApplicationRecord
   scope :by_category, ->(category_id) { joins(:videos).where(videos: { category_id: }) }
   scope :by_users_generation, ->(users_generation) { joins(:users).where('age BETWEEN ? AND ?', users_generation, users_generation + 9) }
 
+  scope :user_count_order, -> { joins(:users).group('channels.id').order('COUNT(users.id) DESC, created_at DESC') }
+
   def users_with_public
     subscription_channels_user_ids = subscription_channels.where(is_public: true).map(&:user_id)
     users.where(id: subscription_channels_user_ids)

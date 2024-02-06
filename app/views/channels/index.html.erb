@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <% if @channels.size > 0 %>
+    <% if @channels.length > 0 %>
       <span class="text-center"><%= paginate @channels, theme: 'bootstrap-5' %></span>
       <div class="channels"><%= render @channels %></div>
       <span class="text-center"><%= paginate @channels, theme: 'bootstrap-5' %></span>
