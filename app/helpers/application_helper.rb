@@ -12,4 +12,16 @@ module ApplicationHelper
     current_path = "#{controller.controller_path}##{controller.action_name}"
     str.map { |s| current_path.include?(s) }.include?(true)
   end
+
+  def generations_hash
+    generations_hash = {}
+
+    (1..9).each do |i|
+      age = i * 10
+      key = "#{age}代".to_sym
+      generations_hash[key] = age
+    end
+
+    generations_hash
+  end
 end
