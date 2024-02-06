@@ -4,9 +4,14 @@ class SearchChannelsForm
 
   attribute :name, :string
   attribute :description, :string
+  attribute :category_title, :string
+  attribute :users_generation, :integer
 
   def search
     relation = Channel.distinct.with_users
+
+    relation = relation.by_category(category_id) if category_title.present?
+    relation = relation.by_users_generation(users_generation) if users_generation.present?
 
     names.each do |name|
       name.downcase!
@@ -20,6 +25,10 @@ class SearchChannelsForm
   end
 
   private
+
+  def category_id
+    Category.find_by(title: category_title).id
+  end
 
   def names
     name.present? ? name.split(nil) : []

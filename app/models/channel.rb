@@ -14,6 +14,8 @@ class Channel < ApplicationRecord
   scope :recent_and_with_users, -> { where('channels.created_at >= ?', 3.days.ago.beginning_of_day).joins(:users).group('channels.id').having('COUNT(users.id) > 0') }
   scope :name_contain, ->(name) { where('LOWER(name) LIKE ?', "%#{name}%") }
   scope :description_contain, ->(word) { where('LOWER(description) LIKE ?', "%#{word}%") }
+  scope :by_category, ->(category_id) { joins(:videos).where(videos: { category_id: }) }
+  scope :by_users_generation, ->(users_generation) { joins(:users).where('age BETWEEN ? AND ?', users_generation, users_generation + 9) }
 
   def users_with_public
     subscription_channels_user_ids = subscription_channels.where(is_public: true).map(&:user_id)
