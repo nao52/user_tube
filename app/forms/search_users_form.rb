@@ -3,14 +3,14 @@ class SearchUsersForm
   include ActiveModel::Attributes
 
   attribute :name, :string
-  attribute :age, :integer
+  attribute :users_generation, :integer
   attribute :category_title, :string
   attribute :channel_id, :integer
 
   def search
     relation = User.distinct
 
-    relation = relation.by_age(age) if age.present?
+    relation = relation.by_users_generation(users_generation) if users_generation.present?
     relation = relation.by_category(category_id) if category_title.present?
     relation = relation.by_channel(channel_id) if channel_id.present?
     names.each do |name|

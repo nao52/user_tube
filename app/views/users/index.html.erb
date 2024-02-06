@@ -13,8 +13,8 @@
           </div>
 
           <div class="col-md-4 col-md-offset-2 form-group">
-            <%= f.label :age, "年齢" %>
-            <%= f.select :age, (14..100).to_a, { include_blank: "年齢(14〜100で選択できます)" }, class: "form-control" %>
+            <%= f.label :users_generation, "登録ユーザの年齢" %>
+            <%= f.select :users_generation, options_for_select(generations_hash, selected: @search_users_form.users_generation), { include_blank: "年齢" }, class: "form-control" %>
           </div>
 
           <div class="col-md-4 col-md-offset-1 form-group">

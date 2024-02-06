@@ -47,7 +47,7 @@ class User < ApplicationRecord
   # 性別 { 回答なし: 0, 男性: 1, 女性: 2, その他: 9 }
   enum gender: { not_known: 0, male: 1, female: 2, not_applicabel: 9 }
 
-  scope :by_age, ->(age) { where(age:) }
+  scope :by_users_generation, ->(users_generation) { where('age BETWEEN ? AND ?', users_generation, users_generation + 9) }
   scope :by_category, ->(category_id) { joins(:user_categories).merge(where(user_categories: { category_id: })) }
   scope :by_channel, ->(channel_id) { joins(:subscription_channels).merge(where(subscription_channels: { channel_id: })) }
   scope :name_contain, ->(name) { where('LOWER(name) LIKE ?', "%#{name}%") }
