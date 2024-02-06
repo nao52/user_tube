@@ -8,7 +8,7 @@
     <% end %>
     <p class="video-user"><%= "高評価しているユーザー数：#{number_with_delimiter(video.users.count, delimiter: ',')}人" %></p>
     <p class="video-category"><%= "ジャンル：#{video.category.title_i18n}" %></p>
-    <%= link_to video.channel do %>
+    <%= link_to users_channel_path(video.channel) do %>
       <p><%= "チャンネル名：#{video.channel.name}" %></p>
     <% end %>
     <%= link_to "動画のレビューを投稿する", new_content_path(video_url: video.video_id), class: "btn btn-primary" if logged_in? && current_user.videos.include?(video) %>

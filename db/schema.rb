@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_15_040131) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_06_090324) do
   create_table "best_channels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "channel_id", null: false
@@ -116,24 +116,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_15_040131) do
   end
 
   create_table "playlist_videos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "playlist_id", null: false
+    t.bigint "user_playlist_id", null: false
     t.bigint "video_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["playlist_id"], name: "index_playlist_videos_on_playlist_id"
+    t.index ["user_playlist_id"], name: "index_playlist_videos_on_user_playlist_id"
     t.index ["video_id"], name: "index_playlist_videos_on_video_id"
-  end
-
-  create_table "playlists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "playlist_id", null: false
-    t.string "title"
-    t.text "description"
-    t.boolean "is_public", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["playlist_id"], name: "index_playlists_on_playlist_id", unique: true
-    t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
   create_table "popular_videos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -174,6 +162,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_15_040131) do
     t.index ["category_id"], name: "index_user_categories_on_category_id"
     t.index ["user_id", "category_id"], name: "index_user_categories_on_user_id_and_category_id", unique: true
     t.index ["user_id"], name: "index_user_categories_on_user_id"
+  end
+
+  create_table "user_playlists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "playlist_id", null: false
+    t.string "title"
+    t.text "description"
+    t.boolean "is_public", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["playlist_id"], name: "index_user_playlists_on_playlist_id", unique: true
+    t.index ["user_id"], name: "index_user_playlists_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -239,15 +239,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_15_040131) do
   add_foreign_key "content_favorites", "users"
   add_foreign_key "contents", "users"
   add_foreign_key "contents", "videos"
-  add_foreign_key "playlist_videos", "playlists"
+  add_foreign_key "playlist_videos", "user_playlists"
   add_foreign_key "playlist_videos", "videos"
-  add_foreign_key "playlists", "users"
   add_foreign_key "popular_videos", "users"
   add_foreign_key "popular_videos", "videos"
   add_foreign_key "subscription_channels", "channels"
   add_foreign_key "subscription_channels", "users"
   add_foreign_key "user_categories", "categories"
   add_foreign_key "user_categories", "users"
+  add_foreign_key "user_playlists", "users"
   add_foreign_key "video_comments", "users"
   add_foreign_key "video_comments", "videos"
   add_foreign_key "videos", "categories"

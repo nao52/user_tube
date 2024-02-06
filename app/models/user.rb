@@ -30,7 +30,7 @@ class User < ApplicationRecord
   has_many :like_best_videos, through: :best_videos_favorites, source: :best_video
   has_many :user_categories, dependent: :destroy
   has_many :categories, through: :user_categories, source: :category
-  has_many :playlists, dependent: :destroy
+  has_many :playlists, class_name: 'UserPlaylist', dependent: :destroy
 
   validates :password, presence: true, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

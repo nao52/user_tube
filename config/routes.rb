@@ -44,5 +44,5 @@ Rails.application.routes.draw do
   resource :subscription_channels, only: %i[edit update]
   resource :popular_videos, only: %i[edit update]
   resource :recent_content, only: %i[show]
-  resource :playlists, only: %i[edit update]
+  resource :user_playlists, only: %i[edit update]
 end
