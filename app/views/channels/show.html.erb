@@ -20,14 +20,12 @@
       <p><%= @channel.description %></p>
     </div>
 
-    <div class="channel-link">
-      <ul class="nav nav-tabs nav-justified">
-        <li role="presentation" id="channel-user-link" class=<%= "active" if @link == 'user' %>><%= link_to "ユーザー一覧", channel_path(@channel, link: 'user') %></li>
-        <li role="presentation" id="channel-video-link" class=<%= "active" if @link == 'favorite_video' %>><%= link_to "高評価された動画", channel_path(@channel, link: 'favorite_video') %></li>
-        <li role="presentation" id="channel-comment-link" class=<%= "active" if @link == 'comment' %>><%= link_to "コメント一覧", channel_path(@channel) %></li>
-        <li role="presentation" id="channel-video-link" class=<%= "active" if @link == 'video' %>><%= link_to "動画一覧", channel_path(@channel, link: 'video') %></li>
-      </ul>
-    </div>
+    <ul class="nav nav-tabs nav-justified channel-link">
+      <li role="presentation" id="channel-user-link" class=<%= "active" if @link == 'user' %>><%= link_to "ユーザー一覧", channel_path(@channel, link: 'user') %></li>
+      <li role="presentation" id="channel-video-link" class=<%= "active" if @link == 'favorite_video' %>><%= link_to "高評価された動画", channel_path(@channel, link: 'favorite_video') %></li>
+      <li role="presentation" id="channel-comment-link" class=<%= "active" if @link == 'comment' %>><%= link_to "コメント一覧", channel_path(@channel) %></li>
+      <li role="presentation" id="channel-video-link" class=<%= "active" if @link == 'video' %>><%= link_to "動画一覧", channel_path(@channel, link: 'video') %></li>
+    </ul>
 
     <div class="channel-contents">
       <%= render 'channel_comments/channel_comments' if @link == 'comment' %>

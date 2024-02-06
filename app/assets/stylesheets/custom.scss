@@ -943,4 +943,25 @@ footer {
       }
     }
   }
+
+  /* チャンネル詳細 */
+  .channel-detail {
+    text-align: center;
+    height: auto;
+  }
+  .channel-description {
+    h2 {
+      text-align: center;
+    }
+  }
+  .channel-link {
+    display: flex;
+    li {
+      width: 25%;
+      a {
+        font-size: 10px;
+        padding: 10px 5px;
+      }
+    }
+  }
 }
