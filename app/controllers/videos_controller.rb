@@ -16,6 +16,6 @@ class VideosController < ApplicationController
   private
 
   def search_params
-    params[:q]&.permit(:channel_name, :description, :category_title, :users_generation)
+    params[:q]&.permit(:channel_name, :description, :category_title, :users_generation, :following_user_ids, :follow_users)
   end
 end

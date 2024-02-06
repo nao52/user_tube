@@ -27,6 +27,15 @@
             <%= f.select :users_generation, options_for_select(generations_hash, selected: @search_videos_form.users_generation), { include_blank: "年齢" }, class: "form-control" %>
           </div>
 
+          <% if logged_in? %>
+            <div class="col-md-6 col-md-offset-3 form-group">
+              <%= f.hidden_field :follow_users, value: false, id: nil %>
+              <%= f.hidden_field :following_user_ids, value: current_user.following_ids.join(','), id: nil %>
+              <%= f.check_box :follow_users, { checked: @search_videos_form.follow_users }, true, false %>
+              <%= f.label :follow_users, "フォローユーザーが高評価している動画のみ表示", class: "form-label" %>
+            </div>
+          <% end %>
+
           <div class="col-md-6 col-md-offset-3">
             <div class="row">
               <div class="col-md-5"><button type="button" id="clear-btn" class="btn btn-defalult btn-block">クリア</button></div>

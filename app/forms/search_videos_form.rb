@@ -6,9 +6,11 @@ class SearchVideosForm
   attribute :category_title, :string
   attribute :description, :string
   attribute :users_generation, :integer
+  attribute :following_user_ids, :string
+  attribute :follow_users, :boolean
 
   def search
-    relation = Video.distinct.with_users
+    relation = follow_users ? Video.distinct.with_following_users(following_user_ids.split(',')) : Video.distinct.with_users
 
     relation = relation.by_category(category_id) if category_title.present?
     relation = relation.by_users_generation(users_generation) if users_generation.present?
