@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <% if @videos.size > 0 %>
+    <% if @videos.length > 0 %>
       <span class="text-center"><%= paginate @videos, theme: 'bootstrap-5' %></span>
       <%= render @videos %>
       <span class="text-center"><%= paginate @videos, theme: 'bootstrap-5' %></span>
