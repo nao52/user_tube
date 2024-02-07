@@ -4,39 +4,34 @@
   <div class="col-md-10 col-md-offset-1">
 
     <div class="channel-detail">
-      <div class="col-md-5">
-        <%= image_tag @channel.thumbnail_url, class: "img-circle", size: '300x300' if @channel.thumbnail_url %>
+      <div class="col-md-4">
+        <%= image_tag @channel.thumbnail_url, class: "img-circle", size: '200x200' if @channel.thumbnail_url %>
       </div>
-      <div class="col-md-7">
-        <div class="mt-30">
-          <h1 id="channel-name-<%= @channel.id %>"><%= @channel.name %></h1>
-          <p>ジャンル</p>
-          <p>恋愛/漫画</p>
-          <p>チャンネル登録者数</p>
-          <p><%= "#{number_with_delimiter(@channel.subscriber_count, delimiter: ',')}人" %></p>
-          <p>登録しているユーザー数</p>
-          <p><%= "#{number_with_delimiter(@channel.users.size, delimiter: ',')}人" %></p>
-        </div>
+      <div class="col-md-8">
+        <h1 id="channel-name-<%= @channel.id %>"><%= @channel.name %></h1>
+        <p><%= "ジャンル：#{@channel.decorate.categories}" if @channel.videos.present? %></p>
+        <p><%= "チャンネル登録者数：#{number_with_delimiter(@channel.subscriber_count, delimiter: ',')}人" %></p>
+        <p><%= "登録しているユーザー数：#{number_with_delimiter(@channel.users.size, delimiter: ',')}人" %></p>
       </div>
     </div>
 
     <div class="channel-description">
-      <h2>チャンネル概要説明</h2>
+      <h2>チャンネル概要説明 <span id="show-channel-description">🔽</span></h2>
       <p><%= @channel.description %></p>
     </div>
 
-    <div class="channel-link">
-      <ul class="nav nav-tabs nav-justified">
-        <li role="presentation" id="channel-comment-link" class=<%= "active" if @link == 'comment' %>><%= link_to "コメント一覧", channel_path(@channel) %></li>
-        <li role="presentation" id="channel-video-link" class=<%= "active" if @link == 'video' %>><%= link_to "高評価された動画", channel_path(@channel, link: 'video') %></li>
-        <li role="presentation" id="channel-user-link" class=<%= "active" if @link == 'user' %>><%= link_to "登録しているユーザー一覧", channel_path(@channel, link: 'user') %></li>
-      </ul>
-    </div>
+    <ul class="nav nav-tabs nav-justified channel-link">
+      <li role="presentation" id="channel-user-link" class=<%= "active" if current_page?(users_channel_path) %>><%= link_to "ユーザー一覧", users_channel_path(@channel) %></li>
+      <li role="presentation" id="channel-video-link" class=<%= "active" if current_page?(videos_channel_path) %>><%= link_to "高評価された動画", videos_channel_path(@channel) %></li>
+      <li role="presentation" id="channel-comment-link" class=<%= "active" if current_page?(comments_channel_path) %>><%= link_to "コメント一覧", comments_channel_path(@channel) %></li>
+      <li role="presentation" id="channel-video-link" class=<%= "active" if current_page?(playlists_channel_path) %>><%= link_to "動画一覧", playlists_channel_path(@channel) %></li>
+    </ul>
 
     <div class="channel-contents">
-      <%= render 'channel_comments/channel_comments' if @link == 'comment' %>
-      <%= render 'videos/channel_videos' if @link == 'video' %>
-      <%= render 'users/channel_users' if @link == 'user' %>
+      <%= render 'users/channel_users' if current_page?(users_channel_path) %>
+      <%= render 'videos/channel_videos' if current_page?(videos_channel_path) %>
+      <%= render 'channel_comments/channel_comments' if current_page?(comments_channel_path) %>
+      <%= render 'channel_playlists/channel_playlists' if current_page?(playlists_channel_path) %>
     </div>
   </div>
 </div>

@@ -404,7 +404,13 @@ footer {
 
 /* チャンネル詳細 */
 .channel-detail {
-  height: 380px;
+  height: 250px;
+  padding-top: 20px;
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+  }
   p {
     padding-top: 5px;
     font-size: 20px;
@@ -413,11 +419,22 @@ footer {
 .channel-description {
   h2 {
     padding: 5px;
+    font-size: 20px;
   }
   p {
     border: .5px solid;
-    font-size: 18px;
+    font-size: 16px;
     padding: 5px;
+    display: none;
+  }
+  p.active {
+    display: block;
+  }
+  #show-channel-description {
+    cursor: pointer;
+    &:hover {
+      opacity: .6;
+    }
   }
 }
 .channel-link {
@@ -923,6 +940,27 @@ footer {
         height: auto;
         display: block;
         margin: 0 auto;
+      }
+    }
+  }
+
+  /* チャンネル詳細 */
+  .channel-detail {
+    text-align: center;
+    height: auto;
+  }
+  .channel-description {
+    h2 {
+      text-align: center;
+    }
+  }
+  .channel-link {
+    display: flex;
+    li {
+      width: 25%;
+      a {
+        font-size: 10px;
+        padding: 10px 5px;
       }
     }
   }

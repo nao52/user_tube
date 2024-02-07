@@ -30,7 +30,7 @@ class User < ApplicationRecord
   has_many :like_best_videos, through: :best_videos_favorites, source: :best_video
   has_many :user_categories, dependent: :destroy
   has_many :categories, through: :user_categories, source: :category
-  has_many :playlists, dependent: :destroy
+  has_many :user_playlists, dependent: :destroy
 
   validates :password, presence: true, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -156,16 +156,16 @@ class User < ApplicationRecord
 
   def create_playlist(access_token)
     GOOGLE_API_SERVICE.authorization = Signet::OAuth2::Client.new(access_token:)
-    playlists = GOOGLE_API_SERVICE.list_playlists(:snippet, mine: true)
+    playlists = GOOGLE_API_SERVICE.list_playlists(:snippet, mine: true, max_results: 50)
     return if playlists.items.empty?
 
     playlists.items.each do |playlist_item|
       playlist_params = playlist_params_by_playlist_item(playlist_item)
       playlist_id = playlist_params[:playlist_id]
-      playlist = self.playlists.find_or_initialize_by(playlist_id:)
+      playlist = user_playlists.find_or_initialize_by(playlist_id:)
       playlist.update!(playlist_params)
       videos = Video.find_or_create_videos_by_playlist_id(playlist_id)
-      PlaylistVideo.update_playlist(playlist, videos)
+      UserPlaylistVideo.update_playlist(playlist, videos)
     end
   end
 

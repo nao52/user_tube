@@ -1,0 +1,7 @@
+<% if @channel_playlists.size > 0 %>
+  <span class="text-center"><%= paginate @channel_playlists, theme: 'bootstrap-5' %></span>
+  <%= render @channel_playlists %>
+  <span class="text-center"><%= paginate @channel_playlists, theme: 'bootstrap-5' %></span>
+<% else %>
+  <p class="not-found">公開中のプレイリストはありません</p>
+<% end %>

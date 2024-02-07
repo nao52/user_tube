@@ -1,5 +1,5 @@
 <div class="channel">
-  <%= link_to channel_path(channel) do %>
+  <%= link_to users_channel_path(channel) do %>
     <div>
       <%= image_tag channel.thumbnail_url, class: "img-circle", size: '50x50' if channel.thumbnail_url %>
       <span id="channel-name-<%= channel.id %>" class="channel-name"><%= channel.name %></span>

@@ -24,8 +24,11 @@ Rails.application.routes.draw do
   # resources :password_resets, only: %i[new create edit update]
   
   resources :relationships, only: %i[create destroy]
-  resources :channels, only: %i[index show], shallow: true do
+  resources :channels, only: %i[index], shallow: true do
     resources :channel_comments, only: %i[new create edit update destroy]
+    member do
+      get :users, :videos, :comments, :playlists
+    end
   end
   resources :videos, only: %i[index show], shallow: true do
     resources :video_comments, only: %i[new create edit update destroy]
@@ -41,5 +44,5 @@ Rails.application.routes.draw do
   resource :subscription_channels, only: %i[edit update]
   resource :popular_videos, only: %i[edit update]
   resource :recent_content, only: %i[show]
-  resource :playlists, only: %i[edit update]
+  resource :user_playlists, only: %i[edit update]
 end

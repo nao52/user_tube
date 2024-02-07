@@ -1,0 +1,16 @@
+<div class="channel-detail">
+  <div class="col-md-4">
+    <%= image_tag @channel.thumbnail_url, class: "img-circle", size: '200x200' if @channel.thumbnail_url %>
+  </div>
+  <div class="col-md-8">
+    <h1 id="channel-name-<%= @channel.id %>"><%= @channel.name %></h1>
+    <p><%= "ジャンル：#{@channel.decorate.categories}" if @channel.videos.present? %></p>
+    <p><%= "チャンネル登録者数：#{number_with_delimiter(@channel.subscriber_count, delimiter: ',')}人" %></p>
+    <p><%= "登録しているユーザー数：#{number_with_delimiter(@channel.users.size, delimiter: ',')}人" %></p>
+  </div>
+</div>
+
+<div class="channel-description">
+  <h2>チャンネル概要説明 <span id="show-channel-description">🔽</span></h2>
+  <p><%= @channel.description %></p>
+</div>

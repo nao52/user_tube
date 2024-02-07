@@ -7,7 +7,7 @@ class Video < ApplicationRecord
   has_many :popular_videos, dependent: :destroy
   has_many :users, through: :popular_videos, source: :user
   has_many :video_comments, dependent: :destroy
-  has_many :playlist_videos, dependent: :destroy
+  has_many :user_playlist_videos, dependent: :destroy
 
   validates :video_id, presence: true, uniqueness: true
   validates :title, presence: true
@@ -31,7 +31,7 @@ class Video < ApplicationRecord
     def create_popular_video_list(access_token)
       video_list = []
       GOOGLE_API_SERVICE.authorization = Signet::OAuth2::Client.new(access_token:)
-      videos = GOOGLE_API_SERVICE.list_videos(:snippet, my_rating: 'like', max_results: 1000)
+      videos = GOOGLE_API_SERVICE.list_videos(:snippet, my_rating: 'like', max_results: 50)
       videos.items.each do |video|
         video_list << find_or_create_video_by_video(video)
       end
@@ -44,7 +44,8 @@ class Video < ApplicationRecord
       playlist_items = GOOGLE_API_SERVICE.list_playlist_items(:snippet, playlist_id:)
       playlist_items.items.each do |playlist_item|
         video_id = playlist_item.snippet.resource_id.video_id
-        videos << find_or_create_video_by_video_id(video_id)
+        video = find_or_create_video_by_video_id(video_id)
+        videos << video if video
       end
       videos
     end
@@ -52,6 +53,9 @@ class Video < ApplicationRecord
     def find_or_create_video_by_video_id(video_id)
       GOOGLE_API_SERVICE.key = Settings.google_api_key
       video = GOOGLE_API_SERVICE.list_videos(:snippet, id: video_id).items.first
+
+      return nil unless video.present?
+
       find_or_create_video_by_video(video)
     end
 

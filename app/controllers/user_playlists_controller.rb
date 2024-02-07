@@ -1,4 +1,4 @@
-class PlaylistsController < ApplicationController
+class UserPlaylistsController < ApplicationController
   before_action :set_playlists
 
   def edit
