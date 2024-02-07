@@ -22,15 +22,16 @@
 
     <ul class="nav nav-tabs nav-justified channel-link">
       <li role="presentation" id="channel-user-link" class=<%= "active" if current_page?(users_channel_path) %>><%= link_to "ユーザー一覧", users_channel_path(@channel) %></li>
-      <li role="presentation" id="channel-video-link" class=<%= "active" if current_page?(favorite_videos_channel_path) %>><%= link_to "高評価された動画", favorite_videos_channel_path(@channel) %></li>
+      <li role="presentation" id="channel-video-link" class=<%= "active" if current_page?(videos_channel_path) %>><%= link_to "高評価された動画", videos_channel_path(@channel) %></li>
       <li role="presentation" id="channel-comment-link" class=<%= "active" if current_page?(comments_channel_path) %>><%= link_to "コメント一覧", comments_channel_path(@channel) %></li>
-      <li role="presentation" id="channel-video-link" class=<%= "active" if current_page?(videos_channel_path) %>><%= link_to "動画一覧", videos_channel_path(@channel) %></li>
+      <li role="presentation" id="channel-video-link" class=<%= "active" if current_page?(playlists_channel_path) %>><%= link_to "動画一覧", playlists_channel_path(@channel) %></li>
     </ul>
 
     <div class="channel-contents">
       <%= render 'users/channel_users' if current_page?(users_channel_path) %>
-      <%= render 'videos/channel_videos' if current_page?(favorite_videos_channel_path) %>
+      <%= render 'videos/channel_videos' if current_page?(videos_channel_path) %>
       <%= render 'channel_comments/channel_comments' if current_page?(comments_channel_path) %>
+      <%= render 'channel_playlists/channel_playlists' if current_page?(playlists_channel_path) %>
     </div>
   </div>
 </div>

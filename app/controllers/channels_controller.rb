@@ -1,6 +1,6 @@
 class ChannelsController < ApplicationController
   skip_before_action :require_login
-  before_action :set_channel, only: %i[users favorite_videos comments videos]
+  before_action :set_channel, only: %i[users videos comments playlists]
 
   def index
     @search_channels_form = SearchChannelsForm.new(search_params)
@@ -12,7 +12,7 @@ class ChannelsController < ApplicationController
     render 'channels/show'
   end
 
-  def favorite_videos
+  def videos
     @channel_videos = @channel.videos.page(params[:page]).per(8)
     render 'channels/show'
   end
@@ -22,7 +22,8 @@ class ChannelsController < ApplicationController
     render 'channels/show'
   end
 
-  def videos
+  def playlists
+    @channel_playlists = @channel.channel_playlists.page(params[:page]).per(8)
     render 'channels/show'
   end
 

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :channels, only: %i[index], shallow: true do
     resources :channel_comments, only: %i[new create edit update destroy]
     member do
-      get :users, :favorite_videos, :comments, :videos
+      get :users, :videos, :comments, :playlists
     end
   end
   resources :videos, only: %i[index show], shallow: true do

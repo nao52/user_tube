@@ -1,7 +1,7 @@
-<% if @playlists.size > 0 %>
-  <span class="text-center"><%= paginate @playlists, theme: 'bootstrap-5' %></span>
-  <%= render partial: "user_playlists/playlist", collection: @playlists %>
-  <span class="text-center"><%= paginate @playlists, theme: 'bootstrap-5' %></span>
+<% if @user_playlists.size > 0 %>
+  <span class="text-center"><%= paginate @user_playlists, theme: 'bootstrap-5' %></span>
+  <%= render @user_playlists %>
+  <span class="text-center"><%= paginate @user_playlists, theme: 'bootstrap-5' %></span>
 <% else %>
   <p class="not-found">公開中のプレイリストはありません</p>
 <% end %>

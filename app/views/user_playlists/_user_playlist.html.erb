@@ -1,0 +1,11 @@
+<div class="playlist">
+  <div class="text-center">
+    <iframe width="336" height="189" src="https://www.youtube.com/embed/videoseries?si=Byq0ZjwPmNEy9V9I&amp;list=<%= user_playlist.playlist_id %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <div class="playlist-info">
+    <p id="playlist-title-<%= user_playlist.id %>" class="title"><%= "タイトル：#{user_playlist.title}" %></p>
+    <pre><%= "#{user_playlist.description}" %></pre>
+  </div>
+</div>
+
+<hr>

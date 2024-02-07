@@ -69,7 +69,7 @@ class UsersController < ApplicationController
   end
 
   def playlists
-    @playlists = @user.user_playlists.where(is_public: true).page(params[:page]).per(8)
+    @user_playlists = @user.user_playlists.where(is_public: true).page(params[:page]).per(8)
   end
 
   def contents
