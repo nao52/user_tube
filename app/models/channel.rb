@@ -30,7 +30,7 @@ class Channel < ApplicationRecord
     def create_subscription_channel_list(access_token)
       channel_list = []
       GOOGLE_API_SERVICE.authorization = Signet::OAuth2::Client.new(access_token:)
-      subscriptions = GOOGLE_API_SERVICE.list_subscriptions(:snippet, mine: true, max_results: 100)
+      subscriptions = GOOGLE_API_SERVICE.list_subscriptions(:snippet, mine: true, max_results: 50)
       subscriptions.items.each do |item|
         channel_id = item.snippet.resource_id.channel_id
         channel_list << find_or_create_channel_by_channel_id(channel_id)
@@ -58,5 +58,31 @@ class Channel < ApplicationRecord
         description: channel_info.snippet.description
       }
     end
+  end
+
+  def create_playlist
+    GOOGLE_API_SERVICE.key = Settings.google_api_key
+    playlists = GOOGLE_API_SERVICE.list_playlists(:snippet, channel_id:, max_results: 50)
+    return if playlists.items.empty?
+
+    playlists.items.each do |playlist_item|
+      playlist_params = playlist_params_by_playlist_item(playlist_item)
+      playlist_id = playlist_params[:playlist_id]
+      playlist = channel_playlists.find_or_initialize_by(playlist_id:)
+      playlist.update!(playlist_params)
+
+      videos = Video.find_or_create_videos_by_playlist_id(playlist_id)
+      ChannelPlaylistVideo.update_playlist(playlist, videos)
+    end
+  end
+
+  private
+
+  def playlist_params_by_playlist_item(playlist_item)
+    {
+      playlist_id: playlist_item.id,
+      title: playlist_item.snippet.title,
+      description: playlist_item.snippet.description
+    }
   end
 end
