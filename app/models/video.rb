@@ -7,7 +7,7 @@ class Video < ApplicationRecord
   has_many :popular_videos, dependent: :destroy
   has_many :users, through: :popular_videos, source: :user
   has_many :video_comments, dependent: :destroy
-  has_many :playlist_videos, dependent: :destroy
+  has_many :user_playlist_videos, dependent: :destroy
 
   validates :video_id, presence: true, uniqueness: true
   validates :title, presence: true

@@ -165,7 +165,7 @@ class User < ApplicationRecord
       playlist = self.playlists.find_or_initialize_by(playlist_id:)
       playlist.update!(playlist_params)
       videos = Video.find_or_create_videos_by_playlist_id(playlist_id)
-      PlaylistVideo.update_playlist(playlist, videos)
+      UserPlaylistVideo.update_playlist(playlist, videos)
     end
   end
 

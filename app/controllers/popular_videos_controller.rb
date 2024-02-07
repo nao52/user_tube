@@ -16,7 +16,7 @@ class PopularVideosController < ApplicationController
       return render :edit, status: :unprocessable_entity
     end
     if params[:google_login]
-      redirect_to edit_playlists_path, success: '高評価動画の公開設定を行いました。続けて、プレイリストの公開設定を行ってください。'
+      redirect_to edit_user_playlists_path, success: '高評価動画の公開設定を行いました。続けて、プレイリストの公開設定を行ってください。'
     else
       redirect_to videos_user_path(current_user), success: t('.success')
     end

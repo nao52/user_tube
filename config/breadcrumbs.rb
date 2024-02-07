@@ -51,10 +51,10 @@ crumb :setting_public_for_channels do |user|
 end
 
 crumb :user_playlists do |user|
-  link "#{user.name}の登録チャンネル", playlists_user_path(user)
+  link "#{user.name}のプレイリスト", playlists_user_path(user)
 end
 
 crumb :setting_public_for_playlists do |user|
-  link "登録チャンネルの設定", edit_playlists_path
+  link "プレイリストの公開設定", edit_user_playlists_path
   parent :user_playlists, user
 end

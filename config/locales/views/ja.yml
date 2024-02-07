@@ -133,7 +133,7 @@ ja:
       success: お気に入りしました
     destroy:
       success: お気に入り解除しました
-  playlists:
+  user_playlists:
     edit:
       title: プレイリストの公開設定
     update:

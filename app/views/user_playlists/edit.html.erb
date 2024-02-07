@@ -7,7 +7,7 @@
   <div class="col-md-10 col-md-offset-1">
     <%= render 'shared/check_public', contents: "プレイリスト" %>
 
-    <%= form_with(url: playlists_path, method: :patch) do |f| %>
+    <%= form_with(url: user_playlists_path, method: :patch) do |f| %>
       <div class="setting-playlists">
         <% @playlists.each do |playlist| %>
           <div class="setting-playlist">
