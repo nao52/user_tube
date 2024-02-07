@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :playlist do
+  factory :user_playlist do
     playlist_id { "test_id" }
     title { "test_title" }
     description { "これはテスト用のプレイリストです" }

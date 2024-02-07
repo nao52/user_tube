@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_07_035805) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_07_071321) do
   create_table "best_channels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "channel_id", null: false
@@ -70,6 +70,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_07_035805) do
     t.datetime "updated_at", null: false
     t.index ["channel_id"], name: "index_channel_comments_on_channel_id"
     t.index ["user_id"], name: "index_channel_comments_on_user_id"
+  end
+
+  create_table "channel_playlists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "channel_id", null: false
+    t.string "playlist_id"
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_channel_playlists_on_channel_id"
+    t.index ["playlist_id"], name: "index_channel_playlists_on_playlist_id", unique: true
   end
 
   create_table "channels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -233,6 +244,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_07_035805) do
   add_foreign_key "best_videos_favorites", "users"
   add_foreign_key "channel_comments", "channels"
   add_foreign_key "channel_comments", "users"
+  add_foreign_key "channel_playlists", "channels"
   add_foreign_key "content_comments", "contents"
   add_foreign_key "content_comments", "users"
   add_foreign_key "content_favorites", "contents"
