@@ -20,7 +20,7 @@ class Video < ApplicationRecord
   scope :channel_name_contain, ->(word) { joins(:channel).where('LOWER(channels.name) LIKE ?', "%#{word}%") }
   scope :description_contain, ->(word) { where('LOWER(description) LIKE ?', "%#{word}%") }
 
-  scope :user_count_order, -> { joins(:users).group('videos.id').order('COUNT(users.id) DESC, created_at DESC') }
+  scope :user_count_order, -> { joins(:users).select('videos.*, COUNT(users.id) as user_count').group('videos.id').order('user_count DESC, created_at DESC') }
 
   def users_with_public
     popular_videos_user_ids = popular_videos.where(is_public: true).map(&:user_id)
