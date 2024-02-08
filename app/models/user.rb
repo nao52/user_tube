@@ -156,7 +156,7 @@ class User < ApplicationRecord
 
   def create_playlist(access_token)
     GOOGLE_API_SERVICE.authorization = Signet::OAuth2::Client.new(access_token:)
-    playlists = GOOGLE_API_SERVICE.list_playlists(:snippet, mine: true, max_results: 50)
+    playlists = GOOGLE_API_SERVICE.list_playlists(:snippet, mine: true, max_results: 10)
     return if playlists.items.empty?
 
     playlists.items.each do |playlist_item|
