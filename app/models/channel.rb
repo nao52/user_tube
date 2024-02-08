@@ -21,7 +21,6 @@ class Channel < ApplicationRecord
 
   scope :user_count_order, -> { joins(:users).select('channels.*, COUNT(users.id) as user_count').group('channels.id').order('user_count DESC, channels.created_at DESC') }
 
-
   def users_with_public
     subscription_channels_user_ids = subscription_channels.where(is_public: true).map(&:user_id)
     users.where(id: subscription_channels_user_ids)
