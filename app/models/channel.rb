@@ -20,6 +20,7 @@ class Channel < ApplicationRecord
   scope :by_users_generation, ->(users_generation) { joins(:users).where('age BETWEEN ? AND ?', users_generation, users_generation + 9) }
 
   scope :user_count_order, -> { joins(:users).select('channels.*, COUNT(users.id) as user_count').group('channels.id').order('user_count DESC, channels.created_at DESC') }
+  scope :with_users_and_playlist_count_order, -> { joins(:subscription_channels).joins(:channel_playlists).where(subscription_channels: { channel_id: ids }).select('channels.*, COUNT(channel_playlists.id) as playlist_count').group('channels.id').order('playlist_count ASC').limit(50) }
 
   def users_with_public
     subscription_channels_user_ids = subscription_channels.where(is_public: true).map(&:user_id)
@@ -30,7 +31,7 @@ class Channel < ApplicationRecord
     def create_subscription_channel_list(access_token)
       channel_list = []
       GOOGLE_API_SERVICE.authorization = Signet::OAuth2::Client.new(access_token:)
-      subscriptions = GOOGLE_API_SERVICE.list_subscriptions(:snippet, mine: true, max_results: 50)
+      subscriptions = GOOGLE_API_SERVICE.list_subscriptions(:snippet, mine: true, max_results: 30)
       subscriptions.items.each do |item|
         channel_id = item.snippet.resource_id.channel_id
         channel_list << find_or_create_channel_by_channel_id(channel_id)
@@ -49,7 +50,7 @@ class Channel < ApplicationRecord
 
     def channel_params_by_channel_id(channel_id)
       GOOGLE_API_SERVICE.key = Settings.google_api_key
-      channel_info = GOOGLE_API_SERVICE.list_channels('snippet,statistics', id: channel_id).items[0]
+      channel_info = GOOGLE_API_SERVICE.list_channels('snippet,statistics', id: channel_id, max_results: 1).items[0]
       {
         channel_id:,
         thumbnail_url: channel_info.snippet.thumbnails.medium.url,
@@ -62,7 +63,7 @@ class Channel < ApplicationRecord
 
   def create_playlist
     GOOGLE_API_SERVICE.key = Settings.google_api_key
-    playlists = GOOGLE_API_SERVICE.list_playlists(:snippet, channel_id:, max_results: 50)
+    playlists = GOOGLE_API_SERVICE.list_playlists(:snippet, channel_id:, max_results: 10)
     return if playlists.items.empty?
 
     playlists.items.each do |playlist_item|
