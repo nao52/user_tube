@@ -4,17 +4,13 @@ Rails.application.routes.draw do
   root "static_pages#top"
   get "/privacypolicy", to: "static_pages#privacypolicy"
   get "/terms", to: "static_pages#terms"
-  get  "/signup", to: "users#new"
-  post "/singup/check", to: "users#signup_check"
   get "/login", to: "user_sessions#new"
-  post "/login", to: "user_sessions#create"
   delete "/logout", to: "user_sessions#destroy"
   
-  get 'auth/:provider/callback', to: 'google_login_api#callback'
+  get 'auth/:provider/callback', to: "user_sessions#create"
   get 'auth/failure', to: redirect('/')
 
   resources :users do
-    get :confirm, on: :collection
     member do
       get :edit_best, :channels, :videos, :playlists, :contents, :following, :follower
     end
