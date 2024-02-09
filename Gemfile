@@ -66,6 +66,7 @@ gem 'ransack'
 gem "gretel"
 gem "whenever"
 gem "puma_worker_killer"
+gem "sidekiq"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

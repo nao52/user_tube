@@ -8,7 +8,7 @@
     <%= render 'contents_link' %>
 
     <div class="user-contents">
-      <%= link_to "公開設定を変更する", edit_popular_videos_path, class: "btn btn-primary btn-block mt-30" if current_user?(@user) && @videos.present? %>
+      <%= link_to "公開設定を変更する", edit_popular_videos_path, class: "btn btn-primary btn-block mt-30" if current_user?(@user) && current_user.videos.present? %>
       <%= render 'videos/user_videos' %>
     </div>
   </div>

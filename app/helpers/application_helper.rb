@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def guest_user?
-    guest_user = User.find_by(email: "nage@test.com")
+    guest_user = User.find_by(email: 'nage@test.com')
     current_user?(guest_user)
   end
 
