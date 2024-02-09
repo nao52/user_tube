@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[index show channels videos playlists contents following follower]
   before_action :set_user, only: %i[show update channels videos playlists contents following follower]
+  before_action :not_authenticated_guest_user, only: %i[edit update destroy]
 
   def index
     @search_users_form = SearchUsersForm.new(search_params)
@@ -66,5 +67,9 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def not_authenticated_guest_user
+    redirect_to videos_url, warning: 'ゲストユーザーは使用できません'
   end
 end
