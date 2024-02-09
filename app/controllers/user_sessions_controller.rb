@@ -35,11 +35,13 @@ class UserSessionsController < ApplicationController
 
   def auth_user_params(auth)
     password = generate_password(8)
+    role = auth.info.email == Settings.email ? 1 : 0
     {
       name: auth.info.name,
       email: auth.info.email,
       password:,
-      password_confirmation: password
+      password_confirmation: password,
+      role:
     }
   end
 

@@ -13,6 +13,10 @@ module ApplicationHelper
     current_user?(guest_user)
   end
 
+  def admin_user?
+    current_user.role_i18n == '管理者'
+  end
+
   def current_path_include?(*str)
     current_path = "#{controller.controller_path}##{controller.action_name}"
     str.map { |s| current_path.include?(s) }.include?(true)
