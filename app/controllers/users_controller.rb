@@ -70,6 +70,6 @@ class UsersController < ApplicationController
   end
 
   def not_authenticated_guest_user
-    redirect_to videos_url, warning: 'ゲストユーザーは使用できません'
+    redirect_to videos_url, warning: 'ゲストユーザーは使用できません' if guest_user?
   end
 end
