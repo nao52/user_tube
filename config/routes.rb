@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "/privacypolicy", to: "static_pages#privacypolicy"
   get "/terms", to: "static_pages#terms"
   get "/login", to: "user_sessions#new"
+  post "/login", to: "user_sessions#create"
   delete "/logout", to: "user_sessions#destroy"
   
   get 'auth/:provider/callback', to: "user_sessions#create"

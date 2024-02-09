@@ -6,6 +6,11 @@ class UserSessionsController < ApplicationController
   def create
     auth = request.env['omniauth.auth']
 
+    if auth.nil?
+      auto_login(User.find_by(email: 'nage@test.com'))
+      return redirect_to videos_url, success: "ゲストユーザーとして#{t('.success')}"
+    end
+
     @user = User.find_by(email: auth.info.email)
     @user = User.create!(auth_user_params(auth)) if @user.nil?
 
