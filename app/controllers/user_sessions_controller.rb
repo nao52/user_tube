@@ -30,9 +30,7 @@ class UserSessionsController < ApplicationController
   def install_youtube_data(auth, _user)
     access_token = auth.credentials.token
     user_id = @user.id
-    ActiveRecord::Base.transaction do
-      InstallYoutubeDataJob.perform_later(access_token, user_id)
-    end
+    InstallYoutubeDataJob.perform_later(access_token, user_id)
   end
 
   def auth_user_params(auth)
