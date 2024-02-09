@@ -15,6 +15,8 @@ class UserSessionsController < ApplicationController
     @user = User.create!(auth_user_params(auth)) if @user.nil?
 
     auto_login(@user)
+    install_youtube_data(auth, @user)
+
     redirect_to videos_url, success: t('.success')
   end
 
@@ -24,6 +26,12 @@ class UserSessionsController < ApplicationController
   end
 
   private
+
+  def install_youtube_data(auth, _user)
+    access_token = auth.credentials.token
+    user_id = @user.id
+    InstallYoutubeDataJob.perform_later(access_token, user_id)
+  end
 
   def auth_user_params(auth)
     password = generate_password(8)

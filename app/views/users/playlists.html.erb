@@ -7,7 +7,7 @@
     <%= render 'contents_link' %>
 
     <div class="user-contents">
-      <%= link_to "公開設定を変更する", edit_user_playlists_path, class: "btn btn-primary btn-block mt-30" if current_user?(@user) && @user_playlists.present? %>
+      <%= link_to "公開設定を変更する", edit_user_playlists_path, class: "btn btn-primary btn-block mt-30" if current_user?(@user) && current_user.user_playlists.present? %>
       <%= render 'user_playlists/user_playlists' %>
     </div>
   </div>
