@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_07_073243) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_09_145727) do
   create_table "best_channels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "channel_id", null: false
@@ -215,6 +215,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_07_073243) do
     t.string "avatar"
     t.boolean "age_is_public", default: false
     t.boolean "gender_is_public", default: false
+    t.integer "role", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"

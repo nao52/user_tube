@@ -46,6 +46,8 @@ class User < ApplicationRecord
 
   # 性別 { 回答なし: 0, 男性: 1, 女性: 2, その他: 9 }
   enum gender: { not_known: 0, male: 1, female: 2, not_applicabel: 9 }
+  # 権限 { 一般 : 0, 管理者 : 1 }
+  enum role: { general: 0, admin: 1 }
 
   scope :by_users_generation, ->(users_generation) { where('age BETWEEN ? AND ?', users_generation, users_generation + 9) }
   scope :by_category, ->(category_id) { joins(:user_categories).merge(where(user_categories: { category_id: })) }

@@ -152,5 +152,13 @@ RSpec.describe User, type: :model do
         expect(user.gender_i18n).to eq value
       end
     end
+
+    it "権限について適切な値が出力されるか" do
+      role_list = { "0" => "一般", "1" => "管理者" }
+      role_list.each do |key, value|
+        user = create(:user, role: key.to_i)
+        expect(user.role_i18n).to eq value
+      end
+    end
   end
 end

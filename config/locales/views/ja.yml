@@ -146,6 +146,9 @@ ja:
         male: 男性
         female: 女性
         not_applicabel: その他
+      role:
+        general: 一般
+        admin: 管理者
     category:
       title:
         else: その他
