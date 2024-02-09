@@ -2,6 +2,10 @@
 @import "bootstrap";
 @import "font-awesome";
 
+body {
+  background-color: #F3F3F3;
+}
+
 .smart-phone {
   display: none;
 }
@@ -21,34 +25,45 @@ pre {
 
 a {
   color: #000;
+
   &:hover {
     text-decoration: none;
   }
+}
+
+nav.navbar.navbar-default {
+  background-color: white;
 }
 
 header {
   position: fixed;
   width: 100%;
   z-index: 5;
+
   nav {
     height: 50px;
   }
-  .pull-right > ul {
+
+  .pull-right>ul {
     margin: 0 auto;
   }
+
   a {
     font-size: 20px;
     padding: 15px;
     margin: 0 10px;
   }
+
   .navbar-brand {
     font-size: 20px;
   }
+
   #account-name {
     display: block;
     padding: 15px 30px;
     height: 50px;
   }
+
   #dropdown {
     position: static;
   }
@@ -57,6 +72,7 @@ header {
 .sidebar {
   position: fixed;
   top: 71px;
+
   a {
     font-size: 20px;
   }
@@ -69,7 +85,8 @@ header {
 .main {
   padding-top: 50px;
   min-height: calc(100vh - 263px);
-  .container-fluid > .row > .col-md-10 {
+
+  .container-fluid>.row>.col-md-10 {
     margin-top: 20px;
   }
 }
@@ -78,30 +95,38 @@ footer {
   width: 100%;
   position: relative;
   margin-top: 15px;
+
   .navbar {
     margin-bottom: 0;
     padding-top: 10px;
   }
+
   p {
     font-size: 20px;
   }
+
   a {
     font-size: 16px;
   }
+
   .footer-item {
-    display:flex;
+    display: flex;
     flex-flow: column;
+
     p {
       font-size: 16px;
     }
+
     .footer-title {
       font-size: 26px;
     }
   }
+
   .copyright {
     position: absolute;
     bottom: 0;
     left: 10px;
+
     p {
       font-size: 14px;
     }
@@ -143,11 +168,13 @@ footer {
   font-size: 24px;
   margin-bottom: 30px;
 }
+
 .images {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
+
   .image-item {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -162,7 +189,8 @@ footer {
     display: block;
   }
 }
-.services > div {
+
+.services>div {
   p {
     margin-top: 50px;
     padding: 10px;
@@ -170,29 +198,82 @@ footer {
     font-size: 20px;
   }
 }
+
 .try-link {
   padding: 50px 0;
   width: 80%;
   margin: 0 auto;
 }
 
+/* ログインフォーム */
+.login-form {
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  height: auto;
+  padding: 15px 0;
+
+  .site-image {
+    margin: 0 auto;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      height: auto;
+    }
+  }
+
+  .horizontal-line {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px auto;
+    width: 80%;
+
+    .line {
+      flex: 1;
+      height: 1px;
+      background-color: #ccc;
+    }
+
+    .or {
+      padding: 0 10px;
+    }
+  }
+
+  form {
+    margin: 15px 0;
+
+    .login-btn {
+      margin: 0 auto;
+      width: 60%;
+    }
+  }
+}
+
 /* 検索フォーム */
 .search-form {
   border: 1px solid;
   padding: 10px;
+
   p {
     font-size: 22px;
   }
 }
 
 /* ページネーション */
-.pagination>li>a {          
+.pagination>li>a {
   border: none;
   color: #696969;
   font-size: 16px;
 }
 
-.pagination>.active>a {     
+.pagination>.active>a {
   background: #93c9ff;
   z-index: 1;
 }
@@ -203,7 +284,8 @@ footer {
   margin-bottom: 10px;
 }
 
-.user-name, .channel-name {
+.user-name,
+.channel-name {
   font-size: 18px;
   color: #000;
 }
@@ -222,11 +304,13 @@ footer {
 .user-content {
   margin: 20px;
 }
+
 .post-contents {
   p {
     font-size: 20px;
   }
 }
+
 .content-show {
   margin: 30px;
 }
@@ -234,38 +318,47 @@ footer {
 /* ユーザー詳細 */
 .user-profile {
   padding: 20px;
+
   .back-link {
     margin-bottom: 20px;
   }
+
   .avatar-image {
     border: solid 1px black;
   }
+
   .user-status {
     h2 {
       margin: 0;
       font-size: 26px;
     }
+
     p {
       padding-top: 5px;
       font-size: 20px;
     }
+
     .following-link {
       margin-top: 20px;
+
       a {
         padding: 0 5px;
         font-size: 14px;
       }
     }
   }
+
   .user-profile-text {
     margin-top: 20px;
     padding: 10px 20px;
     border: solid 1px #ccc;
     border-radius: 3px;
+
     pre {
       font-size: 16px;
     }
   }
+
   .best-contents {
     margin-top: 20px;
   }
@@ -273,20 +366,25 @@ footer {
 
 .best-channels {
   padding: 20px 10px;
+
   p {
     font-size: 20px;
   }
+
   a {
     display: inline-block;
     height: 40px;
+
     img {
       border: solid .5px;
     }
+
     .channel-name {
       font-size: 18px;
       padding-left: 10px;
     }
   }
+
   .channel-info {
     p {
       font-size: 16px;
@@ -294,6 +392,7 @@ footer {
       padding: 5px 0;
     }
   }
+
   button {
     padding-left: 0;
   }
@@ -301,16 +400,21 @@ footer {
 
 .best-videos {
   padding: 20px 0;
+
   .best-video {
     display: flex;
+
     .video-info {
       margin-left: 20px;
+
       p {
         font-size: 20px;
       }
+
       a {
         margin-bottom: 20px;
       }
+
       .title {
         font-weight: bold;
       }
@@ -318,11 +422,13 @@ footer {
   }
 }
 
-.best-channels.hidden, .best-videos.hidden {
+.best-channels.hidden,
+.best-videos.hidden {
   display: none;
 }
 
-#edit-best-channels.hidden, #edit-best-videos.hidden {
+#edit-best-channels.hidden,
+#edit-best-videos.hidden {
   display: none;
 }
 
@@ -334,13 +440,15 @@ footer {
   margin: 0;
 }
 
-.video-user, .video-category {
+.video-user,
+.video-category {
   font-size: 18px;
   margin: 10px 0;
 }
 
 .profile-link {
   position: relative;
+
   &:hover .profile-link-message {
     display: block;
     font-size: 16px;
@@ -357,17 +465,24 @@ footer {
 }
 
 /* 動画一覧 */
-.video, .playlist {
+.video,
+.playlist {
   display: flex;
   margin: 20px 0;
-  .video-info, .playlist-info {
+
+  .video-info,
+  .playlist-info {
     margin-left: 20px;
-    p, pre {
+
+    p,
+    pre {
       font-size: 20px;
     }
+
     a {
       margin-bottom: 20px;
     }
+
     .title {
       font-weight: bold;
     }
@@ -380,23 +495,29 @@ footer {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 20px;
+
   .channel {
     height: 200px;
     width: 48%;
     margin-bottom: 10px;
     padding: 15px;
+
     .img-circle {
       border: solid .5px;
     }
+
     .channel-name {
       font-weight: bold;
     }
+
     .channel-info {
       margin-top: 20px;
     }
+
     p {
       font-size: 18px;
     }
+
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
   }
@@ -406,39 +527,48 @@ footer {
 .channel-detail {
   height: 250px;
   padding-top: 20px;
+
   h1 {
     font-size: 24px;
     font-weight: bold;
     margin: 20px 0;
   }
+
   p {
     padding-top: 5px;
     font-size: 20px;
   }
 }
+
 .channel-description {
   h2 {
     padding: 5px;
     font-size: 20px;
   }
+
   p {
     border: .5px solid;
     font-size: 16px;
     padding: 5px;
     display: none;
   }
+
   p.active {
     display: block;
   }
+
   #show-channel-description {
     cursor: pointer;
+
     &:hover {
       opacity: .6;
     }
   }
 }
+
 .channel-link {
   margin-top: 50px;
+
   a {
     font-size: 18px;
   }
@@ -448,24 +578,30 @@ footer {
 .video-detail {
   height: 200px;
   margin-top: 30px;
+
   p {
     padding-top: 5px;
     font-size: 20px;
   }
 }
+
 .video-description {
   margin-top: 30px;
+
   h2 {
     padding: 5px;
   }
+
   p {
     border: .5px solid;
     font-size: 18px;
     padding: 5px;
   }
 }
+
 .video-link {
   margin-top: 50px;
+
   a {
     font-size: 18px;
   }
@@ -474,6 +610,7 @@ footer {
 /* 新着コンテンツ */
 .recent-contents-link {
   margin-top: 50px;
+
   a {
     font-size: 18px;
   }
@@ -497,45 +634,56 @@ footer {
 .fa-heart {
   font-size: 22px;
   color: rgba(255, 0, 0, 0.3);
+
   &:hover {
     color: rgba(255, 0, 0, 1);
   }
 }
+
 .fa-heart.active {
   font-size: 22px;
   color: rgba(255, 0, 0, 1);
+
   &:hover {
     color: rgba(255, 0, 0, 0.3);
   }
 }
 
 /* プライバシーポリシー & 利用規約 */
-.privacy-policy, .terms {
+.privacy-policy,
+.terms {
   h1 {
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 50px;
   }
+
   h2 {
     font-size: 16px;
     font-weight: bold;
   }
+
   p {
     padding-left: 16px;
   }
+
   li {
     font-size: 14px;
   }
+
   .email {
     padding-left: 32px;
   }
-  .date, .preamble {
+
+  .date,
+  .preamble {
     padding: 0;
   }
 }
 
 .all-check-box {
   margin: 20px 0;
+
   span {
     font-size: 18px;
   }
@@ -545,6 +693,7 @@ footer {
 .setting-channels {
   display: flex;
   flex-wrap: wrap;
+
   .setting-channel {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -554,9 +703,11 @@ footer {
     margin: 5px;
     box-sizing: border-box;
     position: relative;
+
     .check-public {
       position: absolute;
       bottom: 0;
+
       span {
         font-size: 16px;
       }
@@ -568,6 +719,7 @@ footer {
 .setting-videos {
   display: flex;
   flex-wrap: wrap;
+
   .setting-video {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -577,12 +729,15 @@ footer {
     margin: 5px;
     box-sizing: border-box;
     position: relative;
+
     .submnail {
       margin-bottom: 10px;
     }
+
     .check-public {
       position: absolute;
       bottom: 0;
+
       span {
         font-size: 16px;
       }
@@ -594,6 +749,7 @@ footer {
 .setting-playlists {
   display: flex;
   flex-wrap: wrap;
+
   .setting-playlist {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -603,12 +759,15 @@ footer {
     margin: 5px;
     box-sizing: border-box;
     position: relative;
+
     .submnail {
       margin-bottom: 10px;
     }
+
     .check-public {
       position: absolute;
       bottom: 0;
+
       span {
         font-size: 16px;
       }
@@ -630,6 +789,7 @@ footer {
 .google-api-policy {
   color: blue;
   text-decoration: underline;
+
   &:hover {
     color: red;
     text-decoration: underline;
@@ -641,7 +801,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 20px;
+
   .gsi-material-button {
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -673,14 +833,14 @@ footer {
     max-width: 400px;
     min-width: min-content;
   }
-  
+
   .gsi-material-button .gsi-material-button-icon {
     height: 20px;
     margin-right: 12px;
     min-width: 20px;
     width: 20px;
   }
-  
+
   .gsi-material-button .gsi-material-button-content-wrapper {
     -webkit-align-items: center;
     align-items: center;
@@ -694,7 +854,7 @@ footer {
     position: relative;
     width: 100%;
   }
-  
+
   .gsi-material-button .gsi-material-button-contents {
     -webkit-flex-grow: 1;
     flex-grow: 1;
@@ -704,7 +864,7 @@ footer {
     text-overflow: ellipsis;
     vertical-align: top;
   }
-  
+
   .gsi-material-button .gsi-material-button-state {
     -webkit-transition: opacity .218s;
     transition: opacity .218s;
@@ -715,36 +875,36 @@ footer {
     right: 0;
     top: 0;
   }
-  
+
   .gsi-material-button:disabled {
     cursor: default;
     background-color: #ffffff61;
     border-color: #1f1f1f1f;
   }
-  
+
   .gsi-material-button:disabled .gsi-material-button-contents {
     opacity: 38%;
   }
-  
+
   .gsi-material-button:disabled .gsi-material-button-icon {
     opacity: 38%;
   }
-  
-  .gsi-material-button:not(:disabled):active .gsi-material-button-state, 
+
+  .gsi-material-button:not(:disabled):active .gsi-material-button-state,
   .gsi-material-button:not(:disabled):focus .gsi-material-button-state {
     background-color: #303030;
     opacity: 12%;
   }
-  
+
   .gsi-material-button:not(:disabled):hover {
     -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
   }
-  
+
   .gsi-material-button:not(:disabled):hover .gsi-material-button-state {
     background-color: #303030;
     opacity: 8%;
-  }  
+  }
 }
 
 /* スマートフォン */
@@ -752,18 +912,21 @@ footer {
   .pc {
     display: none;
   }
+
   .smart-phone {
     display: block;
   }
+
   .main {
     padding-top: 100px;
   }
+
   h1 {
     font-size: 24px;
   }
 
   /* バンくずリスト */
-  .breadcrumb > li {
+  .breadcrumb>li {
     font-size: 12px;
   }
 
@@ -772,19 +935,23 @@ footer {
     .navbar-default {
       margin-bottom: 0;
     }
+
     #navbar-menu.in {
       background-color: white;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
       float: right;
+
       a {
         color: black;
       }
     }
+
     a {
       text-align: center;
     }
   }
+
   .site-link {
     z-index: 2;
     position: fixed;
@@ -794,11 +961,14 @@ footer {
     width: 100%;
     overflow-x: auto;
     white-space: nowrap;
+
     div {
       padding: 20px 10px;
+
       a {
         display: block;
       }
+
       a.active {
         text-decoration: underline;
       }
@@ -810,25 +980,31 @@ footer {
     .footer-item {
       text-align: center;
       border-bottom: solid #ccc .5px;
+
       p {
         font-size: 14px;
       }
+
       .footer-title {
         font-size: 18px;
       }
     }
+
     .col-xs-6 {
       padding-top: 10px;
       margin-bottom: 50px;
       height: 200px;
+
       p {
         display: none;
       }
-      li > a {
+
+      li>a {
         font-size: 12px;
         width: 100%;
       }
     }
+
     .copyright {
       width: 100%;
       text-align: center;
@@ -844,21 +1020,25 @@ footer {
         height: 250px;
       }
     }
+
     .try-link {
       font-size: 20px;
     }
   }
 
   /* チャンネル一覧 */
-  .channels > .channel {
+  .channels>.channel {
     width: 100%;
   }
 
   /* 動画一覧 */
-  .video, .playlist {
+  .video,
+  .playlist {
     flex-flow: column;
+
     .video-info {
       margin: 0;
+
       .btn {
         width: 100%;
         margin-left: 0;
@@ -870,41 +1050,53 @@ footer {
   .user-status {
     .col-md-9 {
       margin-top: 15px;
+
       p {
         font-size: 14px;
       }
     }
+
     .col-xs-6 {
       .following-link {
         margin-top: 5px;
+
         a {
           font-size: 12px;
         }
       }
+
       p {
         font-size: 14px;
       }
     }
+
     .col-xs-12 {
       margin-top: 15px;
     }
   }
+
   .user-contents-link {
     display: flex;
+
     li {
       font-size: 10px;
       width: 25%;
+
       a {
         padding: 10px 5px;
       }
     }
   }
-  .best-contents-link, .follow-users-link {
+
+  .best-contents-link,
+  .follow-users-link {
     display: flex;
+
     li {
       width: 50%;
     }
   }
+
   .best-videos {
     .best-video {
       display: block;
@@ -916,6 +1108,7 @@ footer {
     .setting-video {
       height: 350px;
       flex: 0 0 calc(100%);
+
       img {
         width: 60%;
         height: auto;
@@ -935,6 +1128,7 @@ footer {
   .setting-playlists {
     .setting-playlist {
       flex: 0 0 calc(100%);
+
       img {
         width: 60%;
         height: auto;
@@ -949,15 +1143,19 @@ footer {
     text-align: center;
     height: auto;
   }
+
   .channel-description {
     h2 {
       text-align: center;
     }
   }
+
   .channel-link {
     display: flex;
+
     li {
       width: 25%;
+
       a {
         font-size: 10px;
         padding: 10px 5px;
