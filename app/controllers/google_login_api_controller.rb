@@ -1,4 +1,6 @@
 class GoogleLoginApiController < ApplicationController
+  skip_before_action :require_login
+
   def callback
     auth = request.env['omniauth.auth']
     access_token = auth.credentials.token

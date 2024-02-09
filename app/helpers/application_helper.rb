@@ -8,6 +8,11 @@ module ApplicationHelper
     logged_in? && current_user == user
   end
 
+  def guest_user?
+    guest_user = User.find_by(email: "nage@test.com")
+    current_user?(guest_user)
+  end
+
   def current_path_include?(*str)
     current_path = "#{controller.controller_path}##{controller.action_name}"
     str.map { |s| current_path.include?(s) }.include?(true)
