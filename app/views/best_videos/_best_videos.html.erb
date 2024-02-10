@@ -9,7 +9,7 @@
       <p id="video-title-<%= video.id %>" class="title"><%= video.title %></p>
     <% end %>
     <p><%= "ジャンル：#{video.category.title_i18n}" %></p>
-    <%= link_to video.channel do %>
+    <%= link_to users_channel_path(video.channel) do %>
       <p><%= "チャンネル名：#{video.channel.name}" %></p>
     <% end %>
     <div><%= render 'best_videos_favorites/favorite_btn', best_video: best_video if logged_in? %></div>
