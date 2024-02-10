@@ -1,7 +1,7 @@
 <% channel = best_channel.channel %>
 <div id="best-channel-<%= channel.id %>">
   <p>- Best<%= best_channel_counter + 1 %>位</p>
-  <%= link_to users_channel_path do %>
+  <%= link_to users_channel_path(channel) do %>
     <%= image_tag channel.thumbnail_url, class: "img-circle", size: '40x40' if channel.thumbnail_url %>
     <span class="channel-name"><%= channel.name %></span>
   <% end %>
