@@ -10,7 +10,7 @@ class ChannelCommentsController < ApplicationController
     @channel_comment = current_user.channel_comments.build(channel_comment_params)
 
     if @channel_comment.save
-      redirect_to @channel, success: t('.success')
+      redirect_to comments_channel_url(@channel), success: t('.success')
     else
       render :new, status: :unprocessable_entity
     end

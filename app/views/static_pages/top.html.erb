@@ -1,55 +1,122 @@
+<div class="top-page">
+  <div class="top-main">
+    <p class="top-sentence">あなたは普段YouTubeを見る中で次のようなことを思ったことはありませんか？</p>
+    <div class="images">
+      <div class="image-item">
+        <p>視聴の傾向が偏りがち</p>
+        <%= image_tag "top_page_1", size: "200x200" %>
+      </div>
+      <div class="image-item">
+        <p>同世代に人気の動画やチャンネルは？</p>
+        <%= image_tag "top_page_2", size: "200x200" %>
+      </div>
+      <div class="image-item">
+        <p>好きなチャンネルや動画をおすすめしたい！</p>
+        <%= image_tag "top_page_3", size: "200x200" %>
+      </div>
+    </div>
+  </div>
 
-<div class="main">
-  <p class="top-sentence">あなたは普段YouTubeを見る中で次のようなことを思ったことはありませんか？</p>
-  <div class="images">
-    <div class="image-item">
-      <p>視聴の傾向が偏りがち</p>
-      <%= image_tag "top_page_1", size: "200x200" %>
+  <div class="top-services">
+    <p class="top-sentence">このWebサイトでは、以下のようなサービスを提供します！！</p>
+    <div class="service-list">
+      <p class="service-title">(1) 視聴した動画についてレビューをしたり、ユーザー同士で共有することができます。</p>
+      <div class="row">
+        <div class="col-md-6 service-item">
+          <p>【1】Youtubeで視聴した動画を高評価</p>
+          <div class="image">
+            <%= image_tag "https://i.gyazo.com/7f238148f5259cc17142451aa71bfe10.png" %>
+          </div>
+        </div>
+        <div class="col-md-6 service-item">
+          <p>【2】Googleログインで高評価動画を同期</p>
+          <div class="image">
+            <%= image_tag "https://i.gyazo.com/39e7d79d781dda1ce1fa8a12770a5cc3.png" %>
+          </div>
+        </div>
+        <div class="col-md-6 service-item">
+          <p>【3】高評価動画一覧からレビューを投稿</p>
+          <div class="image">
+            <%= image_tag "https://i.gyazo.com/444159e77e3f46e4da82559056dc280f.png" %>
+          </div>
+        </div>
+        <div class="col-md-6 service-item">
+          <p>【4】評価や感想を投稿しよう！</p>
+          <div class="image">
+            <%= image_tag "https://i.gyazo.com/0d603e07c8efe235e8300fb81ee0ad31.png" %>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="image-item">
-      <p>同世代に人気の動画やチャンネルは？</p>
-      <%= image_tag "top_page_2", size: "200x200" %>
-    </div>
-    <div class="image-item">
-      <p>好きなチャンネルや動画をおすすめしたい！</p>
-      <%= image_tag "top_page_3", size: "200x200" %>
-    </div>
-  </div>
-</div>
 
-<div class="services">
-  <p class="top-sentence">このWebサイトでは、以下のようなサービスを提供します！！</p>
-  <div>
-    <p>(1) 視聴した動画についてレビューをしたり、ユーザー同士で共有することができます。</p>
-    <div class="images">
-      <%= image_tag "top_page_4", class: "image-item" %>
-      <%= image_tag "top_page_5", class: "image-item" %>
+    <div class="service-list">
+      <p class="service-title">(2) 興味のあるカテゴリーや登録ユーザーの年代で動画やチャンネルを検索できます。</p>
+      <div class="row">
+        <div class="col-md-6 service-item">
+          <p>【1】自分の興味あるカテゴリーや登録ユーザーの年代で動画(チャンネル)を検索</p>
+          <div class="image">
+            <%= image_tag "https://i.gyazo.com/781684a5172e4b0893f04cee094374d9.png" %>
+          </div>
+        </div>
+        <div class="col-md-6 service-item">
+          <p>【2】興味のある動画を視聴したり、コメントをしよう！</p>
+          <div class="image">
+            <%= image_tag "https://i.gyazo.com/e225b80d79f94d6567f2e872f9567778.jpg" %>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div>
-    <p>(2) Googleログインを行うことで、高評価動画・登録チャンネル・プレイリストなどを同期できます。</p>
-    <div class="images">
-      <%= image_tag "top_page_6", class: "image-item" %>
-      <%= image_tag "top_page_7", class: "image-item" %>
-      <%= image_tag "top_page_8", class: "image-item" %>
-    </div>
-  </div>
-  <div>
-    <p>(3) 高評価動画・登録チャンネル・プレイリストなどは個別に公開/非公開を設定できます。</p>
-    <div class="images">
-      <%= image_tag "top_page_9", class: "image-item" %>
-      <%= image_tag "top_page_10", class: "image-item" %>
-      <%= image_tag "top_page_11", class: "image-item" %>
-    </div>
-  </div>
-  <div>
-    <p>(4) 好きな動画やチャンネルについて、お気に入りBest3を設定し、公開することができます。</p>
-    <div class="images">
-      <%= image_tag "top_page_12", class: "image-item" %>
-    </div>
-  </div>
-</div>
 
-<%= link_to videos_path, class: "text-center" do %>
+    <div class="service-list">
+      <p class="service-title">(3) 高評価動画・登録チャンネル・プレイリストなどは個別に公開/非公開を設定できます。</p>
+      <div class="row">
+        <div class="col-md-4 service-item">
+          <p>【1】ログイン画面からGoogleログイン</p>
+          <div class="image">
+            <%= image_tag "https://i.gyazo.com/39e7d79d781dda1ce1fa8a12770a5cc3.png" %>
+          </div>
+        </div>
+        <div class="col-md-4 service-item">
+          <p>【2】マイページから設定画面に移動</p>
+          <div class="image">
+            <%= image_tag "https://i.gyazo.com/57be0c08eb9662e1c678f7a4d03b6039.png" %>
+          </div>
+        </div>
+        <div class="col-md-4 service-item">
+          <p>【３】マイページから公開/非公開を設定</p>
+          <div class="image">
+            <%= image_tag "https://i.gyazo.com/95a658e5a7fdc824a57ac2ace923d2b6.jpg" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-list">
+      <p class="service-title">(4) 好きな動画やチャンネルについて、お気に入りBest3を設定し、公開することができます。</p>
+      <div class="row">
+        <div class="col-md-4 service-item">
+          <p>【1】プロフィール画面から設定画面に移動</p>
+          <div class="image">
+            <%= image_tag "https://i.gyazo.com/1f14161459f453b448af850c3b03e943.png" %>
+          </div>
+        </div>
+        <div class="col-md-4 service-item">
+          <p>【2】好きなチャンネル(動画)ベスト3を設定</p>
+          <div class="image">
+            <%= image_tag "https://i.gyazo.com/04aec735408283494d5c1429721b0929.png" %>
+          </div>
+        </div>
+        <div class="col-md-4 service-item">
+          <p>【３】みんなのお気に入りのチャンネルを見てみよう！</p>
+          <div class="image">
+            <%= image_tag "https://i.gyazo.com/a7eced77152586478c5a5bdfb8fa62a3.png" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= link_to videos_path, class: "text-center" do %>
   <h2 class="try-link">実際に使ってみる！！</h2>
-<% end %>
+  <% end %>
+</div>

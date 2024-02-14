@@ -12,7 +12,11 @@
 
     <div class="recent-contents">
       <%= render @recent_videos if @link == 'video' %>
-      <%= render @recent_channels if @link == 'channel' %>
+      <% if @link == 'channel' %>
+        <div class="channels">
+          <%= render @recent_channels if @link == 'channel' %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

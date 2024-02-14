@@ -1,4 +1,3 @@
 <% content_for(:title, t(".title")) %>
-<h1 class="text-center"><%= t(".title") %></h1>
 
-<%= render 'form', url: content_path(@content), method: "patch" %>
+<%= render 'form', url: content_path(@content), title: "編集", method: "patch" %>
