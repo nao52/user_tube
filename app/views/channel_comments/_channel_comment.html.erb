@@ -1,13 +1,13 @@
-<div class="user-info">
-  <%= link_to channels_user_path(channel_comment.user) do %>
-    <%= image_tag(channel_comment.user.avatar_url, class: "img-circle", size: '50x50') %>
-    <span id="user-name-<%= channel_comment.user.id %>" class="user-name"><%= channel_comment.user.name %></span>
+<div class="channel-comment">
+  <div class="user-info">
+    <%= link_to channels_user_path(channel_comment.user) do %>
+      <%= image_tag(channel_comment.user.avatar_url, class: "img-circle", size: '50x50') %>
+      <span id="user-name-<%= channel_comment.user.id %>" class="user-name"><%= channel_comment.user.name %></span>
+    <% end %>
+  </div>
+  <pre id="comment-body-<%= channel_comment.id %>"><%= channel_comment.body %></pre>
+  <% if current_user?(channel_comment.user) %>
+    <%= link_to "編集", edit_channel_comment_path(channel_comment), class: "btn btn-primary" %>
+    <%= link_to "削除", channel_comment, data: { "turbo-method": :delete, turbo_confirm: "コメントを削除してよろしいですか?" }, class: "btn btn-danger" %>
   <% end %>
 </div>
-<pre id="comment-body-<%= channel_comment.id %>"><%= channel_comment.body %></pre>
-<% if current_user?(channel_comment.user) %>
-  <%= link_to "編集", edit_channel_comment_path(channel_comment), class: "btn btn-primary" %>
-  <%= link_to "削除", channel_comment, data: { "turbo-method": :delete, turbo_confirm: "コメントを削除してよろしいですか?" }, class: "btn btn-danger" %>
-<% end %>
-
-<hr>

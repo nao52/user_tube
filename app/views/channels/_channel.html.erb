@@ -1,12 +1,31 @@
+<% channel_users = channel.users_with_public.take(5) %>
+
 <div class="channel">
   <%= link_to users_channel_path(channel) do %>
-    <div>
-      <%= image_tag channel.thumbnail_url, class: "img-circle", size: '50x50' if channel.thumbnail_url %>
-      <span id="channel-name-<%= channel.id %>" class="channel-name"><%= channel.name %></span>
-    </div>
-    <div class="channel-info">
-      <p><%= "ジャンル：#{channel.decorate.categories}" if channel.videos.present? %></p>
-      <p><%= "登録ユーザー数：#{number_with_delimiter(channel.users.size, delimiter: ',')}人" %></p>
-    </div>
+  <div>
+    <%= image_tag channel.thumbnail_url, class: "img-circle", size: '50x50' if channel.thumbnail_url %>
+    <span id="channel-name-<%= channel.id %>" class="channel-name"><%= channel.name %></span>
+  </div>
+  <div class="channel-info">
+    <p><%= "ジャンル：#{channel.decorate.categories}" if channel.videos.present? %></p>
+    <p><%= "チャンネル登録者数：#{number_with_delimiter(channel.subscriber_count, delimiter: ',')}人" %></p>
+    <% if channel_users.present? %>
+      <p>登録ユーザー</p>
+      <% channel_users.each do |user| %>
+        <%= link_to videos_user_path(user) do %>
+        <%= image_tag(user.avatar_url, class: "img-circle", size: '20x20') %>
+        <span id="user-name-<%= user.id %>" class="user-name"><%= user.name %></span>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if channel.channel_playlists.present? %>
+    <p>プレイリスト</p>
+    <ul>
+      <% channel.channel_playlists.each do |channel_playlist| %>
+      <li><%= channel_playlist.title %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
   <% end %>
 </div>

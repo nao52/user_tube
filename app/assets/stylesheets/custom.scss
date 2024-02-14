@@ -3,7 +3,7 @@
 @import "font-awesome";
 
 body {
-  background-color: #F3F3F3;
+  background-color: #F0F8FF;
 }
 
 .smart-phone {
@@ -33,6 +33,11 @@ a {
 
 nav.navbar.navbar-default {
   background-color: white;
+}
+
+.page-title {
+  margin: 0 0 20px;
+  text-align: center;
 }
 
 header {
@@ -163,41 +168,99 @@ footer {
 }
 
 /* トップページ */
-.top-sentence {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 30px;
-}
+.top-page {
+  padding: 0 20px;
 
-.images {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
+  .top-main {
+    padding: 20px;
+  }
 
-  .image-item {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    flex: 0 0 calc(33.33% - 10px);
-    padding: 10px;
-    margin: 5px;
-    box-sizing: border-box;
+  .top-sentence {
     text-align: center;
-    position: relative;
-    height: auto;
-    width: 80%;
-    display: block;
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+
+    .image-item {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      background-color: #FFFFFF;
+      flex: 0 0 calc(33.33% - 10px);
+      padding: 10px;
+      margin: 5px;
+      box-sizing: border-box;
+      text-align: center;
+      position: relative;
+      height: auto;
+      width: 80%;
+      display: block;
+
+      p {
+        font-size: 16px;
+      }
+
+      img {
+        width: 80%;
+        height: auto;
+      }
+    }
+  }
+
+  .top-services {
+    padding: 20px;
+
+    .service-list {
+      padding: 20px;
+      margin-top: 10px;
+      background-color: #FFFFFF;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+
+      .service-title {
+        font-size: 20px;
+        text-decoration: underline;
+      }
+
+      .row {
+        display: flex;
+
+        .service-item {
+          border: dashed black;
+          padding-top: 5px;
+
+          p {
+            font-size: 18px;
+            text-align: center;
+          }
+        }
+      }
+
+
+      .image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 70%;
+          height: auto;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+        }
+      }
+    }
+
   }
 }
 
-.services>div {
-  p {
-    margin-top: 50px;
-    padding: 10px;
-    text-align: center;
-    font-size: 20px;
-  }
-}
+
+
 
 .try-link {
   padding: 50px 0;
@@ -258,30 +321,44 @@ footer {
 
 /* 検索フォーム */
 .search-form {
-  border: 1px solid;
-  padding: 10px;
+  padding: 20px;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 
   p {
     font-size: 22px;
+    text-align: center;
+    margin-bottom: 20px;
   }
 }
 
 /* ページネーション */
-.pagination>li>a {
-  border: none;
-  color: #696969;
-  font-size: 16px;
+.pagination {
+  li {
+    a {
+      border: none;
+      color: #696969;
+      font-size: 16px;
+    }
+  }
+
+  .active {
+    a {
+      background: #93c9ff;
+      z-index: 1;
+    }
+  }
 }
 
-.pagination>.active>a {
-  background: #93c9ff;
-  z-index: 1;
-}
 
 /* ユーザー一覧 */
 .user-card {
   padding: 10px;
   margin-bottom: 10px;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 .user-name,
@@ -303,6 +380,10 @@ footer {
 /* コンテンツ */
 .user-content {
   margin: 20px;
+  padding: 20px;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 .post-contents {
@@ -313,6 +394,13 @@ footer {
 
 .content-show {
   margin: 30px;
+}
+
+.new-contents-form {
+  padding: 20px;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 /* ユーザー詳細 */
@@ -469,6 +557,10 @@ footer {
 .playlist {
   display: flex;
   margin: 20px 0;
+  padding: 20px;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 
   .video-info,
   .playlist-info {
@@ -497,10 +589,11 @@ footer {
   margin-top: 20px;
 
   .channel {
-    height: 200px;
+    height: auto;
     width: 48%;
     margin-bottom: 10px;
     padding: 15px;
+    background-color: #FFFFFF;
 
     .img-circle {
       border: solid .5px;
@@ -512,6 +605,10 @@ footer {
 
     .channel-info {
       margin-top: 20px;
+
+      .user-name {
+        font-size: 12px;
+      }
     }
 
     p {
@@ -547,6 +644,7 @@ footer {
   }
 
   p {
+    background-color: #FFFFFF;
     border: .5px solid;
     font-size: 16px;
     padding: 5px;
@@ -567,23 +665,40 @@ footer {
 }
 
 .channel-link {
-  margin-top: 50px;
+  margin: 30px 0;
 
   a {
     font-size: 18px;
   }
 }
 
-/* 動画詳細 */
-.video-detail {
-  height: 200px;
-  margin-top: 30px;
-
-  p {
-    padding-top: 5px;
-    font-size: 20px;
+.channel-comments {
+  .channel-comment {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
   }
 }
+
+/* 動画詳細 */
+.video-show {
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+
+  .video-title {
+    margin: 10px 0 30px;
+  }
+
+  .video-detail {
+    padding: 0 20px;
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
 
 .video-description {
   margin-top: 30px;
@@ -600,7 +715,7 @@ footer {
 }
 
 .video-link {
-  margin-top: 50px;
+  margin: 30px 0;
 
   a {
     font-size: 18px;
@@ -652,6 +767,11 @@ footer {
 /* プライバシーポリシー & 利用規約 */
 .privacy-policy,
 .terms {
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px 0;
+
   h1 {
     font-size: 22px;
     font-weight: bold;
@@ -695,6 +815,7 @@ footer {
   flex-wrap: wrap;
 
   .setting-channel {
+    background-color: #FFFFFF;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     height: 150px;
@@ -721,6 +842,7 @@ footer {
   flex-wrap: wrap;
 
   .setting-video {
+    background-color: #FFFFFF;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     height: 300px;
@@ -1014,21 +1136,42 @@ footer {
 
   /* メイン */
   .main {
-    .images {
-      img {
-        width: 250px;
-        height: 250px;
-      }
-    }
-
     .try-link {
       font-size: 20px;
     }
   }
 
+  /* トップページ */
+  .top-page {
+    .images {
+      display: block;
+
+      .image-item {
+        width: 100%;
+      }
+    }
+
+    .top-services {
+      .service-list {
+        .row {
+          display: block;
+
+          .service-item {
+            border: dashed black;
+            padding: 5px 0;
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+  }
+
+
   /* チャンネル一覧 */
-  .channels>.channel {
-    width: 100%;
+  .channels {
+    .channel {
+      width: 100%;
+    }
   }
 
   /* 動画一覧 */
@@ -1142,6 +1285,11 @@ footer {
   .channel-detail {
     text-align: center;
     height: auto;
+    background-color: #FFFFFF;
+
+    h1 {
+      margin: 0 0 20px;
+    }
   }
 
   .channel-description {
