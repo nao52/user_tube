@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-  validates :title, presence: true, uniqueness: true, numericality: { only_integer: true }
+  validates :title, presence: true
 
   # カテゴリータイトル
   enum title: {

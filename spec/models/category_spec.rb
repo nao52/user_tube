@@ -13,13 +13,6 @@ RSpec.describe Category, type: :model do
       expect(category_without_title).to be_invalid
       expect(category_without_title.errors).to_not be_empty
     end
-
-    it "titleがすでに登録されている場合にvalidationが機能してinvalidになるか" do
-      category = create(:category)
-      duplicate_category = category.dup
-      expect(duplicate_category).to be_invalid
-      expect(duplicate_category.errors).to_not be_empty
-    end
   end
 
   describe "enumが適切に機能しているか" do
@@ -42,6 +35,7 @@ RSpec.describe Category, type: :model do
         "29" => "非営利団体と社会活動",
         "99" => "その他"
       }
+      
       category_list.each do |key, value|
         category = create(:category, title: key.to_i)
         expect(category.title_i18n).to eq value
