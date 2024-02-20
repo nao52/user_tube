@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { create(:user) }
-  let(:best_channel) { create(:best_channel, rank: 1) }
-  let(:best_video) { create(:best_video, rank: 1) }
-
   describe "バリデーションチェック" do
     it "設定したすべてのバリデーションが機能しているか" do
       user = build(:user)
@@ -12,38 +8,31 @@ RSpec.describe User, type: :model do
       expect(user.errors).to be_empty
     end
 
-    it "nameがない場合にバリデーションが機能してinvalidになるか" do
+    it "ユーザー名がない場合にバリデーションが機能してinvalidになるか" do
       user_without_name = build(:user, name: "")
       expect(user_without_name).to be_invalid
       expect(user_without_name.errors.full_messages).to include "ユーザー名を入力してください"
     end
 
-    it "nameが51文字以上の場合にvalidationが機能してinvalidになるか" do
+    it "ユーザー名が51文字以上の場合にvalidationが機能してinvalidになるか" do
       user_with_long_name = build(:user, name: "a" * 51)
       expect(user_with_long_name).to be_invalid
       expect(user_with_long_name.errors.full_messages).to include "ユーザー名は50文字以内で入力してください"
     end
 
-    it "emailがない場合にバリデーションが機能してinvalidになるか" do
+    it "メールアドレスがない場合にバリデーションが機能してinvalidになるか" do
       user_without_email = build(:user, email: "")
       expect(user_without_email).to be_invalid
       expect(user_without_email.errors.full_messages).to include "メールアドレスを入力してください"
     end
 
-    it "emailがすでに登録されている場合にvalidationが機能してinvalidになるか" do
-      user = create(:user)
-      duplicate_user = user.dup
-      expect(duplicate_user).to be_invalid
-      expect(duplicate_user.errors.full_messages).to include "メールアドレスはすでに存在します"
-    end
-
-    it "emailが256文字以上の場合にvalidationが機能してinvalidになるか" do
+    it "メールアドレスが256文字以上の場合にvalidationが機能してinvalidになるか" do
       user_with_long_email = build(:user, email: "a" * 244 + "@example.com")
       expect(user_with_long_email).to be_invalid
       expect(user_with_long_email.errors.full_messages).to include "メールアドレスは255文字以内で入力してください"
     end
 
-    it "emailのフォーマットが不正な場合にvalidationが機能してinvalidになるか" do
+    it "メールアドレスのフォーマットが不正な場合にvalidationが機能してinvalidになるか" do
       invalid_addresses = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com foo@bar..com]
       invalid_addresses.each do |invalid_address|
         user_with_invalid_email = build(:user, email: invalid_address)
@@ -52,28 +41,42 @@ RSpec.describe User, type: :model do
       end
     end
 
-    it "passwordがない場合にvalidationが機能してinvalidになるか" do
+    it "メールアドレスがすでに登録されている場合にvalidationが機能してinvalidになるか" do
+      user = create(:user)
+      duplicate_user = user.dup
+      expect(duplicate_user).to be_invalid
+      expect(duplicate_user.errors.full_messages).to include "メールアドレスはすでに存在します"
+    end
+
+    it "パスワードがない場合にvalidationが機能してinvalidになるか" do
       blank_password = ""
       user_without_password = build(:user, password: blank_password, password_confirmation: blank_password)
       expect(user_without_password).to be_invalid
       expect(user_without_password.errors.full_messages).to include "パスワードを入力してください"
     end
 
-    it "passwordが8文字未満の場合にvalidationが機能してinvalidになるか" do
+    it "パスワードが8文字未満の場合にvalidationが機能してinvalidになるか" do
       seven_characters = "a" * 7
       user_with_short_password = build(:user, password: seven_characters, password_confirmation: seven_characters)
       expect(user_with_short_password).to be_invalid
       expect(user_with_short_password.errors.full_messages).to include "パスワードは8文字以上で入力してください"
     end
 
-    it "passwordとpassword_confirmationが異なる場合にvalidationが機能してinvalidになるか" do
+    it "パスワードが17文字以上の場合にvalidationが機能してinvalidになるか" do
+      seventeen_characters = "a" * 17
+      user_with_long_password = build(:user, password: seventeen_characters, password_confirmation: seventeen_characters)
+      expect(user_with_long_password).to be_invalid
+      expect(user_with_long_password.errors.full_messages).to include "パスワードは16文字以内で入力してください"
+    end
+
+    it "パスワードと確認用パスワードが異なる場合にvalidationが機能してinvalidになるか" do
       invalid_password = "invalid_password"
       user_with_invalid_confirmation_password = build(:user, password_confirmation: invalid_password)
       expect(user_with_invalid_confirmation_password).to be_invalid
       expect(user_with_invalid_confirmation_password.errors.full_messages).to include "確認用パスワードとパスワードの入力が一致しません"
     end
 
-    it "ageが13〜100以外の場合にvalidationが機能してinvalidになるか" do
+    it "年齢が13〜100以外の場合にvalidationが機能してinvalidになるか" do
       invalid_ages = [-1, 0, 12, 101, 150, 200]
       invalid_ages.each do |invalid_age|
         user_with_invalid_age = build(:user, age: invalid_age)
@@ -82,65 +85,42 @@ RSpec.describe User, type: :model do
       end
     end
 
-    it "genderがない場合にvalidationが機能してinvalidになるか" do
+    it "性別の入力がない場合にvalidationが機能してinvalidになるか" do
       user_without_gender = build(:user, gender: nil)
       expect(user_without_gender).to be_invalid
       expect(user_without_gender.errors.full_messages).to include "性別を入力してください"
     end
 
-    it "profileが400文字よりも多い場合にvalidationが機能してinvalidになるか" do
+    it "プロフィールが400文字よりも多い場合にvalidationが機能してinvalidになるか" do
       too_long_profile = "a" * 401
       user_with_long_profile = build(:user, profile: too_long_profile)
       expect(user_with_long_profile).to be_invalid
       expect(user_with_long_profile.errors.full_messages).to include "プロフィールは400文字以内で入力してください"
     end
+
+    it "権限の入力がない場合にvalidationが機能してinvalidになるか" do
+      user_without_role = build(:user, role: nil)
+      expect(user_without_role).to be_invalid
+    end
   end
 
-  describe "モデルに登録されているメソッドのチェック" do
-    it "emailが登録される場合に小文字に変換されているか" do
-      mixed_case_email = "Foo@ExAMPle.CoM"
-      user = create(:user, email: mixed_case_email)
-      expect(user.email).to eq mixed_case_email.downcase
+  describe "デフォルト値の確認" do
+    let(:user) { build(:user) }
+
+    it "性別のデフォルト値が0(回答なし)になっているか" do
+      expect(user.gender_i18n).to eq "回答なし"
     end
 
-    it "like_best_channelメソッドを実行した場合にいいね数が増えるか" do
-      before_count = user.like_best_channels.size
-      user.like_best_channel(best_channel)
-      expect(user.like_best_channels.size).to eq before_count + 1
+    it "権限のデフォルト値が1(一般)になっているか" do
+      expect(user.role_i18n).to eq "一般"
     end
 
-    it "dislike_best_channelメソッドを実行した場合にいいね数が減るか" do
-      user.like_best_channel(best_channel)
-      before_count = user.like_best_channels.size
-      user.dislike_best_channel(best_channel)
-      expect(user.like_best_channels.size).to eq before_count - 1
+    it "年齢の公開設定のデフォルト値がfalseになっているか" do
+      expect(user.age_is_public).to be_falsey
     end
 
-    it "like_best_channel?メソッドが機能していいね状態を確認できるか" do
-      user.like_best_channel(best_channel)
-      expect(user.like_best_channel?(best_channel)).to be_truthy
-      user.dislike_best_channel(best_channel)
-      expect(user.like_best_channel?(best_channel)).to be_falsey
-    end
-
-    it "like_best_videoメソッドを実行した場合にいいね数が増えるか" do
-      before_count = user.like_best_videos.size
-      user.like_best_video(best_video)
-      expect(user.like_best_videos.size).to eq before_count + 1
-    end
-
-    it "dislike_best_videoメソッドを実行した場合にいいね数が減るか" do
-      user.like_best_video(best_video)
-      before_count = user.like_best_videos.size
-      user.dislike_best_video(best_video)
-      expect(user.like_best_videos.size).to eq before_count - 1
-    end
-
-    it "like_best_video?メソッドが機能していいね状態を確認できるか" do
-      user.like_best_video(best_video)
-      expect(user.like_best_video?(best_video)).to be_truthy
-      user.dislike_best_video(best_video)
-      expect(user.like_best_video?(best_video)).to be_falsey
+    it "性別の公開設定のデフォルト値がfalseになっているか" do
+      expect(user.gender_is_public).to be_falsey
     end
   end
 
@@ -159,6 +139,14 @@ RSpec.describe User, type: :model do
         user = create(:user, role: key.to_i)
         expect(user.role_i18n).to eq value
       end
+    end
+  end
+
+  describe "コールバックが正しく機能しているか" do
+    it "メールアドレスが登録される場合に小文字に変換されているか" do
+      mixed_case_email = "Foo@ExAMPle.CoM"
+      user = create(:user, email: mixed_case_email)
+      expect(user.email).to eq mixed_case_email.downcase
     end
   end
 end
