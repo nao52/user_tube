@@ -7,7 +7,6 @@ FactoryBot.define do
     password { password }
     password_confirmation { password }
     age { 20 }
-    gender { 1 }
     profile { "私はテスト用のユーザーです。よろしくお願いします。" }
   end
 end

@@ -32,7 +32,7 @@ class User < ApplicationRecord
   has_many :categories, through: :user_categories, source: :category
   has_many :user_playlists, dependent: :destroy
 
-  validates :password, presence: true, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
+  validates :password, presence: true, length: { minimum: 8, maximum: 16 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :name, presence: true, length: { maximum: 50 }
@@ -41,6 +41,7 @@ class User < ApplicationRecord
   validates :age, allow_nil: true, numericality: { only_integer: true, in: 13..100 }
   validates :gender, presence: true
   validates :profile, length: { maximum: 400 }
+  validates :role, presence: true
   validates :reset_password_token, uniqueness: true, allow_nil: true
   validates :remember_me_token, uniqueness: true, allow_nil: true
 
