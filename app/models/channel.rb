@@ -9,7 +9,7 @@ class Channel < ApplicationRecord
 
   validates :channel_id, presence: true, uniqueness: true
   validates :name, presence: true
-  validates :subscriber_count, presence: true, numericality: { only_integer: true }
+  validates :subscriber_count, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   scope :with_users, -> { joins(:subscription_channels).where(subscription_channels: { channel_id: ids }) }
   scope :with_following_users, ->(following_user_ids) { joins(:subscription_channels).where(subscription_channels: { user_id: following_user_ids }) }
