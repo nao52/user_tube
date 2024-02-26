@@ -69,10 +69,6 @@ YouTubeが好きな人たちユーザー登録を行い、登録チャンネル�
 ### その後の機能
 * パンくず機能
 * マルチ検索・オートコンプリート  
-* LINE通知  
-* チャット  
-* 画像加工、合成  
-* ステップ入力・確認画面  
 * キューとバックグラウンド処理
 * GitHub Actionsを用いたCI/CD
 * フロントのSPA化
@@ -82,4 +78,4 @@ YouTubeが好きな人たちユーザー登録を行い、登録チャンネル�
 https://www.figma.com/file/zRqwhkaC1tWjNZuiPPdbpY/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=6%3A159&mode=design&t=LeT9OZ7d3GAXszDL-1
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/0a8866585f8ffd709ccc15c0832e66c1.png)](https://gyazo.com/0a8866585f8ffd709ccc15c0832e66c1)
+[![Image from Gyazo](https://i.gyazo.com/f44bbd257944def7416ef1eb8162d2bb.png)](https://gyazo.com/f44bbd257944def7416ef1eb8162d2bb)
